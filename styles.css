@@ -179,7 +179,7 @@ body {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease-in;
+  transition: all 0.6s ease-in;
 }
 
 .blink-button::before {
@@ -192,13 +192,13 @@ body {
   background: white;
   z-index: 0;
   opacity: 0;
-  transition: all 0.3s ease-in;
+  transition: all 0.6s ease-in;
 }
 
 .blink-button:hover::before {
   opacity: 1;
   transform: scale(1);
-  animation: blink 0.3s forwards;
+  animation: blink 0.6s forwards;
 }
 
 @keyframes blink {
@@ -206,7 +206,7 @@ body {
     opacity: 0.6;
     background: white;
   }
-  20% {
+  10% {
     opacity: 0.8;
     background: white;
   }
@@ -218,5 +218,5 @@ body {
 
 .blink-button:hover {
   background: #0011ff;
-  transition: background 0.3s ease-in-out;
+  transition: background 0.6s ease-in-out;
 }
