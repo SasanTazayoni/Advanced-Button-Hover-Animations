@@ -107,7 +107,75 @@ function setupMouseLeave(button, circles) {
   });
 }
 
-const circleButton = document.querySelector(".circle-button");
-circleButton.addEventListener("mouseover", () => {
-  createCircles(circleButton);
+const spiralButton = document.querySelector(".spiral-button");
+spiralButton.addEventListener("mouseover", () => {
+  createCircles(spiralButton);
+});
+
+// Pixelation effect
+
+const button = document.querySelector(".pixel-button");
+let filling = false;
+
+button.addEventListener("mouseover", function () {
+  filling = true;
+
+  const width = button.clientWidth;
+  const height = button.clientHeight;
+
+  const squareSize = 5;
+  const cols = Math.ceil(width / squareSize);
+  const rows = Math.ceil(height / squareSize);
+  const totalSquares = cols * rows;
+  let filledSquares = new Set();
+
+  const fillSquare = () => {
+    if (!filling || filledSquares.size >= totalSquares) {
+      return;
+    }
+
+    for (let i = 0; i < 4; i++) {
+      if (filledSquares.size >= totalSquares) {
+        break;
+      }
+
+      let randomCol, randomRow;
+      let found = false;
+
+      while (!found) {
+        randomCol = Math.floor(Math.random() * cols);
+        randomRow = Math.floor(Math.random() * rows);
+        if (!filledSquares.has(`${randomRow}-${randomCol}`)) {
+          found = true;
+        }
+      }
+
+      const squareX = randomCol * squareSize;
+      const squareY = randomRow * squareSize;
+
+      const colorSquare = document.createElement("div");
+      colorSquare.style.position = "absolute";
+      colorSquare.style.width = `${squareSize}px`;
+      colorSquare.style.height = `${squareSize}px`;
+      colorSquare.style.backgroundColor = "#48d1cc";
+      colorSquare.style.background = `radial-gradient(circle, rgb(175, 238, 238) 0%, rgba(64, 224, 208, 1) 70%)`;
+      colorSquare.style.left = `${squareX}px`;
+      colorSquare.style.top = `${squareY}px`;
+      colorSquare.style.zIndex = "-1";
+
+      button.appendChild(colorSquare);
+      filledSquares.add(`${randomRow}-${randomCol}`);
+    }
+
+    setTimeout(fillSquare, 1);
+  };
+
+  fillSquare();
+});
+
+button.addEventListener("mouseleave", function () {
+  filling = false;
+
+  const squares = button.querySelectorAll("div:not(.button)");
+  squares.forEach((square) => square.remove());
 });
