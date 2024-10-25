@@ -1,0 +1,47 @@
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.animated-border-button {
+  position: relative;
+  background: rgb(255, 255, 169);
+}
+
+.animated-border-button::before,
+.animated-border-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -1;
+  transition: all 0.15s;
+}
+
+.animated-border-button:hover::before,
+.animated-border-button:hover::after {
+  background: conic-gradient(
+    from var(--gradient-angle),
+    greenyellow,
+    #084908,
+    greenyellow,
+    #084908,
+    greenyellow
+  );
+  inset: -0.2rem;
+  animation: rotation 2s linear infinite;
+}
+
+.animated-border-button::after {
+  filter: blur(0.5rem);
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
