@@ -130,12 +130,9 @@ pixelButton.addEventListener("mouseover", function () {
   const rows = Math.ceil(height / squareSize);
   const totalSquares = cols * rows;
 
-  console.log(`Starting fill process: Total squares = ${totalSquares}`);
-
   const fillSquare = () => {
     if (filledSquares.size >= totalSquares) {
       filling = false;
-      console.log("All squares are filled!");
       return;
     }
 
@@ -170,9 +167,6 @@ pixelButton.addEventListener("mouseover", function () {
 
       pixelButton.appendChild(colorSquare);
       filledSquares.add(`${randomRow}-${randomCol}`);
-      console.log(
-        `Added square at row: ${randomRow}, col: ${randomCol}. Total filled: ${filledSquares.size}`
-      );
     }
 
     if (filling && filledSquares.size < totalSquares) {
@@ -189,14 +183,11 @@ pixelButton.addEventListener("mouseleave", function () {
   filling = false;
   clearing = true;
 
-  console.log("Starting to clear squares...");
-
   const removeSquare = () => {
     const squares = pixelButton.querySelectorAll("div:not(.button)");
 
     if (!clearing || filledSquares.size === 0) {
       clearing = false;
-      console.log("Clearing process completed or no squares left to clear.");
       return;
     }
 
@@ -214,11 +205,6 @@ pixelButton.addEventListener("mouseleave", function () {
       );
       squareToRemove.remove();
       filledSquares.delete(squareToRemoveKey);
-      console.log(`Removed square. Squares left: ${filledSquares.size}`);
-    }
-
-    if (filledSquares.size === 0) {
-      console.log("All squares removed.");
     }
 
     setTimeout(removeSquare, 1);
