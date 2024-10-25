@@ -11,4 +11,5 @@
   background: red;
   filter: drop-shadow(0 0 5px red) drop-shadow(0 0 10px red)
     drop-shadow(0 0 15px red);
+  font-weight: bold;
 }
