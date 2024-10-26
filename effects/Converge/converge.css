@@ -1,0 +1,93 @@
+.converge-button {
+  color: #ff0;
+  border: 2px solid #ff0;
+  background: black;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.circular-span {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ff0;
+  opacity: 0;
+  filter: blur(5px);
+  z-index: -1;
+}
+
+.circular-span[data-span-id="1"] {
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+
+.converge-button:hover .circular-span[data-span-id="1"] {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.circular-span[data-span-id="2"] {
+  top: -30px;
+  right: 50%;
+  transform: translateX(50%);
+  transition: all 0.3s ease;
+}
+
+.converge-button:hover .circular-span[data-span-id="2"] {
+  top: 50%;
+  right: 25%;
+  transform: translateY(-50%);
+}
+
+.circular-span[data-span-id="3"] {
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+}
+
+.converge-button:hover .circular-span[data-span-id="3"] {
+  bottom: 50%;
+  left: 25%;
+  transform: translateY(50%);
+}
+
+.circular-span[data-span-id="4"] {
+  position: absolute;
+  bottom: -60px;
+  right: 50%;
+  transform: translateX(50%);
+  transition: all 0.3s ease;
+}
+
+.converge-button:hover .circular-span[data-span-id="4"] {
+  bottom: 50%;
+  right: 0;
+  transform: translateY(50%);
+}
+
+.converge-button:hover .circular-span {
+  opacity: 1;
+}
+
+.converge-button:hover {
+  animation: invert 1s forwards;
+}
+
+@keyframes invert {
+  0% {
+    background: black;
+    border: 2px solid #ff0;
+    color: #ff0;
+  }
+  100% {
+    background: #ff0;
+    border: 2px solid black;
+    color: black;
+  }
+}

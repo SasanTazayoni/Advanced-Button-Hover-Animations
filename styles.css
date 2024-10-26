@@ -7,7 +7,7 @@ body {
 }
 
 .button {
-  width: 120px;
+  width: 140px;
   height: 50px;
   padding: 15px 30px;
   font-size: 16px;
@@ -15,20 +15,4 @@ body {
   border-radius: 10px;
   cursor: pointer;
   margin: 10px;
-}
-
-.swirl-button {
-  position: relative;
-  background: #6e93d6;
-  color: white;
-  overflow: hidden;
-}
-
-.swirl-circle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-  pointer-events: none;
 }
