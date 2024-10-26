@@ -16,3 +16,11 @@ body {
   cursor: pointer;
   margin: 10px;
 }
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 20px;
+  max-width: 800px;
+  width: 100%;
+}
