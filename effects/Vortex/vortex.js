@@ -13,7 +13,7 @@ const addVortexLines = (button) => {
     const halfLineWidth = line.offsetWidth / 2;
     line.style.bottom = `${i * lineHeight}px`;
     line.style.left = `${-halfLineWidth + i * lineHeight}px`;
-    line.style.transitionDelay = `${0.03 * i}s`;
+    line.style.transitionDelay = `${0.025 * i}s`;
   }
 
   for (let i = 0; i < numberOfLines; i++) {
@@ -24,7 +24,7 @@ const addVortexLines = (button) => {
     const buttonWidth = button.offsetWidth;
     line.style.bottom = `${i * lineHeight}px`;
     line.style.left = `${buttonWidth - halfLineWidth - i * lineHeight}px`;
-    line.style.transitionDelay = `${0.03 * i}s`;
+    line.style.transitionDelay = `${0.025 * i}s`;
   }
 
   for (let i = 0; i < numberOfLines; i++) {
@@ -34,7 +34,7 @@ const addVortexLines = (button) => {
     const halfLineWidth = line.offsetWidth / 2;
     line.style.top = `${i * lineHeight}px`;
     line.style.left = `${-halfLineWidth + i * lineHeight}px`;
-    line.style.transitionDelay = `${0.03 * i}s`;
+    line.style.transitionDelay = `${0.025 * i}s`;
   }
 
   for (let i = 0; i < numberOfLines; i++) {
@@ -45,6 +45,6 @@ const addVortexLines = (button) => {
     const buttonWidth = button.offsetWidth;
     line.style.top = `${i * lineHeight}px`;
     line.style.left = `${buttonWidth - halfLineWidth - i * lineHeight}px`;
-    line.style.transitionDelay = `${0.03 * i}s`;
+    line.style.transitionDelay = `${0.025 * i}s`;
   }
 };

@@ -23,21 +23,21 @@
 }
 
 .vortex-button:hover .bottom-left-line {
-  opacity: 0.4;
+  opacity: 0.7;
   transform: rotate(45deg);
 }
 
 .vortex-button:hover .bottom-right-line {
-  opacity: 0.4;
+  opacity: 0.7;
   transform: rotate(-45deg);
 }
 
 .vortex-button:hover .top-left-line {
-  opacity: 0.4;
+  opacity: 0.7;
   transform: rotate(-45deg);
 }
 
 .vortex-button:hover .top-right-line {
-  opacity: 0.4;
+  opacity: 0.7;
   transform: rotate(45deg);
 }
