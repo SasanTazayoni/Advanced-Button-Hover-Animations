@@ -24,3 +24,47 @@ body {
   max-width: 800px;
   width: 100%;
 }
+
+.vortex-button {
+  position: relative;
+  background: rgb(173, 230, 211);
+  color: #333333;
+  padding: 20px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.line {
+  position: absolute;
+  width: 100px;
+  height: 5px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 102, 42, 0.3),
+    rgba(0, 194, 81, 0.3),
+    rgba(0, 102, 42, 0.3)
+  );
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0.025;
+  z-index: -1;
+}
+
+.vortex-button:hover .bottom-left-line {
+  opacity: 0.5;
+  transform: rotate(45deg);
+}
+
+.vortex-button:hover .bottom-right-line {
+  opacity: 0.5;
+  transform: rotate(-45deg);
+}
+
+.vortex-button:hover .top-left-line {
+  opacity: 0.5;
+  transform: rotate(-45deg);
+}
+
+.vortex-button:hover .top-right-line {
+  opacity: 0.5;
+  transform: rotate(45deg);
+}
