@@ -1,4 +1,4 @@
-export const initializeCircleEffect = (button) => {
+export const initializeSpiralEffect = (button) => {
   function createCircles() {
     const circlesData = [
       { size: 15, opacity: 0.5 },
