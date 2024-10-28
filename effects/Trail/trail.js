@@ -1,4 +1,4 @@
-export const initializeTrail = (button) => {
+export const initializeTrailEffect = (button) => {
   button.onmousemove = (e) => {
     let x = e.pageX - button.offsetLeft;
     let y = e.pageY - button.offsetTop;
@@ -40,4 +40,4 @@ const fadeOut = (circle) => {
 };
 
 const button = document.querySelector(".trail-button");
-initializeTrail(button);
+initializeTrailEffect(button);
