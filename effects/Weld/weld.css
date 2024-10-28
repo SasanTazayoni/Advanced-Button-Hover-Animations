@@ -104,8 +104,8 @@
     border-top-color: rgba(255, 255, 0, 0.5);
   }
   66% {
-    border-bottom-color: rgba(255, 69, 0, 0.75);
-    border-top-color: rgba(255, 69, 0, 0.75);
+    border-bottom-color: rgba(255, 166, 0, 0.75);
+    border-top-color: rgba(255, 166, 0, 0.75);
   }
   100% {
     border-bottom-color: rgba(235, 235, 235, 1);
