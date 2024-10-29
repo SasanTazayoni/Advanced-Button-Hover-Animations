@@ -1,35 +1,40 @@
 export const initializeSpiralEffect = (button) => {
   function createCircles() {
+    const buttonWidth = Math.ceil(button.offsetWidth);
+
     const circlesData = [
-      { size: 15, opacity: 0.5 },
-      { size: 30, opacity: 0.45 },
-      { size: 45, opacity: 0.4 },
-      { size: 60, opacity: 0.35 },
-      { size: 75, opacity: 0.3 },
-      { size: 90, opacity: 0.25 },
-      { size: 105, opacity: 0.2 },
-      { size: 120, opacity: 0.15 },
-      { size: 135, opacity: 0.1 },
-      { size: 150, opacity: 0.05 },
+      { size: 0.1, opacity: 0.5 },
+      { size: 0.2, opacity: 0.45 },
+      { size: 0.3, opacity: 0.4 },
+      { size: 0.4, opacity: 0.35 },
+      { size: 0.5, opacity: 0.3 },
+      { size: 0.6, opacity: 0.25 },
+      { size: 0.7, opacity: 0.2 },
+      { size: 0.8, opacity: 0.15 },
+      { size: 0.9, opacity: 0.1 },
+      { size: 1, opacity: 0.05 },
     ];
 
-    const circles = createCircleElements(circlesData);
+    const circles = createCircleElements(circlesData, buttonWidth);
     fadeInCircles(circles);
+
+    setTimeout(() => {
+      button.classList.add("active");
+    }, circles.length * 30);
+
     handleSequentialOpacity(circles);
     setupMouseLeave(circles);
   }
 
-  function createCircleElements(circlesData) {
+  function createCircleElements(circlesData, buttonWidth) {
     const circles = [];
     circlesData.forEach((circleData) => {
+      const size = circleData.size * buttonWidth;
       const circle = document.createElement("div");
       circle.className = "circle";
-      circle.style.width = `${circleData.size}px`;
-      circle.style.height = `${circleData.size}px`;
-      circle.style.left = "50%";
-      circle.style.top = "50%";
+      circle.style.width = `${size}px`;
+      circle.style.height = `${size}px`;
       circle.style.backgroundColor = `rgba(0, 120, 0, ${circleData.opacity})`;
-      circle.style.opacity = "0";
       button.appendChild(circle);
       circles.push(circle);
     });
@@ -73,6 +78,7 @@ export const initializeSpiralEffect = (button) => {
         circles.forEach((circle) => {
           button.removeChild(circle);
         });
+        button.classList.remove("active");
       }, 300);
     });
   }
