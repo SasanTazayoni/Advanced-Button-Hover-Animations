@@ -1,7 +1,7 @@
 .fusion-button {
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle, #fff8c4 40%, #ffe600);
+  background: radial-gradient(circle, #fff49f 40%, #ffe600);
   z-index: 0;
 }
 
@@ -11,7 +11,7 @@
   color: white;
   inset: 0;
   background: #b88b00;
-  transition: opacity 0.3s ease 0.3s;
+  transition: opacity 0.3s ease 0.6s;
   opacity: 1;
   z-index: 1;
   display: flex;
@@ -31,7 +31,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: radial-gradient(circle, transparent, #ffea00);
+  background: radial-gradient(circle, #ffea00, transparent);
   opacity: 0;
   z-index: 3;
   pointer-events: none;
@@ -67,22 +67,22 @@
 
 .fusion-button:hover .left-circle {
   animation: left-circle-hover 0.6s ease forwards,
-    fade-out 0.2s ease 0.5s forwards;
+    fade-out 0.4s ease 0.6s forwards;
 }
 
 .fusion-button:hover .right-circle {
   animation: right-circle-hover 0.6s ease forwards,
-    fade-out 0.2s ease 0.5s forwards;
+    fade-out 0.4s ease 0.6s forwards;
 }
 
 .fusion-button:hover .top-circle {
   animation: top-circle-hover 0.6s ease forwards,
-    fade-out 0.2s ease 0.5s forwards;
+    fade-out 0.4s ease 0.6s forwards;
 }
 
 .fusion-button:hover .bottom-circle {
   animation: bottom-circle-hover 0.6s ease forwards,
-    fade-out 0.2s ease 0.5s forwards;
+    fade-out 0.4s ease 0.6s forwards;
 }
 
 @keyframes fade-out {
