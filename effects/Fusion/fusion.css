@@ -50,19 +50,19 @@
 }
 
 .left-circle {
-  left: -25px;
+  left: calc(-1 * var(--button-height) / 2);
 }
 
 .right-circle {
-  right: -25px;
+  right: calc(-1 * var(--button-height) / 2);
 }
 
 .top-circle {
-  top: -70px;
+  top: calc(-1 * var(--button-width) / 2);
 }
 
 .bottom-circle {
-  bottom: -70px;
+  bottom: calc(-1 * var(--button-width) / 2);
 }
 
 .fusion-button:hover .left-circle {

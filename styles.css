@@ -1,3 +1,8 @@
+:root {
+  --button-width: 140px;
+  --button-height: 50px;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -7,8 +12,8 @@ body {
 }
 
 .button {
-  width: 140px;
-  height: 50px;
+  width: var(--button-width);
+  height: var(--button-height);
   padding: 15px 30px;
   font-size: 16px;
   border: none;
