@@ -3,7 +3,7 @@ export const initializeVortexEffect = (button) => {
 };
 
 const addVortexLines = (button) => {
-  const lineHeight = 3;
+  const lineHeight = 4;
   const numberOfLines = 28;
 
   for (let i = 0; i < numberOfLines; i++) {
