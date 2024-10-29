@@ -38,8 +38,6 @@
   top: -5px;
   width: 0;
   height: 0;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
   border-bottom: 60px solid rgba(235, 235, 235, 0.5);
   pointer-events: none;
 }
@@ -63,8 +61,6 @@
   bottom: -5px;
   width: 0;
   height: 0;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
   border-top: 60px solid rgba(235, 235, 235, 0.5);
   pointer-events: none;
 }

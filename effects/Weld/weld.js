@@ -1,9 +1,9 @@
 export function initializeWeldEffect(weldButton) {
   const upArrows = [
-    { class: "arrow-up", left: "-21px" },
-    { class: "arrow-up", left: "25px" },
-    { class: "arrow-up", left: "71px" },
-    { class: "arrow-up", left: "117px" },
+    { class: "arrow-up", left: "-20px" },
+    { class: "arrow-up", left: "26px" },
+    { class: "arrow-up", left: "72px" },
+    { class: "arrow-up", left: "118px" },
   ];
 
   upArrows.forEach(({ class: arrowClass, left }) => {
@@ -14,9 +14,9 @@ export function initializeWeldEffect(weldButton) {
   });
 
   const downArrows = [
-    { class: "arrow-down", left: "2.5px" },
-    { class: "arrow-down", left: "48px" },
-    { class: "arrow-down", left: "94px" },
+    { class: "arrow-down", left: "3px" },
+    { class: "arrow-down", left: "49px" },
+    { class: "arrow-down", left: "95px" },
   ];
 
   downArrows.forEach(({ class: arrowClass, left }) => {
