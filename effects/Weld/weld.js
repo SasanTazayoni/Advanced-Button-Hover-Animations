@@ -1,52 +1,35 @@
 export function initializeWeldEffect(weldButton) {
-  const upArrows = [
-    { class: "arrow-up", left: "-20px" },
-    { class: "arrow-up", left: "26px" },
-    { class: "arrow-up", left: "72px" },
-    { class: "arrow-up", left: "118px" },
+  const arrowConfigurations = [
+    {
+      class: "arrow-up",
+      positions: ["-21px", "25px", "71px", "117px"],
+      hoverPosition: "bottom",
+    },
+    {
+      class: "arrow-down",
+      positions: ["2px", "48px", "94px"],
+      hoverPosition: "top",
+    },
   ];
 
-  upArrows.forEach(({ class: arrowClass, left }) => {
-    const upArrow = document.createElement("div");
-    upArrow.classList.add(arrowClass);
-    upArrow.style.left = left;
-    weldButton.appendChild(upArrow);
-  });
-
-  const downArrows = [
-    { class: "arrow-down", left: "3px" },
-    { class: "arrow-down", left: "49px" },
-    { class: "arrow-down", left: "95px" },
-  ];
-
-  downArrows.forEach(({ class: arrowClass, left }) => {
-    const downArrow = document.createElement("div");
-    downArrow.classList.add(arrowClass);
-    downArrow.style.left = left;
-    weldButton.appendChild(downArrow);
-  });
-
-  weldButton.addEventListener("mouseenter", () => {
-    document.querySelectorAll(".arrow-up").forEach((arrow) => {
-      arrow.classList.add("hover");
+  function createArrows(arrowClass, positions) {
+    positions.forEach((left) => {
+      const arrow = document.createElement("div");
+      arrow.classList.add(arrowClass);
+      arrow.style.left = left;
+      weldButton.appendChild(arrow);
     });
+  }
+
+  arrowConfigurations.forEach(({ class: arrowClass, positions }) => {
+    createArrows(arrowClass, positions);
   });
 
-  weldButton.addEventListener("mouseleave", () => {
-    document.querySelectorAll(".arrow-up").forEach((arrow) => {
-      arrow.classList.remove("hover");
-    });
-  });
-
-  weldButton.addEventListener("mouseenter", () => {
-    document.querySelectorAll(".arrow-down").forEach((arrow) => {
-      arrow.classList.add("hover");
-    });
-  });
-
-  weldButton.addEventListener("mouseleave", () => {
-    document.querySelectorAll(".arrow-down").forEach((arrow) => {
-      arrow.classList.remove("hover");
+  ["mouseenter", "mouseleave"].forEach((e) => {
+    weldButton.addEventListener(e, () => {
+      document.querySelectorAll(".arrow-up, .arrow-down").forEach((arrow) => {
+        arrow.classList.toggle("hover", e === "mouseenter");
+      });
     });
   });
 }
