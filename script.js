@@ -4,7 +4,6 @@ import { initializeSpiralEffect } from "./effects/Spiral/spiral.js";
 import { initializePixelationEffect } from "./effects/Pixel/pixel.js";
 import { initializeVortexEffect } from "./effects/Vortex/vortex.js";
 import { initializeWeldEffect } from "./effects/Weld/weld.js";
-import { initializeDistortionEffect } from "./effects/Distortion/distortion.js";
 
 const trailButton = document.querySelector(".trail-button");
 const rippleButton = document.querySelector(".ripple-button");
@@ -12,7 +11,6 @@ const spiralButton = document.querySelector(".spiral-button");
 const pixelButton = document.querySelector(".pixel-button");
 const vortexButton = document.querySelector(".vortex-button");
 const weldButton = document.querySelector(".weld-button");
-const distortionButton = document.querySelector(".distortion-button");
 
 initializeTrailEffect(trailButton);
 initializeRippleEffect(rippleButton);
@@ -20,4 +18,3 @@ initializeSpiralEffect(spiralButton);
 initializePixelationEffect(pixelButton);
 initializeVortexEffect(vortexButton);
 initializeWeldEffect(weldButton);
-initializeDistortionEffect(distortionButton);
