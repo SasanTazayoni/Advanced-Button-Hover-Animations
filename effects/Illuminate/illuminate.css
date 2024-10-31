@@ -1,0 +1,12 @@
+.illuminate-button {
+  position: relative;
+  background-color: rgb(255, 105, 105);
+  border: 2px solid #ffc3fa;
+  overflow: hidden;
+}
+
+.illuminate-button > span {
+  position: relative;
+  color: #ffc3fa;
+  z-index: 2;
+}

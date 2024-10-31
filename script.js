@@ -6,6 +6,7 @@ import { initializeVortexEffect } from "./effects/Vortex/vortex.js";
 import { initializeWeldEffect } from "./effects/Weld/weld.js";
 import { initializeStreamEffect } from "./effects/Stream/stream.js";
 import { initializeShatterEffect } from "./effects/Shatter/shatter.js";
+import { initializeIlluminateEffect } from "./effects/Illuminate/illuminate.js";
 
 const trailButton = document.querySelector(".trail-button");
 const rippleButton = document.querySelector(".ripple-button");
@@ -15,6 +16,7 @@ const vortexButton = document.querySelector(".vortex-button");
 const weldButton = document.querySelector(".weld-button");
 const streamButton = document.querySelector(".stream-button");
 const shatterButton = document.querySelector(".shatter-button");
+const illuminateButton = document.querySelector(".illuminate-button");
 
 initializeTrailEffect(trailButton);
 initializeRippleEffect(rippleButton);
@@ -24,3 +26,4 @@ initializeVortexEffect(vortexButton);
 initializeWeldEffect(weldButton);
 initializeStreamEffect(streamButton);
 initializeShatterEffect(shatterButton);
+initializeIlluminateEffect(illuminateButton);
