@@ -1,0 +1,74 @@
+.stream-button {
+  position: relative;
+  background-color: rgb(255, 223, 247);
+  color: black;
+  overflow: hidden;
+}
+
+.stream-button::before {
+  content: "Stream";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 242, 1),
+    rgba(255, 0, 242, 0.1)
+  );
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.3s;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.stream-button:hover::before {
+  opacity: 1;
+}
+
+.line-downwards {
+  position: absolute;
+  width: 3px;
+  height: calc(var(--button-height) / 4);
+  background-color: rgb(255, 0, 242);
+  top: calc(-1 * (var(--button-height) / 4));
+  left: 50%;
+  transform: translateX(-50%);
+  animation: lineDown 0.6s forwards;
+}
+
+.line-upwards {
+  position: absolute;
+  width: 3px;
+  height: calc(var(--button-height) / 4);
+  background-color: rgb(255, 0, 242);
+  bottom: calc(-1 * (var(--button-height) / 4));
+  left: 50%;
+  transform: translateX(-50%);
+  animation: lineUp 0.6s forwards;
+}
+
+@keyframes lineDown {
+  0% {
+    top: calc(-1 * (var(--button-height) / 4));
+  }
+  100% {
+    top: var(--random-top);
+    opacity: 0;
+  }
+}
+
+@keyframes lineUp {
+  0% {
+    bottom: calc(-1 * (var(--button-height) / 4));
+  }
+  100% {
+    bottom: var(--random-bottom);
+    opacity: 0;
+  }
+}
