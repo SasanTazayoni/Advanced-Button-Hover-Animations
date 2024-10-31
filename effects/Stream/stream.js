@@ -1,6 +1,9 @@
 export function initializeStreamEffect(button) {
   let lineInterval;
   let cooldown = false;
+  let maxOpacity = 0.9;
+  let opacityDecreaseRate = 0.09;
+  let opacityInterval;
 
   function createLine(
     directionClass,
@@ -13,7 +16,11 @@ export function initializeStreamEffect(button) {
     line.className = directionClass;
     line.style.left = `${xPosition}px`;
     line.style.opacity = opacityValue;
+
+    line.style.setProperty("--random-top", `${positionValue}`);
+    line.style.setProperty("--random-bottom", `${positionValue}`);
     line.style.setProperty(positionProperty, `${positionValue}%`);
+
     button.appendChild(line);
 
     line.addEventListener("animationend", () => {
@@ -27,10 +34,16 @@ export function initializeStreamEffect(button) {
 
     const buttonWidth = button.offsetWidth;
 
+    opacityInterval = setInterval(() => {
+      if (maxOpacity > 0) {
+        maxOpacity -= opacityDecreaseRate;
+      }
+    }, 60);
+
     lineInterval = setInterval(() => {
       const randomXDown = Math.random() * (buttonWidth - 1);
       const randomTopDown = Math.random() * 120;
-      const randomOpacityDown = Math.random() * 0.7;
+      const randomOpacityDown = Math.random() * maxOpacity;
       createLine(
         "line-downwards",
         randomXDown,
@@ -41,7 +54,7 @@ export function initializeStreamEffect(button) {
 
       const randomXUp = Math.random() * (buttonWidth - 1);
       const randomBottomUp = Math.random() * 120;
-      const randomOpacityUp = Math.random() * 0.7;
+      const randomOpacityUp = Math.random() * maxOpacity;
       createLine(
         "line-upwards",
         randomXUp,
@@ -53,6 +66,7 @@ export function initializeStreamEffect(button) {
 
     setTimeout(() => {
       clearInterval(lineInterval);
+      clearInterval(opacityInterval);
       const linesDown = button.querySelectorAll(".line-downwards");
       const linesUp = button.querySelectorAll(".line-upwards");
       linesDown.forEach((line) => line.remove());
@@ -60,12 +74,14 @@ export function initializeStreamEffect(button) {
 
       setTimeout(() => {
         cooldown = false;
+        maxOpacity = 0.6;
       }, 150);
     }, 600);
   });
 
   button.addEventListener("mouseleave", () => {
     clearInterval(lineInterval);
+    clearInterval(opacityInterval);
     const linesDown = button.querySelectorAll(".line-downwards");
     const linesUp = button.querySelectorAll(".line-upwards");
     linesDown.forEach((line) => line.remove());
