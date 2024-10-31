@@ -57,7 +57,7 @@ export function initializeShatterEffect(button) {
         removedSet.add(randomIndex);
         const square = squares[randomIndex];
         const randomSpin = Math.random() * 720 - 360;
-        square.style.transform = `translateY(20px) rotate(${randomSpin}deg)`;
+        square.style.transform = `translateY(40px) rotate(${randomSpin}deg)`;
 
         setTimeout(() => {
           square.style.opacity = "0";
