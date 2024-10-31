@@ -2,12 +2,12 @@ export function initializeWeldEffect(weldButton) {
   const arrowConfigurations = [
     {
       class: "arrow-up",
-      positions: ["-21px", "25px", "71px", "117px"],
+      positions: ["-21px", "24px", "69.5px", "115px"],
       hoverPosition: "bottom",
     },
     {
       class: "arrow-down",
-      positions: ["2px", "48px", "94px"],
+      positions: ["1px", "46.5px", "92px"],
       hoverPosition: "top",
     },
   ];
