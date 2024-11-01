@@ -7,6 +7,7 @@ import { initializeWeldEffect } from "./effects/Weld/weld.js";
 import { initializeStreamEffect } from "./effects/Stream/stream.js";
 import { initializeShatterEffect } from "./effects/Shatter/shatter.js";
 import { initializeIlluminateEffect } from "./effects/Illuminate/illuminate.js";
+import { initializeWaterEffect } from "./effects/Water/water.js";
 
 const trailButton = document.querySelector(".trail-button");
 const rippleButton = document.querySelector(".ripple-button");
@@ -17,6 +18,7 @@ const weldButton = document.querySelector(".weld-button");
 const streamButton = document.querySelector(".stream-button");
 const shatterButton = document.querySelector(".shatter-button");
 const illuminateButton = document.querySelector(".illuminate-button");
+const waterButton = document.querySelector(".water-button");
 
 initializeTrailEffect(trailButton);
 initializeRippleEffect(rippleButton);
@@ -27,3 +29,4 @@ initializeWeldEffect(weldButton);
 initializeStreamEffect(streamButton);
 initializeShatterEffect(shatterButton);
 initializeIlluminateEffect(illuminateButton);
+initializeWaterEffect(waterButton);
