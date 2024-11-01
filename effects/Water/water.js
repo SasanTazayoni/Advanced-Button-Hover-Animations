@@ -60,7 +60,7 @@ export function initializeWaterEffect(button) {
       const computedStyle = getComputedStyle(button, "::after");
       const pseudoHeight = parseFloat(computedStyle.height);
 
-      if (pseudoHeight >= buttonHeight) {
+      if (pseudoHeight >= (buttonHeight * 7) / 8) {
         clearInterval(dropletInterval);
       } else {
         createDroplet();
