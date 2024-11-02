@@ -20,14 +20,14 @@ export function initializeWaterEffect(button) {
       Math.random() * (buttonRect.width - size) + buttonRect.left
     }px`;
 
-    droplet.style.top = `${buttonRect.top + size * 1.5}px`;
+    droplet.style.top = `${buttonRect.top + size / 2}px`;
     droplet.style.opacity = "0.5";
     document.body.appendChild(droplet);
 
     const fallDuration = Math.random() * 200 + 200;
 
     setTimeout(() => {
-      const targetTop = buttonRect.bottom;
+      const targetTop = buttonRect.bottom - size;
       droplet.style.transition = `top ${fallDuration}ms linear`;
       droplet.style.top = `${targetTop}px`;
 
