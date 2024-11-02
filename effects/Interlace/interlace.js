@@ -1,8 +1,8 @@
-export const initializeVortexEffect = (button) => {
-  addVortexLines(button);
+export const initializeInterlaceEffect = (button) => {
+  addInterlaceLines(button);
 };
 
-const addVortexLines = (button) => {
+const addInterlaceLines = (button) => {
   const lineHeight = 4;
   const numberOfLines = 28;
 
