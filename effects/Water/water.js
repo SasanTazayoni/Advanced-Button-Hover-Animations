@@ -20,39 +20,26 @@ export function initializeWaterEffect(button) {
       Math.random() * (buttonRect.width - size) + buttonRect.left
     }px`;
 
-    droplet.style.top = `${buttonRect.top + size / 4}px`;
+    droplet.style.top = `${buttonRect.top + size * 1.5}px`;
     droplet.style.opacity = "0.5";
     document.body.appendChild(droplet);
+
     const fallDuration = Math.random() * 200 + 200;
 
     setTimeout(() => {
-      const targetTop = buttonRect.bottom - size;
+      const targetTop = buttonRect.bottom;
       droplet.style.transition = `top ${fallDuration}ms linear`;
       droplet.style.top = `${targetTop}px`;
 
       let opacity = 0.5;
       const fadeOutInterval = setInterval(() => {
-        opacity -= 0.1;
+        opacity -= 0.05;
         droplet.style.opacity = opacity;
         if (opacity <= 0) {
           clearInterval(fadeOutInterval);
           droplet.remove();
         }
       }, 50);
-
-      const checkDropletPosition = setInterval(() => {
-        const dropletYPosition = parseFloat(droplet.style.top) + size;
-        const pseudoYPosition = button.getBoundingClientRect().bottom;
-
-        if (dropletYPosition >= pseudoYPosition) {
-          clearInterval(checkDropletPosition);
-        }
-      }, 50);
-
-      setTimeout(() => {
-        droplet.remove();
-        clearInterval(checkDropletPosition);
-      }, fallDuration);
     }, 10);
   }
 
@@ -67,7 +54,7 @@ export function initializeWaterEffect(button) {
       } else {
         createDroplet();
       }
-    }, 6);
+    }, 3);
   });
 
   button.addEventListener("mouseleave", () => {
