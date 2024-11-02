@@ -7,7 +7,7 @@ export function initializeShatterEffect(button) {
   );
 
   const removalStages = [0.2, 0.3, 1];
-  const removalDelays = [0, 300, 600];
+  const removalDelays = [0, 200, 400];
   let removalTimeouts = [];
   let restorationTimeout;
 
