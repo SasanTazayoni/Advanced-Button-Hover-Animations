@@ -1,18 +1,31 @@
 export function initializeWeldEffect(weldButton) {
+  const borderWidth = 20;
+
   const arrowConfigurations = [
     {
       class: "arrow-up",
-      positions: ["-21px", "24px", "69.5px", "115px"],
+      positions: [
+        `-${borderWidth + 1}px`,
+        `${borderWidth + 5}px`,
+        `${borderWidth * 3 + 11}px`,
+        `${borderWidth * 5 + 17}px`,
+      ],
       hoverPosition: "bottom",
+      defaultValue: "-65%",
     },
     {
       class: "arrow-down",
-      positions: ["1px", "46.5px", "92px"],
+      positions: [
+        "2px",
+        `${borderWidth * 2 + 8}px`,
+        `${borderWidth * 4 + 14}px`,
+      ],
       hoverPosition: "top",
+      defaultValue: "-65%",
     },
   ];
 
-  function createArrows(arrowClass, positions) {
+  function createArrows({ class: arrowClass, positions }) {
     positions.forEach((left) => {
       const arrow = document.createElement("div");
       arrow.classList.add(arrowClass);
@@ -21,15 +34,20 @@ export function initializeWeldEffect(weldButton) {
     });
   }
 
-  arrowConfigurations.forEach(({ class: arrowClass, positions }) => {
-    createArrows(arrowClass, positions);
-  });
+  arrowConfigurations.forEach(createArrows);
 
-  ["mouseenter", "mouseleave"].forEach((e) => {
-    weldButton.addEventListener(e, () => {
-      document.querySelectorAll(".arrow-up, .arrow-down").forEach((arrow) => {
-        arrow.classList.toggle("hover", e === "mouseenter");
-      });
-    });
-  });
+  weldButton.addEventListener("mouseenter", () => applyHoverStyles(true));
+  weldButton.addEventListener("mouseleave", () => applyHoverStyles(false));
+
+  function applyHoverStyles(isHover) {
+    arrowConfigurations.forEach(
+      ({ class: arrowClass, hoverPosition, defaultValue }) => {
+        const arrows = weldButton.querySelectorAll(`.${arrowClass}`);
+        arrows.forEach((arrow) => {
+          arrow.classList.toggle("hover", isHover);
+          arrow.style[hoverPosition] = isHover ? "50%" : defaultValue;
+        });
+      }
+    );
+  }
 }
