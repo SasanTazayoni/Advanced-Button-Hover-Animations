@@ -5,6 +5,8 @@ export function initializeWaterEffect(button) {
     )
   );
 
+  const maxDropletHeight = buttonHeight * 0.75;
+
   function createDroplet() {
     const droplet = document.createElement("div");
     droplet.classList.add("droplet");
@@ -31,12 +33,12 @@ export function initializeWaterEffect(button) {
       let opacity = 0.5;
       const fadeOutInterval = setInterval(() => {
         opacity -= 0.1;
+        droplet.style.opacity = opacity;
         if (opacity <= 0) {
           clearInterval(fadeOutInterval);
           droplet.remove();
         }
-        droplet.style.opacity = opacity;
-      }, 100);
+      }, 50);
 
       const checkDropletPosition = setInterval(() => {
         const dropletYPosition = parseFloat(droplet.style.top) + size;
@@ -60,7 +62,7 @@ export function initializeWaterEffect(button) {
       const computedStyle = getComputedStyle(button, "::after");
       const pseudoHeight = parseFloat(computedStyle.height);
 
-      if (pseudoHeight >= buttonHeight) {
+      if (pseudoHeight >= maxDropletHeight) {
         clearInterval(dropletInterval);
       } else {
         createDroplet();
@@ -70,9 +72,5 @@ export function initializeWaterEffect(button) {
 
   button.addEventListener("mouseleave", () => {
     clearInterval(dropletInterval);
-    const droplets = document.querySelectorAll(".droplet");
-    droplets.forEach((droplet) => {
-      droplet.style.opacity = "0.5";
-    });
   });
 }
