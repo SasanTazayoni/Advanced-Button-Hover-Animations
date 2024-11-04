@@ -1,14 +1,22 @@
 export function initializeWeldEffect(weldButton) {
-  const borderWidth = 20;
+  const triangleBorderWidth = 20;
+  const computedStyles = getComputedStyle(weldButton);
+  const borderLeftWidth = parseInt(computedStyles.borderLeftWidth, 10);
+  const arrowUpPosition = (index) =>
+    `${
+      triangleBorderWidth * (index * 2 - 1) + index * 6 - borderLeftWidth / 2
+    }px`;
+  const arrowDownPosition = (index) =>
+    `${index * (triangleBorderWidth * 2 + 6) + borderLeftWidth}px`;
 
   const arrowConfigurations = [
     {
       class: "arrow-up",
       positions: [
-        `-${borderWidth + 1}px`,
-        `${borderWidth + 5}px`,
-        `${borderWidth * 3 + 11}px`,
-        `${borderWidth * 5 + 17}px`,
+        arrowUpPosition(0),
+        arrowUpPosition(1),
+        arrowUpPosition(2),
+        arrowUpPosition(3),
       ],
       hoverPosition: "bottom",
       defaultValue: "-65%",
@@ -16,9 +24,9 @@ export function initializeWeldEffect(weldButton) {
     {
       class: "arrow-down",
       positions: [
-        "2px",
-        `${borderWidth * 2 + 8}px`,
-        `${borderWidth * 4 + 14}px`,
+        arrowDownPosition(0),
+        arrowDownPosition(1),
+        arrowDownPosition(2),
       ],
       hoverPosition: "top",
       defaultValue: "-65%",
