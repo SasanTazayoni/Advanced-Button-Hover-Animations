@@ -1,8 +1,8 @@
-export const initializeSpiralEffect = (button) => {
+export const initializeSpiralEffect = (button: HTMLButtonElement): void => {
   function createCircles() {
     const buttonWidth = Math.ceil(button.offsetWidth);
 
-    const circlesData = [
+    const circlesData: { size: number; opacity: number }[] = [
       { size: 0.1, opacity: 0.5 },
       { size: 0.2, opacity: 0.45 },
       { size: 0.3, opacity: 0.4 },
@@ -26,8 +26,11 @@ export const initializeSpiralEffect = (button) => {
     setupMouseLeave(circles);
   }
 
-  function createCircleElements(circlesData, buttonWidth) {
-    const circles = [];
+  function createCircleElements(
+    circlesData: { size: number; opacity: number }[],
+    buttonWidth: number
+  ): HTMLDivElement[] {
+    const circles: HTMLDivElement[] = [];
     circlesData.forEach((circleData) => {
       const size = circleData.size * buttonWidth;
       const circle = document.createElement("div");
@@ -41,7 +44,7 @@ export const initializeSpiralEffect = (button) => {
     return circles;
   }
 
-  function fadeInCircles(circles) {
+  function fadeInCircles(circles: HTMLDivElement[]): void {
     circles.forEach((circle, index) => {
       setTimeout(() => {
         circle.style.opacity = "1";
@@ -49,34 +52,37 @@ export const initializeSpiralEffect = (button) => {
     });
   }
 
-  function handleSequentialOpacity(circles) {
+  function handleSequentialOpacity(circles: HTMLDivElement[]): void {
     circles.forEach((circle, index) => {
       setTimeout(() => {
         let opacity = parseFloat(
           circle.style.backgroundColor.match(
             /rgba\(0, 120, 0, (\d(\.\d+)?)\)/
-          )[1]
+          )?.[1] ?? "0"
         );
-        const intervalId = setInterval(() => {
+
+        const intervalId: ReturnType<typeof setInterval> = setInterval(() => {
           opacity -= 0.1;
           if (opacity <= 0) {
             opacity = 0;
             clearInterval(intervalId);
           }
-          circle.style.opacity = opacity;
+          circle.style.opacity = opacity.toString();
         }, 30);
       }, index * 60 + 60);
     });
   }
 
-  function setupMouseLeave(circles) {
+  function setupMouseLeave(circles: HTMLDivElement[]): void {
     button.addEventListener("mouseleave", () => {
       circles.forEach((circle) => {
         circle.style.opacity = "0";
       });
       setTimeout(() => {
         circles.forEach((circle) => {
-          button.removeChild(circle);
+          if (button.contains(circle)) {
+            button.removeChild(circle);
+          }
         });
         button.classList.remove("active");
       }, 300);

@@ -1,17 +1,17 @@
-export function initializeShatterEffect(button) {
-  const squareSize = 5;
-  const buttonWidth = button.offsetWidth;
-  const buttonHeight = button.offsetHeight;
-  const totalSquares = Math.ceil(
+export function initializeShatterEffect(button: HTMLButtonElement): void {
+  const squareSize: number = 5;
+  const buttonWidth: number = button.offsetWidth;
+  const buttonHeight: number = button.offsetHeight;
+  const totalSquares: number = Math.ceil(
     (buttonWidth / squareSize) * (buttonHeight / squareSize)
   );
 
-  const removalStages = [0.2, 0.3, 1];
-  const removalDelays = [0, 200, 400];
-  let removalTimeouts = [];
-  let restorationTimeout;
+  const removalStages: number[] = [0.2, 0.3, 1];
+  const removalDelays: number[] = [0, 200, 400];
+  let removalTimeouts: NodeJS.Timeout[] = [];
+  let restorationTimeout: NodeJS.Timeout;
 
-  function createSquaresContainer() {
+  function createSquaresContainer(): HTMLDivElement {
     const squaresContainer = document.createElement("div");
     squaresContainer.className = "squares-container";
     squaresContainer.style.position = "absolute";
@@ -24,7 +24,7 @@ export function initializeShatterEffect(button) {
     return squaresContainer;
   }
 
-  function addSquares(squaresContainer) {
+  function addSquares(squaresContainer: HTMLDivElement): void {
     for (let i = 0; i < totalSquares; i++) {
       const square = document.createElement("div");
       square.className = "square";
@@ -33,7 +33,7 @@ export function initializeShatterEffect(button) {
       square.style.backgroundColor = "#fff";
       square.style.opacity = "0.6";
       square.style.position = "absolute";
-      square.style.zIndex = 2;
+      square.style.zIndex = "2";
       square.style.transition = "transform 0.6s, opacity 0.6s";
 
       const x = (i % Math.floor(buttonWidth / squareSize)) * squareSize;
@@ -46,10 +46,11 @@ export function initializeShatterEffect(button) {
     }
   }
 
-  function removeRandomSquares(percentage) {
-    const squares = Array.from(button.querySelectorAll(".square"));
-    const squaresToRemove = Math.floor(totalSquares * percentage);
-    const removedSet = new Set();
+  function removeRandomSquares(percentage: number): void {
+    const squares: NodeListOf<HTMLDivElement> =
+      button.querySelectorAll<HTMLDivElement>(".square");
+    const squaresToRemove: number = Math.floor(totalSquares * percentage);
+    const removedSet: Set<number> = new Set();
 
     while (removedSet.size < squaresToRemove) {
       const randomIndex = Math.floor(Math.random() * totalSquares);
@@ -76,11 +77,12 @@ export function initializeShatterEffect(button) {
     });
   }
 
-  function resetSquares() {
-    const squares = button.querySelectorAll(".square");
+  function resetSquares(): void {
+    const squares: NodeListOf<Element> = button.querySelectorAll(".square");
     squares.forEach((square) => {
-      square.style.opacity = "0.6";
-      square.style.transform = "translateY(0) rotate(0deg)";
+      const squareElem = square as HTMLElement;
+      squareElem.style.opacity = "0.6";
+      squareElem.style.transform = "translateY(0) rotate(0deg)";
     });
   }
 

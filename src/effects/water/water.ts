@@ -1,4 +1,4 @@
-export function initializeWaterEffect(button) {
+export function initializeWaterEffect(button: HTMLButtonElement): void {
   const buttonHeight = parseInt(
     getComputedStyle(document.documentElement).getPropertyValue(
       "--button-height"
@@ -34,7 +34,7 @@ export function initializeWaterEffect(button) {
       let opacity = 0.5;
       const fadeOutInterval = setInterval(() => {
         opacity -= 0.05;
-        droplet.style.opacity = opacity;
+        droplet.style.opacity = opacity.toString();
         if (opacity <= 0) {
           clearInterval(fadeOutInterval);
           droplet.remove();
@@ -43,7 +43,7 @@ export function initializeWaterEffect(button) {
     }, 10);
   }
 
-  let dropletInterval;
+  let dropletInterval: ReturnType<typeof setInterval>;
   button.addEventListener("mouseover", () => {
     dropletInterval = setInterval(() => {
       const computedStyle = getComputedStyle(button, "::after");

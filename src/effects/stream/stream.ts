@@ -1,22 +1,29 @@
-export function initializeStreamEffect(button) {
-  let lineInterval;
+export function initializeStreamEffect(button: HTMLButtonElement): void {
+  let lineInterval: ReturnType<typeof setInterval>;
   let cooldown = false;
   let maxOpacity = 0.9;
   let opacityDecreaseRate = 0.09;
-  let opacityInterval;
+  let opacityInterval: ReturnType<typeof setInterval>;
 
-  function createLine(
+  type LineParams = {
+    directionClass: string;
+    xPosition: number;
+    positionValue: number;
+    opacityValue: number;
+    positionProperty: string;
+  };
+
+  function createLine({
     directionClass,
     xPosition,
     positionValue,
     opacityValue,
-    positionProperty
-  ) {
+    positionProperty,
+  }: LineParams): void {
     const line = document.createElement("div");
     line.className = directionClass;
     line.style.left = `${xPosition}px`;
-    line.style.opacity = opacityValue;
-
+    line.style.opacity = `${opacityValue}`;
     line.style.setProperty("--random-top", `${positionValue}`);
     line.style.setProperty("--random-bottom", `${positionValue}`);
     line.style.setProperty(positionProperty, `${positionValue}%`);
@@ -41,27 +48,32 @@ export function initializeStreamEffect(button) {
     }, 60);
 
     lineInterval = setInterval(() => {
+      if (maxOpacity <= 0) {
+        clearInterval(lineInterval);
+        return;
+      }
+
       const randomXDown = Math.random() * (buttonWidth - 1);
       const randomTopDown = Math.random() * 120;
       const randomOpacityDown = Math.random() * maxOpacity;
-      createLine(
-        "line-downwards",
-        randomXDown,
-        randomTopDown,
-        randomOpacityDown,
-        "--random-top"
-      );
+      createLine({
+        directionClass: "line-downwards",
+        xPosition: randomXDown,
+        positionValue: randomTopDown,
+        opacityValue: randomOpacityDown,
+        positionProperty: "--random-top",
+      });
 
       const randomXUp = Math.random() * (buttonWidth - 1);
       const randomBottomUp = Math.random() * 120;
       const randomOpacityUp = Math.random() * maxOpacity;
-      createLine(
-        "line-upwards",
-        randomXUp,
-        randomBottomUp,
-        randomOpacityUp,
-        "--random-bottom"
-      );
+      createLine({
+        directionClass: "line-upwards",
+        xPosition: randomXUp,
+        positionValue: randomBottomUp,
+        opacityValue: randomOpacityUp,
+        positionProperty: "--random-bottom",
+      });
     }, 1);
 
     setTimeout(() => {
@@ -86,5 +98,8 @@ export function initializeStreamEffect(button) {
     const linesUp = button.querySelectorAll(".line-upwards");
     linesDown.forEach((line) => line.remove());
     linesUp.forEach((line) => line.remove());
+
+    cooldown = false;
+    maxOpacity = 0.6;
   });
 }

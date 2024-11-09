@@ -1,4 +1,4 @@
-export const initializeTrailEffect = (button) => {
+export const initializeTrailEffect = (button: HTMLButtonElement): void => {
   button.onmousemove = (e) => {
     let x = e.pageX - button.offsetLeft;
     let y = e.pageY - button.offsetTop;
@@ -10,7 +10,7 @@ export const initializeTrailEffect = (button) => {
   };
 };
 
-const createFadingCircle = (button, e) => {
+const createFadingCircle = (button: HTMLButtonElement, e: MouseEvent): void => {
   const fadingCircle = document.createElement("div");
   fadingCircle.className = "trail";
   fadingCircle.style.left = `${
@@ -22,7 +22,7 @@ const createFadingCircle = (button, e) => {
   fadeOut(fadingCircle);
 };
 
-const fadeOut = (circle) => {
+const fadeOut = (circle: HTMLElement): void => {
   let opacity = 1;
   const duration = 600;
   const fadeInterval = 20;
@@ -34,10 +34,10 @@ const fadeOut = (circle) => {
       clearInterval(fadeEffect);
       circle.remove();
     } else {
-      circle.style.opacity = opacity;
+      circle.style.opacity = `${opacity}`;
     }
   }, fadeInterval);
 };
 
-const button = document.querySelector(".trail-button");
+const button = document.querySelector<HTMLButtonElement>(".trail-button")!;
 initializeTrailEffect(button);

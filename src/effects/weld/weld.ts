@@ -1,15 +1,22 @@
-export function initializeWeldEffect(weldButton) {
+export function initializeWeldEffect(weldButton: HTMLButtonElement): void {
   const triangleBorderWidth = 20;
   const computedStyles = getComputedStyle(weldButton);
   const borderLeftWidth = parseInt(computedStyles.borderLeftWidth, 10);
-  const arrowUpPosition = (index) =>
+  const arrowUpPosition = (index: number): string =>
     `${
       triangleBorderWidth * (index * 2 - 1) + index * 6 - borderLeftWidth / 2
     }px`;
-  const arrowDownPosition = (index) =>
+  const arrowDownPosition = (index: number): string =>
     `${index * (triangleBorderWidth * 2 + 6) + borderLeftWidth}px`;
 
-  const arrowConfigurations = [
+  type ArrowConfig = {
+    class: string;
+    positions: string[];
+    hoverPosition: "top" | "bottom";
+    defaultValue: string;
+  };
+
+  const arrowConfigurations: ArrowConfig[] = [
     {
       class: "arrow-up",
       positions: [
@@ -33,7 +40,7 @@ export function initializeWeldEffect(weldButton) {
     },
   ];
 
-  function createArrows({ class: arrowClass, positions }) {
+  function createArrows({ class: arrowClass, positions }: ArrowConfig): void {
     positions.forEach((left) => {
       const arrow = document.createElement("div");
       arrow.classList.add(arrowClass);
@@ -47,10 +54,12 @@ export function initializeWeldEffect(weldButton) {
   weldButton.addEventListener("mouseenter", () => applyHoverStyles(true));
   weldButton.addEventListener("mouseleave", () => applyHoverStyles(false));
 
-  function applyHoverStyles(isHover) {
+  function applyHoverStyles(isHover: boolean): void {
     arrowConfigurations.forEach(
       ({ class: arrowClass, hoverPosition, defaultValue }) => {
-        const arrows = weldButton.querySelectorAll(`.${arrowClass}`);
+        const arrows = weldButton.querySelectorAll<HTMLButtonElement>(
+          `.${arrowClass}`
+        )!;
         arrows.forEach((arrow) => {
           arrow.classList.toggle("hover", isHover);
           arrow.style[hoverPosition] = isHover ? "50%" : defaultValue;
