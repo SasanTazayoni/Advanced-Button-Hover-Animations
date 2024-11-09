@@ -8,8 +8,8 @@ export function initializeShatterEffect(button: HTMLButtonElement): void {
 
   const removalStages: number[] = [0.2, 0.3, 1];
   const removalDelays: number[] = [0, 200, 400];
-  let removalTimeouts: NodeJS.Timeout[] = [];
-  let restorationTimeout: NodeJS.Timeout;
+  let removalTimeouts: ReturnType<typeof setTimeout>[] = [];
+  let restorationTimeout: ReturnType<typeof setTimeout>;
 
   function createSquaresContainer(): HTMLDivElement {
     const squaresContainer = document.createElement("div");
