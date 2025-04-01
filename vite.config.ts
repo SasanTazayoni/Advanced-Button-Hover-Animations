@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "/CSS-button-animations/",
+  base: "/Advanced-Button-Hover-Animations/",
 });
