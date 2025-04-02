@@ -73,4 +73,5 @@ footer p {
 
 .github-link i:hover {
   transform: rotateX(360deg) rotateZ(360deg);
+  color: #ff72f8;
 }
