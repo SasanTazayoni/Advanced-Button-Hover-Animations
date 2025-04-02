@@ -50,7 +50,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 0;
+  padding: 10px;
   width: 100%;
   margin-top: auto;
 }
@@ -67,11 +67,49 @@ footer p {
   border-radius: 10px;
   font-size: 20px;
   transition: all 1.2s;
-  margin-left: 10px;
+  margin: 0 10px;
   color: #83007c;
 }
 
 .github-link i:hover {
   transform: rotateX(360deg) rotateZ(360deg);
   color: #ff72f8;
+}
+
+@media screen and (max-width: 1024px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  .button-grid {
+    padding: 40px 20px;
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .button-grid {
+    padding: 40px 20px;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 400px;
+  }
+}
+
+@media screen and (max-width: 476px) {
+  .button-grid {
+    padding: 30px 10px;
+    max-width: 320px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  footer p {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 376px) {
+  .button-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
