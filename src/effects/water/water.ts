@@ -54,7 +54,7 @@ export function initializeWaterEffect(button: HTMLButtonElement): void {
       } else {
         createDroplet();
       }
-    }, 3);
+    }, 1);
   });
 
   button.addEventListener("mouseleave", () => {
