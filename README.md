@@ -32,5 +32,18 @@ The Sweep button uses a linear-gradient background that creates a dynamic sweepi
 ### Neon
 
 The Neon button creates a bold, glowing visual effect that mimics classic neon signage. Initially styled with a white background, red border, and red text, the button presents a clean and minimal appearance. On hover, it undergoes a dramatic transformation: the background fills with red, the text turns white, and the border fades to transparent, shifting focus to the glowing effect. This glow is achieved using multiple layered drop-shadow filters of increasing radius, which simulate the soft, radiating light characteristic of real neon. The transition is quick and smooth (transition: all 0.3s ease), and the bold font weight enhances the button’s visual impact.
+
 The intensity of the glow effect can be finely tuned by adding or removing drop-shadow layers. More layers with varied blur radii produce a deeper, more vibrant glow, while fewer layers result in a subtler shine. Although red is used in this example for a traditional neon vibe, the effect is fully customisable — any bright colour can be used to match the design aesthetic. This button works especially well against dark backgrounds but can be effective on light ones too, offering a lively and eye-catching interaction cue.
+
+### Trail
+
+The Trail button introduces an interactive and visually engaging cursor-following effect that leaves behind a glowing trail as the user moves their mouse across the button. Styled with a black background and white text, it starts with a minimal, high-contrast look. The key to the effect lies in the dynamic use of pseudo-elements and JavaScript to track mouse movement and render responsive visual feedback.
+As the user hovers over the button, a radial glow appears at the cursor’s current location — achieved using a ::before pseudo-element positioned with custom CSS variables (--x, --y) updated in real time via JavaScript. This glow softly fades in with opacity: 0.8, creating a spotlight effect that tracks the cursor.
+
+Simultaneously, small circular "trail" elements are generated with each movement, styled as blurred white dots using CSS filters (filter: blur(10px)) and positioned exactly at the cursor's location. These trail dots fade out smoothly over time via JavaScript, producing a fading particle-like path that follows the cursor — enhancing interactivity and visual feedback.
+
+The glow and trail effects are fully customisable. You can adjust their colour, size, blur intensity, fade duration, or opacity to suit your project’s aesthetic. The radial gradient in the ::before pseudo-element determines the soft highlight area, while the number and timing of trail elements control the density and smoothness of the trailing effect.
+
+Together, these elements create a fluid, motion-based experience that transforms a standard button into an engaging, reactive UI component — perfect for applications where attention to detail and interaction are key.
+
 
