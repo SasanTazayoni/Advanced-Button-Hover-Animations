@@ -46,4 +46,21 @@ The glow and trail effects are fully customisable. You can adjust their colour, 
 
 Together, these elements create a fluid, motion-based experience that transforms a standard button into an engaging, reactive UI component — perfect for applications where attention to detail and interaction are key.
 
+### Spiral
 
+The Spiral button introduces an engaging and visually dynamic hover effect that creates a sequence of expanding circles, each with decreasing opacity. Initially, the button has a light green background with black text. Upon hovering, concentric circles begin to appear at the centre of the button and expand outward, creating a spiral-like effect. The button background colour transitions to a darker green, enhancing the interactive feedback and further emphasising the effect.
+
+#### How It Works
+
+•	Hover Interaction: The hover effect begins when the user places their cursor over the button. A series of circles is generated at the button’s centre, each expanding in size and fading out in opacity. The circles are placed with absolute positioning, and their sizes and opacity are controlled via CSS, creating the illusion of a spiral effect emanating from the centre.
+•	Animation: The circles expand and fade out sequentially, using CSS transitions and ```opacity``` manipulation. The ```setTimeout``` and ```setInterval``` functions control the timing of the circle’s appearance and fading effect. Each circle gradually fades out as it expands, enhancing the overall dynamic feel of the interaction.
+•	Button Background Colour: As the circles expand and complete their animation, the button’s background colour shifts to a darker shade of green (```rgb(6, 224, 6)```). This colour change provides additional visual feedback that highlights the button's interactivity.
+•	Mouse Leave Behaviour: When the cursor leaves the button, the circles gradually fade out and are removed from the button. The button’s background colour reverts to its initial light green shade, ensuring a smooth and clean transition between interactions.
+
+#### Customisation
+
+•	Circle Size & Opacity: The size and opacity of the circles can be easily customised by adjusting the ```circlesData``` array in the JavaScript. Each element in the array defines the size (as a fraction of the button's width) and opacity of the circles. You can modify these values to achieve different visual effects, such as larger circles or more gradual opacity fades.
+•	Speed & Timing: The speed at which the circles appear and fade can be modified by adjusting the delay values in the ```setTimeout``` and ```setInterval``` functions. For example, changing the 30ms and 60ms delays can make the circles appear faster or slower. Additionally, the 0.1 opacity decrement rate can be adjusted to control the fading effect’s speed.
+•	Button Background Colour: The button's background colour can be modified by changing the background-colour property in the ```.spiral-button``` CSS rule. The background colour on hover is controlled by the ```.spiral-button.active``` class, which you can update to match your project’s colour scheme.
+
+Overall, this button adds a distinctive, fluid animation to any user interface, ideal for attention-grabbing calls to action. By adjusting the size, speed, and opacity of the circles, developers can tailor the effect to match their desired aesthetic, making it a versatile and engaging UI component.
