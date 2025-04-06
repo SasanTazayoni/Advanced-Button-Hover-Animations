@@ -46,6 +46,26 @@ The glow and trail effects are fully customisable. You can adjust their colour, 
 
 Together, these elements create a fluid, motion-based experience that transforms a standard button into an engaging, reactive UI component — perfect for applications where attention to detail and interaction are key.
 
+### Blink
+
+The Blink button introduces a captivating and visually dynamic hover effect that creates a blinking animation over the button. Initially, the button features a light blue background with white text, offering a clean and appealing look. Upon hovering, a white overlay gradually fades in over the button with a soft blinking effect. The button background colour transitions to a deep blue, adding a further layer of interactivity while emphasising the effect.
+
+#### How It Works
+
+* Hover Interaction: The hover effect activates when the user places their cursor over the button. A white overlay is generated, which gradually fades in over the button and starts to blink in and out. This effect gives the impression that the button is pulsating or "blinking" with each hover.
+* Animation: The blinking effect is achieved using CSS animations. The ```@keyframes blink``` controls the opacity of the overlay, gradually increasing and decreasing it from 0.6 to 0.0, giving the blinking illusion. The ```@keyframes pulse``` animation also causes the button to slightly scale in and out, creating a subtle pulsating effect. Both animations are timed to coincide with the hover interaction, adding fluidity and energy to the effect.
+* Button Background Colour: As the blinking animation occurs, the button's background colour transitions to a darker blue (```#0011ff```), which helps highlight the button's interactivity and further emphasises the blinking effect. The background colour change provides additional visual feedback to the user.
+* Mouse Leave Behaviour: When the cursor leaves the button, the blinking effect halts, and the overlay fades out. The button's background colour transitions back to its initial light blue shade, ensuring a smooth and seamless return to its resting state.
+
+#### Customisation
+
+* Blink Speed & Opacity: The speed and opacity of the blinking overlay can be customised by adjusting the ```@keyframes blink```. The duration of the fade-in and fade-out effect can be modified to create a quicker or slower blinking effect. The opacity values at different keyframes can also be adjusted to make the blinking effect more or less pronounced.
+* Pulse Effect: The button's pulse effect can be tailored by adjusting the ```@keyframes pulse```. Changing the scale values and timing of the animation will modify how the button expands and contracts, allowing developers to control the intensity and speed of the pulse.
+* Button Background Colour: The initial and hover background colours of the button can be modified by adjusting the ```background``` property in the ```.blink-button``` CSS rule. The hover background colour is controlled by the ```:hover``` pseudo-class, where the colour can be changed to suit the design of the project.
+
+The Blink button offers an eye-catching interaction that adds an element of movement and surprise to any user interface. By adjusting the blink speed, opacity, and pulse effect, developers can customise the button to create a wide range of visual effects, making it a versatile UI component perfect for calls to action or important interactions.
+
+
 ### Spiral
 
 The Spiral button introduces an engaging and visually dynamic hover effect that creates a sequence of expanding circles, each with decreasing opacity. Initially, the button has a light green background with black text. Upon hovering, concentric circles begin to appear at the centre of the button and expand outward, creating a spiral-like effect. The button background colour transitions to a darker green, enhancing the interactive feedback and further emphasising the effect.
