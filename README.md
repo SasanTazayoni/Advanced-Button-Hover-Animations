@@ -29,11 +29,24 @@ You can check them out [here!](https://sasantazayoni.github.io/Advanced-Button-H
 
 The Sweep button uses a linear-gradient background that creates a dynamic sweeping animation across the button surface. This gradient typically features two main colours with a sharply contrasting colour placed in between — often a lighter tone like white — to establish the illusion of a “sweep.” The gradient is expanded beyond the button’s visible area using background-size: 400%, allowing for noticeable movement when the background-position shifts from 0% to 100% on hover. This creates a left-to-right sweeping motion. You can use completely different colours or even shades of a single colour with varying contrast; the key is that the middle "fade" colour must contrast both surrounding colours to maintain the visual impact. The entire animation is smoothed using transition: all 0.3s ease, making the effect feel fluid and responsive. With simple tweaks to direction, colours, and intensity, the sweep effect can be customised to match any visual style.
 
+
 ### Neon
 
-The Neon button creates a bold, glowing visual effect that mimics classic neon signage. Initially styled with a white background, red border, and red text, the button presents a clean and minimal appearance. On hover, it undergoes a dramatic transformation: the background fills with red, the text turns white, and the border fades to transparent, shifting focus to the glowing effect. This glow is achieved using multiple layered drop-shadow filters of increasing radius, which simulate the soft, radiating light characteristic of real neon. The transition is quick and smooth (transition: all 0.3s ease), and the bold font weight enhances the button’s visual impact.
+The Neon button delivers a bold, luminous effect that draws inspiration from classic neon signage, offering a visually striking experience with minimal styling. At rest, the button features a white background with a red border and red text, creating a clean, high-contrast look. When hovered, the button undergoes a smooth transformation — the background fills with red, the text colour inverts to white, and the border becomes transparent. This shift in appearance sets the stage for the core feature of the button: a glowing neon aura that radiates from the text and border.
 
-The intensity of the glow effect can be finely tuned by adding or removing drop-shadow layers. More layers with varied blur radii produce a deeper, more vibrant glow, while fewer layers result in a subtler shine. Although red is used in this example for a traditional neon vibe, the effect is fully customisable — any bright colour can be used to match the design aesthetic. This button works especially well against dark backgrounds but can be effective on light ones too, offering a lively and eye-catching interaction cue.
+#### How It Works
+
+* Glow Effect: The signature neon glow is created using multiple ```drop-shadow``` filters layered on top of one another. Each ```drop-shadow``` has a different blur radius, giving the illusion of a soft, radiating light that mimics real neon tubing. This stack of shadows builds depth and luminosity, with the text at the centre appearing to pulse with energy.
+* Hover Interaction: The visual transformation on hover — including the colour inversion and glow — is handled through a CSS ```transition``` set to ```all 0.3s ease```. This ensures the changes occur quickly but fluidly, enhancing the button’s responsiveness without feeling abrupt. The border fading to transparent places full emphasis on the glowing effect, while the bold font weight ensures the text remains legible amidst the light.
+* Font & Colour: The use of bold, all-caps text enhances legibility and amplifies the dramatic style of the neon effect. Although red is used by default for a classic neon look, any bright or saturated colour can be used to achieve different moods — such as cyan, lime green, magenta, or electric blue — depending on the project’s design language.
+
+#### Customisation
+
+* Glow Intensity: The depth and vividness of the glow can be fine-tuned by adjusting the number of ```drop-shadow``` layers and their respective blur radii. Adding more layers with subtle differences in radius creates a more pronounced halo effect, while fewer layers result in a gentler glow. You can also experiment with shadow offsets and opacity levels to refine the overall look.
+* Colour Scheme: The glow colour, text, and background are fully customisable through CSS. By modifying the ```color```, ```background```, and ```filter``` properties, developers can tailor the button to fit a wide range of aesthetics — from vibrant cyberpunk themes to sleek, modern UIs.
+* Background Compatibility: While the Neon button is most striking against dark or neutral backgrounds where the glow can fully radiate, it can also be effective on lighter backgrounds with slight adjustments to the glow intensity and shadow colour.
+
+This Neon button is ideal for calls to action or interactive elements that demand visual attention. Its glowing presence adds an energetic, tech-inspired touch to any interface, making it particularly well-suited for landing pages, gaming UIs, portfolio sites, or anywhere a vibrant, standout element is needed.
 
 
 ### Trail
