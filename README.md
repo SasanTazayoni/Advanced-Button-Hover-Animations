@@ -166,3 +166,27 @@ The Spiral button introduces an engaging and visually dynamic hover effect that 
 *	Button Background Colour: The button's background colour can be modified by changing the background-colour property in the ```.spiral-button``` CSS rule. The background colour on hover is controlled by the ```.spiral-button.active``` class, which you can update to match your project’s colour scheme.
 
 Overall, this button adds a distinctive, fluid animation to any user interface, ideal for attention-grabbing calls to action. By adjusting the size, speed, and opacity of the circles, developers can tailor the effect to match their desired aesthetic, making it a versatile and engaging UI component.
+
+---
+
+### Pixels
+
+The Pixels button introduces a playful and captivating pixelation animation that dynamically fills the button with vibrant pixel squares on hover. With a transparent background and a subtle grey border by default, the button maintains a clean, minimal appearance — allowing the interactive effect to take centre stage. On hover, the button surface is gradually populated by a wave of tiny coloured squares, creating a smooth "filling" animation that mimics pixel rendering or data loading. When the cursor leaves, the pixels begin to dissolve, restoring the button to its original state.
+
+#### How it works
+
+* Hover Animation & Grid Logic: When the cursor enters the button area, a grid is calculated based on the button’s dimensions and a fixed square size (5px). A JavaScript function begins filling the button with pixel squares — each one placed at a random grid position and styled with a gradient teal colour (```radial-gradient(circle, rgb(175, 238, 238), rgba(64, 224, 208, 1))```). These pixels are absolutely positioned, giving the effect of individually coloured tiles emerging from behind the button.
+* Pixel Rendering: Each frame of the animation adds a few more squares, using a ```Set``` to track which grid cells have already been filled. This continues until the entire button is pixelated, creating a satisfying gradual fill that feels both energetic and controlled.
+* Mouse Leave Behaviour: Once the cursor leaves the button, the animation reverses. The existing pixels are removed randomly over time, fading the button back to its empty state. This clean reversal maintains performance and prevents buildup in the DOM.
+* Styling & Overflow: The core ```.pixels-button``` uses ```overflow: hidden``` to contain the pixel effect and prevent elements from spilling outside its bounds. The button also uses ```position: relative``` and ```z-index``` layering to ensure the animated pixels appear behind the text but above the button’s base layer.
+
+#### Customisation
+
+* Pixel Size: The square size can be changed by adjusting the ```squareSize``` variable in the script. Larger sizes create a more blocky, retro feel; smaller sizes allow for smoother, more refined animations.
+* Colours & Gradient: The fill colour of the squares is fully customisable. You can replace the radial gradient with solid colours or alternative gradients to match your design palette.
+* Fill & Clear Speed: The ```setTimeout``` intervals (1ms by default) control how fast the filling and clearing animations run. Increasing the delay slows the effect for a more deliberate appearance; reducing it speeds up the transition.
+* Density Control: The number of pixels added per cycle (currently four) can be adjusted for more or less dense filling. This provides fine control over the pacing and visual weight of the animation.
+
+With its satisfying, low-resolution aesthetic and dynamic interaction, the Pixels button adds charm and energy to any interface. It’s ideal for applications that want to introduce motion, surprise, or even retro digital vibes — making even a simple button feel animated and alive.
+
+---
