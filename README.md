@@ -32,7 +32,7 @@ The Sweep button uses a linear-gradient background that creates a dynamic sweepi
 #### How it works
 
 * Background Animation: The sweeping motion is achieved by shifting the ```background-position``` from ```0%``` to ```100%``` on hover. The gradient itself usually consists of three colour stops — a primary colour, a contrasting central shade (such as white), and a secondary colour — all arranged linearly from left to right. When animated, the middle colour moves across the button, creating the impression of light or energy sweeping over the surface.
-* Styling & Transition: The CSS transition (```transition: all 0.3s ease```) ensures the sweep effect feels natural and responsive. The ```background-size: 400%``` property is critical — it extends the gradient beyond the button's visible area, so the shift in background-position causes the gradient to animate smoothly across it.
+* Styling & Transition: The CSS transition (```transition: all 0.3s ease```) ensures the sweep effect feels natural and responsive. The ```background-size: 400%``` property is critical — it extends the gradient beyond the button's visible area, so the shift in background-position causes the gradient to animate smoothly across it. Additionally, ```overflow: hidden``` is applied to the button to ensure the animated gradient stays neatly contained within its bounds, preventing visual overflow.
 
 #### Customisation
 
@@ -93,7 +93,7 @@ The Ripple button introduces an energetic and tactile animation that simulates t
 
 * Ripple Creation: When the user hovers over the button, a ```span``` element is dynamically inserted at the cursor’s location using TypeScript. The script calculates the cursor’s position relative to the button using ```clientX```, ```clientY```, and the button’s bounding box. The inserted span serves as the ripple source — a black, semi-transparent circle that grows outward while fading in opacity.
 * Animation: The ripple expands smoothly from a small point (0px) to a large radius (around 300px), while its opacity transitions from 0.7 to 0. This creates the illusion of a shockwave or ripple propagating across the button. Simultaneously, the background colour change from light to deep red adds to the sense of motion and reinforces the interactive nature of the component.
-* Styling & Positioning: The ripple is absolutely positioned using ```top```, ```left```, and CSS ```transform``` properties to ensure it stays centred on the cursor point. The ```border-radius: 50%``` ensures the ripple is perfectly circular, while ```pointer-events: none``` prevents it from interfering with button interaction. Once the animation ends, the ripple element is removed from the DOM to maintain performance and cleanliness.
+* Styling & Positioning: The ripple is absolutely positioned using ```top```, ```left```, and CSS ```transform``` properties to ensure it stays centred on the cursor point. The ```border-radius: 50%``` ensures the ripple is perfectly circular, while ```pointer-events: none``` prevents it from interfering with button interaction. To maintain a clean interface, overflow: hidden is applied to the button — this is essential to ensure the expanding ripple stays contained within the button boundaries, avoiding visual spillover. Once the animation ends, the ripple element is removed from the DOM to maintain performance and cleanliness.
 
 #### Customisation
 
@@ -102,6 +102,28 @@ The Ripple button introduces an energetic and tactile animation that simulates t
 * Layered Effects: The ripple can be combined with additional hover effects like gradient backgrounds, glowing borders, or text transformations to create rich, multi-layered interactions. This makes the component adaptable to a variety of design themes.
 
 The Ripple button turns a basic click target into a visually expressive element, offering instant feedback and a sense of motion that enhances the overall user experience. Ideal for interactive and playful interfaces, it communicates energy, responsiveness, and user control in a simple, satisfying way.
+
+---
+
+### Border
+
+The Border button introduces a modern and visually captivating rotating border effect, achieved using a conic-gradient and layered CSS pseudo-elements. Initially styled with a soft yellow background and black text, the button presents a friendly and minimal appearance. On hover, the background transitions to a vibrant green, while the border comes to life with an animated ring of colour — adding movement and depth to the interaction.
+
+#### How it works
+
+* Pseudo-elements & Layering: The animation relies on the use of the ```::before``` and ```::after``` pseudo-elements, which are absolutely positioned and placed behind the button using ```z-index```. These elements inherit the button’s shape via ```border-radius: inherit``` and use an ```inset``` box model to simulate a border without affecting the button’s actual content layout.
+* Conic Gradient & Animation: On hover, both pseudo-elements are filled with a ```conic-gradient```, transitioning through a sequence of greens — including a dark forest green (```#084908```) — to create a dynamic and continuous colour rotation. The rotation is controlled via a custom CSS variable ```--gradient-angle```, animated from ```0deg``` to ```360deg``` using a ```@keyframes``` rule named ```rotation```. This smooth animation creates the illusion of a swirling border encircling the button.
+* Glow Effect: To add visual depth, the ```::after``` pseudo-element includes a soft glow effect using ```filter: blur(0.5rem)```. This blurred gradient trails the rotating border, amplifying the overall aesthetic with a radiant aura around the button.
+* Performance & CSS Features: The animation leverages the modern CSS ```@property``` rule, which allows custom properties like ```--gradient-angle``` to animate smoothly and efficiently. This ensures compatibility and performance without the need for JavaScript.
+
+#### Customisation
+
+* Border Thickness: The apparent border size can be adjusted by modifying the ```inset``` value in the pseudo-elements, allowing for thicker or thinner visual borders.
+* Animation Speed: The speed of the rotation can be fine-tuned by editing the duration of the ```rotation``` keyframes animation — slower for a subtle effect, or faster for a more energetic vibe.
+* Gradient Colours: The colours used in the ```conic-gradient``` can be changed to suit any brand or UI theme, from neon tones to warm pastels.
+* Glow Radius: The intensity and size of the glow can be controlled by adjusting the ```blur``` value in the ```::after``` element’s filter property.
+
+This button transforms a static UI element into a vivid, motion-enhanced component that adds flair to any interface. With smooth, layered animations and a fully customisable aesthetic, the Border button is ideal for interfaces that value sleekness, energy, and modern design.
 
 ---
 
