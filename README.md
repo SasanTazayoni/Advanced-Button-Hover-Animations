@@ -85,6 +85,26 @@ The Trail button is ideal for interfaces where interactivity and feedback are es
 
 ---
 
+### Ripple
+
+The Ripple button introduces an energetic and tactile animation that simulates the visual of a water ripple expanding outward from the point of cursor interaction. Styled with a light red background and black text, the button maintains a clean and vibrant appearance by default. Upon hover, the background deepens to a bold red while the text switches to white, enhancing contrast and providing immediate visual feedback. The standout feature, however, is the ripple itself — a circular burst that originates precisely where the user places their cursor, adding a highly responsive and immersive effect.
+
+#### How it works
+
+* Ripple Creation: When the user hovers over the button, a ```span``` element is dynamically inserted at the cursor’s location using TypeScript. The script calculates the cursor’s position relative to the button using ```clientX```, ```clientY```, and the button’s bounding box. The inserted span serves as the ripple source — a black, semi-transparent circle that grows outward while fading in opacity.
+* Animation: The ripple expands smoothly from a small point (0px) to a large radius (around 300px), while its opacity transitions from 0.7 to 0. This creates the illusion of a shockwave or ripple propagating across the button. Simultaneously, the background colour change from light to deep red adds to the sense of motion and reinforces the interactive nature of the component.
+* Styling & Positioning: The ripple is absolutely positioned using ```top```, ```left```, and CSS ```transform``` properties to ensure it stays centred on the cursor point. The ```border-radius: 50%``` ensures the ripple is perfectly circular, while ```pointer-events: none``` prevents it from interfering with button interaction. Once the animation ends, the ripple element is removed from the DOM to maintain performance and cleanliness.
+
+#### Customisation
+
+* Ripple Appearance: Developers can customise the ripple’s colour, size, blur, or duration by adjusting the CSS keyframes and span styling. For example, increasing the size or duration can make the ripple feel more dramatic, while a lighter colour or lower opacity can produce a subtler effect.
+* Speed & Opacity: The ripple’s expansion and fade timing is defined through CSS animations. You can adjust the animation-duration and easing curve to create anything from a quick pulse to a slow, cinematic ripple.
+* Layered Effects: The ripple can be combined with additional hover effects like gradient backgrounds, glowing borders, or text transformations to create rich, multi-layered interactions. This makes the component adaptable to a variety of design themes.
+
+The Ripple button turns a basic click target into a visually expressive element, offering instant feedback and a sense of motion that enhances the overall user experience. Ideal for interactive and playful interfaces, it communicates energy, responsiveness, and user control in a simple, satisfying way.
+
+---
+
 ### Blink
 
 The Blink button introduces a captivating and visually dynamic hover effect that creates a blinking animation over the button. Initially, the button features a light blue background with white text, offering a clean and appealing look. Upon hovering, a white overlay gradually fades in over the button with a soft blinking effect. The button background colour transitions to a deep blue, adding a further layer of interactivity while emphasising the effect.
