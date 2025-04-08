@@ -1,9 +1,9 @@
 export function initializeStreamEffect(button: HTMLButtonElement): void {
   let lineInterval: ReturnType<typeof setInterval>;
+  let opacityInterval: ReturnType<typeof setInterval>;
   let cooldown = false;
   let maxOpacity = 0.9;
   let opacityDecreaseRate = 0.09;
-  let opacityInterval: ReturnType<typeof setInterval>;
 
   type LineParams = {
     directionClass: string;
@@ -35,10 +35,7 @@ export function initializeStreamEffect(button: HTMLButtonElement): void {
     });
   }
 
-  button.addEventListener("mouseover", () => {
-    if (cooldown) return;
-    cooldown = true;
-
+  function startAnimation() {
     const buttonWidth = button.offsetWidth;
 
     opacityInterval = setInterval(() => {
@@ -75,10 +72,18 @@ export function initializeStreamEffect(button: HTMLButtonElement): void {
         positionProperty: "--random-bottom",
       });
     }, 1);
+  }
+
+  button.addEventListener("mouseover", () => {
+    if (cooldown) return;
+    cooldown = true;
+
+    startAnimation();
 
     setTimeout(() => {
       clearInterval(lineInterval);
       clearInterval(opacityInterval);
+
       const linesDown = button.querySelectorAll(".line-downwards");
       const linesUp = button.querySelectorAll(".line-upwards");
       linesDown.forEach((line) => line.remove());
@@ -94,6 +99,7 @@ export function initializeStreamEffect(button: HTMLButtonElement): void {
   button.addEventListener("mouseleave", () => {
     clearInterval(lineInterval);
     clearInterval(opacityInterval);
+
     const linesDown = button.querySelectorAll(".line-downwards");
     const linesUp = button.querySelectorAll(".line-upwards");
     linesDown.forEach((line) => line.remove());
