@@ -190,3 +190,24 @@ The Pixels button introduces a playful and captivating pixelation animation that
 With its satisfying, low-resolution aesthetic and dynamic interaction, the Pixels button adds charm and energy to any interface. It’s ideal for applications that want to introduce motion, surprise, or even retro digital vibes — making even a simple button feel animated and alive.
 
 ---
+
+### Converge
+
+The Converge button introduces a dynamic and visually captivating hover effect where multiple yellow circles (styled as "circular spans") converge towards the center of the button. Initially, the button has a clean black background with yellow borders and text. Upon hovering, four circular elements start from above and below the button move towards the center, gradually increasing in opacity. This creates a sense of motion, as if the circles are gathering to recolour the button's background.
+
+#### How it works
+
+* Hover Interaction & Circle Movement: When the user hovers over the button, four yellow circles, initially positioned outside the button, begin to move towards its center. Two circles are absolutely positioned above the button, and two are absolutely positioned below the button, each one following its unique path. As the circles converge towards the center, they shift positions with a smooth transition. Their opacity gradually increases to 1, making them more visible and adding to the effect's dynamic feel. The movement of the circles is designed to mimic the idea of them dissolving into the button to change its background colour, creating an engaging and fluid animation.
+* Button Background Colour: As the hover effect completes and the circles converge at the centre, the button’s background colour transitions to a vibrant yellow, while the text and border colours invert. This smooth transition suggests that the circles are dissolving to recolour the button's background, providing a satisfying visual feedback for the user.
+* Mouse Leave Behaviour: When the cursor leaves the button, the circles gradually fade out and return to their original positions, reversing the effect. The background colour reverts to black, restoring the button to its initial state. This ensures that the animation is seamless and clean, with no abrupt changes or lingering effects.
+
+#### Customisation
+
+* Circle Size & Speed: The size of the circles and the speed of their movement can be adjusted to achieve different effects. Larger circles or slower speeds create a more dramatic effect, while smaller circles or faster transitions create a quicker, more subtle feel.
+* Colour & Opacity: You can customise the colour of the circles and the background by changing the respective properties. This allows you to match the button's visual appearance to your site’s colour scheme or branding.
+* Circle Transition Timing: The timing of the transition for each circle is set to 0.3s, but this can be adjusted to control how fast or slow the circles move and change opacity. This gives you full control over the animation's pacing.
+
+The Converge button offers a visually engaging hover effect, where yellow circles appear to dissolve into the button's background, creating a captivating interactive experience. The combination of smooth transitions, fading circles, and background colour change makes this button a striking addition to any interface, perfect for drawing attention and providing intuitive feedback to users.
+
+---
+
