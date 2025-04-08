@@ -211,3 +211,23 @@ The Converge button offers a visually engaging hover effect, where yellow circle
 
 ---
 
+### Interlace
+
+The Interlace button features a sophisticated hover effect where multiple diagonal lines appear to interlace over the button's surface, creating an engaging and dynamic visual. The button, which has a subtle light green background and dark text by default, showcases a series of animated lines that cross each other at varying angles upon hover. This effect mimics the motion of threads weaving together, creating a visually intricate and captivating interaction.
+
+#### How it works
+
+* Hover Interaction & Line Animation: When the user hovers over the button, four sets of lines (styled as "line" elements) appear and start to move diagonally across the button's surface. These lines are initially barely visible (with very low opacity) and are positioned at the edges of the button. As the hover effect takes place, the lines gradually become more opaque, and their positions shift as they rotate, creating the illusion of lines interlacing and weaving together. The lines move at different angles, with lines rotating at 45 degrees clockwise and counter-clockwise.
+* Line Paths & Rotation: The lines are positioned absolutely relative to the button, and their movement is controlled by CSS transitions. There are four distinct sets of lines: one set starting from the bottom-left, another from the bottom-right, one from the top-left, and the last from the top-right. Each set of lines is animated to rotate towards the center of the button, overlapping in a criss-cross pattern, mimicking the motion of an interlacing design.
+* Button Background Colour: The button's background remains static in its default state, but as the lines converge and rotate during the hover interaction, the visual complexity of the button increases. The green gradient effect of the lines adds a sense of depth and texture to the button, while the gradual increase in opacity ensures the effect is smooth and subtle.
+
+#### Customisation
+
+* Line Size & Density: The number of lines and their size can be adjusted. By modifying the ```lineHeight``` variable and ```numberOfLines```, you can control the density and thickness of the interlacing effect. More lines create a denser pattern, while fewer lines result in a lighter effect.
+* Rotation Angles: The rotation of the lines is defined by the ```rotate``` property in the hover effect, which can be modified to create different visual effects. The current setup rotates the lines by 45 degrees, but you can adjust these angles to create more complex patterns or alternative directions.
+* Line Colour & Gradient: The gradient applied to the lines (a mix of dark and light greens) can be easily customised to match the overall design of your website or application. Change the linear gradient or apply solid colours to the lines for a different look.
+* Timing & Speed: The lines have a ```transition``` property that determines the speed of their opacity change and rotation. You can adjust the timing and delay values to fine-tune how fast or slow the interlacing effect takes place. The current settings use a 0.3s transition duration, but this can be increased or decreased based on your desired pace.
+
+The Interlace button adds an elegant, intricate hover effect to your user interface, where diagonal lines rotate and interlace, creating a sophisticated visual experience. Its smooth transitions, customisable parameters, and layered effects make it perfect for interactive designs where a polished and refined button is needed. This button is ideal for situations where you want to captivate users with subtle motion and sophisticated visual feedback, making it stand out as an interactive component.
+
+---
