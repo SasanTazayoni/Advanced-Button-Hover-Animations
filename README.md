@@ -231,3 +231,23 @@ The Interlace button features a sophisticated hover effect where multiple diagon
 The Interlace button adds an elegant, intricate hover effect to your user interface, where diagonal lines rotate and interlace, creating a sophisticated visual experience. Its smooth transitions, customisable parameters, and layered effects make it perfect for interactive designs where a polished and refined button is needed. This button is ideal for situations where you want to captivate users with subtle motion and sophisticated visual feedback, making it stand out as an interactive component.
 
 ---
+
+### Fusion
+
+The Fusion button introduces an engaging hover effect where four circles move in from the outside edges towards the button's centre. Initially, the button has a rich brown background with the word "Fusion" displayed in the middle. Upon hovering, the circles animate from the top, bottom, left, and right, converging towards the centre, creating the sensation of energy pulling together. As the circles meet in the centre, the button’s background changes to a gradient yellow, giving the impression that the circles have fused together to add energy to the button.
+
+#### How it works
+
+* Hover Interaction & Circle Movement: Upon hovering over the button, four circles, positioned at the outer edges, begin to move towards the centre. Each circle starts with zero opacity and increases as it moves inward. The top, bottom, left, and right circles converge at the centre of the button, creating a dynamic and energetic effect.
+* Circle Animation: The circles are animated using CSS keyframes. They begin their journey from outside the button’s bounds, moving smoothly towards the centre. As they get closer, their opacity increases, which adds to the visual impact, making the circles feel like they are actively drawing energy towards the button’s core.
+* Background Colour Transition: As the circles converge in the centre, the button’s background transitions from its initial rich brown to a vibrant gradient yellow. This colour change visually represents the fusion of the circles, symbolising the gathering of energy at the centre of the button.
+
+#### Customisation
+
+* Circle Size & Speed: You can adjust the size and speed of the circles by modifying their ```width```, ```height```, and animation duration. The larger the circles, the more prominent the effect will be. The speed of their movement can be controlled by adjusting the ```animation``` timing and the ```transition``` properties, allowing you to fine-tune how quickly or slowly the circles converge.
+* Circle Position & Direction: The four circles start from the top, bottom, left, and right of the button, but you can adjust their initial positioning by tweaking the ```left```, ```right```, ```top```, and ```bottom``` properties. You can even create more complex animations by modifying the path or the amount of movement for each circle.
+* Background Styling: The button's background gradient and its transition can be customized to fit your design needs. You can adjust the starting and ending colours, gradient spread, or even change the gradient type to suit the overall theme of your project.
+
+The Fusion button delivers a visually dynamic and engaging hover effect that makes use of four animated circles converging inward, creating an energetic fusion effect. The animation of the circles, along with the background colour transition, provides an eye-catching experience that draws attention to the button. Whether you’re looking to add some flair to a call-to-action button or enhance the interactivity of your interface, this effect will elevate your design. With easy customisation options for circle size, opacity, direction, and background styling, the Fusion button can be adapted to fit a variety of styles, making it a versatile and energetic addition to any website.
+
+---
