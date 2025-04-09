@@ -251,3 +251,22 @@ The Fusion button introduces an engaging hover effect where four circles move in
 The Fusion button delivers a visually dynamic and engaging hover effect that makes use of four animated circles converging inward, creating an energetic fusion effect. The animation of the circles, along with the background colour transition, provides an eye-catching experience that draws attention to the button. Whether you’re looking to add some flair to a call-to-action button or enhance the interactivity of your interface, this effect will elevate your design. With easy customisation options for circle size, opacity, direction, and background styling, the Fusion button can be adapted to fit a variety of styles, making it a versatile and energetic addition to any website.
 
 ---
+
+### Weld
+
+The Weld button introduces a dynamic hover effect where triangles appear to "weld" together as the user interacts with the button. Initially, the button has a dark grey background with a soft border, and the text "Weld" is displayed at the centre. Upon hovering, the triangles positioned at the top and bottom of the button move towards the centre and interlock like sharp teeth. As the triangles meet at the middle, the button’s appearance transforms, transitioning from a yellow to a light red colour, giving the sense that the triangles are being heated and welded together, solidifying the interaction. When the animation completes, the borders are removed, revealing a solid single-coloured background as if the triangles have fused together into a cohesive whole.
+
+#### How it works
+
+* Hover Interaction & Triangle Movement: On hover, two triangles positioned at the top and bottom edges of the button begin to converge towards the centre and interlock.
+* Background Colour & Border Transition: As the triangles converge, the background colour of the button changes from a dark grey to a yellow and light red gradient. This colour change represents the heating and welding process, symbolising the moment when the triangles fuse together. Upon completion of the animation, the button’s border disappears, leaving behind a unified, solid colour background.
+
+#### Customisation
+
+* Triangle Position & Number: The number and positioning of the triangles can be customised to create more complex or subtle welding effects. You can adjust the size, placement, and number of triangles to fit your button design needs.
+* Triangle Speed & Transition: The animation speed can be adjusted to control the pace at which the triangles move towards the centre. This allows you to create a faster or slower welding effect, depending on your design preferences.
+* Colour & Styling: The background, text colour, and the triangles’ colours can be customised to fit your theme. You can adjust the colours of the button, triangles, and borders, as well as fine-tune the colour transitions to enhance the effect.
+
+The Weld button offers a striking hover effect that combines smooth animation with dynamic motion. The triangles converge at the centre, creating a "welding" effect that adds energy and interactivity to the button. With flexible customisation options for triangle positioning, colour transitions, and animation speed, this button is perfect for adding a unique touch to any web project.
+
+---
