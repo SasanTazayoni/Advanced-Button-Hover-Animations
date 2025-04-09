@@ -97,7 +97,7 @@ The Ripple button introduces an energetic and tactile animation that simulates t
 
 #### Customisation
 
-* Ripple Appearance: Developers can customise the ripple’s colour, size, blur, or duration by adjusting the CSS keyframes and span styling. For example, increasing the size or duration can make the ripple feel more dramatic, while a lighter colour or lower opacity can produce a subtler effect.
+* Ripple Appearance: Developers can customise the ripple’s colour by changing the background property in .ripple-button > span (currently #000). The size of the ripple is determined by the width and height values in the @keyframes ripple animation (set to 300px at 100%). You can add blur by applying filter: blur(Xpx) to .ripple-button > span, and adjust duration via the animation: ripple 0.6s linear infinite; property — increasing the time makes the ripple slower and more dramatic, while reducing it speeds things up.
 * Speed & Opacity: The ripple’s expansion and fade timing is defined through CSS animations. You can adjust the animation-duration and easing curve to create anything from a quick pulse to a slow, cinematic ripple.
 * Layered Effects: The ripple can be combined with additional hover effects like gradient backgrounds, glowing borders, or text transformations to create rich, multi-layered interactions. This makes the component adaptable to a variety of design themes.
 
@@ -161,9 +161,9 @@ The Spiral button introduces an engaging and visually dynamic hover effect that 
 
 #### Customisation
 
-*	Circle Size & Opacity: The size and opacity of the circles can be easily customised by adjusting the ```circlesData``` array in the JavaScript. Each element in the array defines the size (as a fraction of the button's width) and opacity of the circles. You can modify these values to achieve different visual effects, such as larger circles or more gradual opacity fades.
+*	Circle Size & Opacity: The size and opacity of the circles can be easily customised by adjusting the ```circlesData``` array in the JavaScript. Each element in the array defines the size (as a fraction of the button's width) and opacity of the circles. These values can be modified to achieve different visual effects, such as larger circles or more gradual opacity fades.
 *	Speed & Timing: The speed at which the circles appear and fade can be modified by adjusting the delay values in the ```setTimeout``` and ```setInterval``` functions. For example, changing the 30ms and 60ms delays can make the circles appear faster or slower. Additionally, the 0.1 opacity decrement rate can be adjusted to control the fading effect’s speed.
-*	Button Background Colour: The button's background colour can be modified by changing the background-colour property in the ```.spiral-button``` CSS rule. The background colour on hover is controlled by the ```.spiral-button.active``` class, which you can update to match your project’s colour scheme.
+*	Button Background Colour: The button's background colour can be modified by changing the background-colour property in the ```.spiral-button``` CSS rule. The background colour on hover is controlled by the ```.spiral-button.active``` class, which can be updated to match a project’s colour scheme.
 
 Overall, this button adds a distinctive, fluid animation to any user interface, ideal for attention-grabbing calls to action. By adjusting the size, speed, and opacity of the circles, developers can tailor the effect to match their desired aesthetic, making it a versatile and engaging UI component.
 
@@ -183,7 +183,7 @@ The Pixels button introduces a playful and captivating pixelation animation that
 #### Customisation
 
 * Pixel Size: The square size can be changed by adjusting the ```squareSize``` variable in the script. Larger sizes create a more blocky, retro feel; smaller sizes allow for smoother, more refined animations.
-* Colours & Gradient: The fill colour of the squares is fully customisable. You can replace the radial gradient with solid colours or alternative gradients to match your design palette.
+* Colours & Gradient: The fill colour of the squares is fully customisable. The radial gradient can be replaced with solid colours or alternative gradients to match a design palette.
 * Fill & Clear Speed: The ```setTimeout``` intervals (1ms by default) control how fast the filling and clearing animations run. Increasing the delay slows the effect for a more deliberate appearance; reducing it speeds up the transition.
 * Density Control: The number of pixels added per cycle (currently four) can be adjusted for more or less dense filling. This provides fine control over the pacing and visual weight of the animation.
 
@@ -204,8 +204,8 @@ The Converge button introduces a dynamic and visually captivating hover effect w
 #### Customisation
 
 * Circle Size & Speed: The size of the circles and the speed of their movement can be adjusted to achieve different effects. Larger circles or slower speeds create a more dramatic effect, while smaller circles or faster transitions create a quicker, more subtle feel.
-* Colour & Opacity: You can customise the colour of the circles and the background by changing the respective properties. This allows you to match the button's visual appearance to your site’s colour scheme or branding.
-* Circle Transition Timing: The timing of the transition for each circle is set to 0.3s, but this can be adjusted to control how fast or slow the circles move and change opacity. This gives you full control over the animation's pacing.
+* Colour & Opacity: The colour and background of the circles can be customised by changing the respective properties. This allows the button's visual appearance to be matched with a site’s colour scheme or branding.
+* Circle Transition Timing: The timing of the transition for each circle is set to 0.3s, but this can be adjusted to control how fast or slow the circles move and change opacity. This gives full control over the animation's pacing.
 
 The Converge button offers a visually engaging hover effect, where yellow circles appear to dissolve into the button's background, creating a captivating interactive experience. The combination of smooth transitions, fading circles, and background colour change makes this button a striking addition to any interface, perfect for drawing attention and providing intuitive feedback to users.
 
@@ -223,12 +223,12 @@ The Interlace button features a sophisticated hover effect where multiple diagon
 
 #### Customisation
 
-* Line Size & Density: The number of lines and their size can be adjusted. By modifying the ```lineHeight``` variable and ```numberOfLines```, you can control the density and thickness of the interlacing effect. More lines create a denser pattern, while fewer lines result in a lighter effect.
-* Rotation Angles: The rotation of the lines is defined by the ```rotate``` property in the hover effect, which can be modified to create different visual effects. The current setup rotates the lines by 45 degrees, but you can adjust these angles to create more complex patterns or alternative directions.
-* Line Colour & Gradient: The gradient applied to the lines (a mix of dark and light greens) can be easily customised to match the overall design of your website or application. Change the linear gradient or apply solid colours to the lines for a different look.
-* Timing & Speed: The lines have a ```transition``` property that determines the speed of their opacity change and rotation. You can adjust the timing and delay values to fine-tune how fast or slow the interlacing effect takes place. The current settings use a 0.3s transition duration, but this can be increased or decreased based on your desired pace.
+* Line Size & Density: The number of lines and their size can be adjusted. By modifying the ```lineHeight``` variable and ```numberOfLines```, the density and thickness of the interlacing effect can be controlled. More lines create a denser pattern, while fewer lines result in a lighter effect.
+* Rotation Angles: The rotation of the lines is defined by the ```rotate``` property in the hover effect, which can be modified to create different visual effects. The current setup rotates the lines by 45 degrees, but these angles can be adjusted to create more complex patterns or alternative directions.
+* Line Colour & Gradient: The gradient applied to the lines (a mix of dark and light greens) can be easily customised to match the overall design of a website or application. Change the linear gradient or apply solid colours to the lines for a different look.
+* Timing & Speed: The lines have a ```transition``` property that determines the speed of their opacity change and rotation. The timing and delay values can be adjusted to fine-tune how fast or slow the interlacing effect takes place. The current settings use a 0.3s transition duration, but this can be increased or decreased based on a desired pace.
 
-The Interlace button adds an elegant, intricate hover effect to your user interface, where diagonal lines rotate and interlace, creating a sophisticated visual experience. Its smooth transitions, customisable parameters, and layered effects make it perfect for interactive designs where a polished and refined button is needed. This button is ideal for situations where you want to captivate users with subtle motion and sophisticated visual feedback, making it stand out as an interactive component.
+The Interlace button adds an elegant, intricate hover effect to a user interface, where diagonal lines rotate and interlace, creating a sophisticated visual experience. Its smooth transitions, customisable parameters, and layered effects make it perfect for interactive designs where a polished and refined button is needed. This button is ideal for captivating users with subtle motion and sophisticated visual feedback, making it stand out as an interactive component.
 
 ---
 
@@ -244,9 +244,9 @@ The Fusion button introduces an engaging hover effect where four circles move in
 
 #### Customisation
 
-* Circle Size & Speed: You can adjust the size and speed of the circles by modifying their ```width```, ```height```, and animation duration. The larger the circles, the more prominent the effect will be. The speed of their movement can be controlled by adjusting the ```animation``` timing and the ```transition``` properties, allowing you to fine-tune how quickly or slowly the circles converge.
-* Circle Position & Direction: The four circles start from the top, bottom, left, and right of the button, but you can adjust their initial positioning by tweaking the ```left```, ```right```, ```top```, and ```bottom``` properties. You can even create more complex animations by modifying the path or the amount of movement for each circle.
-* Background Styling: The button's background gradient and its transition can be customised to fit your design needs. You can adjust the starting and ending colours, gradient spread, or even change the gradient type to suit the overall theme of your project.
+* Circle Size & Speed: The speed and size of the circles can be adjusted by modifying their ```width```, ```height```, and animation duration. The larger the circles, the more prominent the effect will be. The speed of their movement can be controlled by adjusting the ```animation``` timing and the ```transition``` properties, allowing the fine-tuning of the speed of the circles convergence.
+* Circle Position & Direction: The four circles start from the top, bottom, left, and right of the button, but you can adjust their initial positioning by tweaking the ```left```, ```right```, ```top```, and ```bottom``` properties. Even more complex animations can be created by modifying the path or the amount of movement for each circle.
+* Background Styling: The button's background gradient and its transition can be customised to fit design needs. You can adjust the starting and ending colours, gradient spread, or even change the gradient type to suit the overall theme of your project.
 
 The Fusion button delivers a visually dynamic and engaging hover effect that makes use of four animated circles converging inward, creating an energetic fusion effect. The animation of the circles, along with the background colour transition, provides an eye-catching experience that draws attention to the button. Whether you’re looking to add some flair to a call-to-action button or enhance the interactivity of your interface, this effect will elevate your design. With easy customisation options for circle size, opacity, direction, and background styling, the Fusion button can be adapted to fit a variety of styles, making it a versatile and energetic addition to any website.
 
@@ -286,7 +286,7 @@ The Stream button offers a captivating hover effect that simulates an energetic 
 
 * Line Count & Speed: You can adjust the number of lines created on hover and the speed of their movement. This will affect how quickly the lines appear and how many are generated, allowing for a more subtle or intense animation.
 * Opacity & Colour: The opacity of the lines can be controlled to create either a more subtle or more pronounced effect. Additionally, the colour of the lines and the background gradient can be customised to match the theme of your project.
-* Positioning & Direction: The starting position of the lines (either from the top or bottom) and their direction can be modified. You can adjust the randomization of their x-positions for varied effects.
+* Positioning & Direction: The starting position of the lines (either from the top or bottom) and their direction can be modified. You can adjust the randomisation of their x-positions for varied effects.
 
 The Stream button provides an interactive and visually stimulating hover effect that creates a sense of energy flowing through the button. With its dynamic lines moving upwards and downwards, combined with a glowing radial gradient, it adds an exciting and modern touch to any web project. Whether you need an attention-grabbing element or a subtle dynamic interaction, this button offers a perfect balance of creativity and functionality. The customisation options ensure that it can be tailored to suit any design, making it a versatile addition to your UI.
 
@@ -354,9 +354,9 @@ This fluid interaction makes the button feel alive and reactive, evoking the cal
 
 #### Customisation
 
-* Water Fill Colour & Speed: The rising fill can be recoloured to match your brand or theme — from icy blue to glowing neon — by changing the ```background-color``` in .```water-button::after```. The transition speed of the fill effect can be adjusted using the ```transition: height``` property in both ```.water-button::after``` (on hover) and ```.water-button:not(:hover)::after``` (on exit), depending on whether you want a serene soak or a sudden splash.
-* Droplet Frequency & Size: The frequency of droplet creation can be modified by adjusting the interval timing in the ```setInterval()``` function inside the JavaScript (```mouseover``` event), which controls how often droplets appear. The droplet size range is controlled via the ```Math.random() * 5 + 10``` calculation — changing this affects whether droplets appear small like mist or large like heavy raindrops. This lets you set the mood: a light drizzle, a steady stream, or a single droplet at a time.
+* Water Fill Colour & Speed: The rising fill can be recoloured to match a brand or theme — from icy blue to glowing neon — by changing the ```background-color``` in .```water-button::after```. The transition speed of the fill effect can be adjusted using the ```transition: height``` property in both ```.water-button::after``` (on hover) and ```.water-button:not(:hover)::after``` (on exit), depending on whether a serene soak or a sudden splash is to be established.
+* Droplet Frequency & Size: The frequency of droplet creation can be modified by adjusting the interval timing in the ```setInterval()``` function inside the JavaScript (```mouseover``` event), which controls how often droplets appear. The droplet size range is controlled via the ```Math.random() * 5 + 10``` calculation — changing this affects whether droplets appear small like mist or large like heavy raindrops. This lets the mood be set: a light drizzle, a steady stream, or a single droplet at a time.
 * Maximum Fill Height: The height at which droplets stop appearing can be customised by adjusting the ```maxDropletHeight = buttonHeight * 0.75``` value in JavaScript. A lower multiplier (e.g. ```0.5```) creates a subtle, partially-filled look, while a higher one (e.g. ```0.9```) gives the illusion of near-total submersion in liquid.
-* Droplet Style & Orientation: Each droplet's visual character can be modified through CSS. Change the ```background-color``` in ```.droplet``` to affect tone, and adjust ```opacity``` for translucency. The ```transform: rotate(45deg)``` defines the droplet’s orientation — altering this can shift the feel from stylised to natural. Additionally, the droplet's ```border-radius``` (e.g. ```border-bottom-left-radius```, ```border-top-right-radius```) controls its shape and softness, allowing you to move from crisp droplets to smooth, organic rivulets.
+* Droplet Style & Orientation: Each droplet's visual character can be modified through CSS. Change the ```background-color``` in ```.droplet``` to affect tone, and adjust ```opacity``` for translucency. The ```transform: rotate(45deg)``` defines the droplet’s orientation — altering this can shift the feel from stylised to natural. Additionally, the droplet's ```border-radius``` (e.g. ```border-bottom-left-radius```, ```border-top-right-radius```) controls its shape and softness, allowing the movement from crisp droplets to smooth, organic rivulets.
 
-The Water Button offers a visually calming and tactile experience that evokes the movement and tranquillity of water. With a gentle rising fill and falling droplets that dance across its surface, it brings organic motion to your interface. Ideal for nature-inspired designs, wellness brands, or anything that calls for a refreshing, immersive touch — and with robust customisation, it’s as adaptable as water itself.
+The Water Button offers a visually calming and tactile experience that evokes the movement and tranquillity of water. With a gentle rising fill and falling droplets that dance across its surface, it brings organic motion to an interface. Ideal for nature-inspired designs, wellness brands, or anything that calls for a refreshing, immersive touch — and with robust customisation, it’s as adaptable as water itself.
