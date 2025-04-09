@@ -67,29 +67,23 @@
 }
 
 .fusion-button:hover .left-circle {
-  animation: circle-fusion 0.6s ease forwards, fade-out 0.4s ease 0.3s forwards;
+  animation: circle-fusion 0.6s ease forwards;
   transform: translate(calc(var(--button-width) / 2), -50%);
 }
 
 .fusion-button:hover .right-circle {
-  animation: circle-fusion 0.6s ease forwards, fade-out 0.4s ease 0.3s forwards;
+  animation: circle-fusion 0.6s ease forwards;
   transform: translate(calc(-1 * var(--button-width) / 2), -50%);
 }
 
 .fusion-button:hover .top-circle {
-  animation: circle-fusion 0.6s ease forwards, fade-out 0.4s ease 0.3s forwards;
+  animation: circle-fusion 0.6s ease forwards;
   transform: translate(-50%, calc(var(--button-width) / 2));
 }
 
 .fusion-button:hover .bottom-circle {
-  animation: circle-fusion 0.6s ease forwards, fade-out 0.4s ease 0.3s forwards;
+  animation: circle-fusion 0.6s ease forwards;
   transform: translate(-50%, calc(-1 * var(--button-width) / 2));
-}
-
-@keyframes fade-out {
-  100% {
-    opacity: 0;
-  }
 }
 
 @keyframes circle-fusion {
