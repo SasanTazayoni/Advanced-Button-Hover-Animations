@@ -315,3 +315,28 @@ The Shatter button adds a visceral, glass-breaking moment to your UI, capturing 
 
 ---
 
+### Illuminate
+
+The Illuminate Button features an engaging hover effect that mimics light gradually revealing the surface beneath. At a glance, the button presents a rich red background with soft pink borders and text. But once a user interacts with it, the real magic begins — as if a glowing light were illuminating the button from within, pixel by pixel.
+
+As the user hovers or moves their cursor across the button, small square fragments begin to fade away from the point of contact, unveiling the illuminated content below. This ripple-like effect spreads outwards from the cursor in a smooth cascade, simulating the appearance of a glowing reveal or a torchlight sweeping across a darkened surface.
+
+When the cursor leaves the button, the hidden tiles slowly fade back in, resetting the button’s appearance and preparing it for the next interaction.
+
+#### How it works
+
+* Grid Overlay & Structure: A grid of small square elements is dynamically generated and layered over the button. Each square acts as a “masking” tile, hiding the base layer. On hover, these tiles begin to disappear from the point of cursor contact, spreading to neighbouring tiles in all directions. This controlled fade mimics the natural behaviour of light illuminating a surface.
+* Hover & Movement Detection: The effect triggers as soon as the user hovers over the button. The script calculates the mouse’s position, determines the corresponding tile in the grid, and begins fading it out. From there, adjacent tiles are revealed recursively in a smooth and continuous manner as long as the cursor remains over the button.
+* Reset on Exit: When the cursor leaves the button, all previously hidden tiles fade back in, effectively “re-darkening” the surface. This reset ensures that the animation can be triggered again and again with a consistent visual experience.
+
+#### Customisation
+
+* Grid Density (Square Size): Adjust the size of the individual tiles to control the smoothness of the reveal. Smaller squares create a finer, more detailed lighting effect, while larger ones result in chunkier, pixelated transitions.
+* Fade Timing & Speed: The duration of the fade effect for each square can be adjusted to control how quickly or softly the reveal appears. Faster transitions feel snappier and more digital, while slower ones give a smoother, more cinematic look.
+* Starting Point Logic: By default, the reveal spreads from the user's cursor position. However, this logic can be adapted to reveal from a fixed point, centre outwards, or even multiple spots at once.
+* Colours & Layers: The top layer (tiles) and the background beneath can be styled independently. This makes the effect extremely flexible — whether you're creating a glowing sci-fi interface, a soft reveal on a romantic UI, or even a spotlight effect for a theatrical theme.
+
+The Illuminate button brings depth and interactivity to your UI with a gentle, flowing hover experience. Whether you're aiming to delight users or guide attention subtly, this lighting-inspired effect offers both beauty and customisability. A perfect fit for modern interfaces that value both form and function.
+
+---
+
