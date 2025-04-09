@@ -246,7 +246,7 @@ The Fusion button introduces an engaging hover effect where four circles move in
 
 * Circle Size & Speed: You can adjust the size and speed of the circles by modifying their ```width```, ```height```, and animation duration. The larger the circles, the more prominent the effect will be. The speed of their movement can be controlled by adjusting the ```animation``` timing and the ```transition``` properties, allowing you to fine-tune how quickly or slowly the circles converge.
 * Circle Position & Direction: The four circles start from the top, bottom, left, and right of the button, but you can adjust their initial positioning by tweaking the ```left```, ```right```, ```top```, and ```bottom``` properties. You can even create more complex animations by modifying the path or the amount of movement for each circle.
-* Background Styling: The button's background gradient and its transition can be customized to fit your design needs. You can adjust the starting and ending colours, gradient spread, or even change the gradient type to suit the overall theme of your project.
+* Background Styling: The button's background gradient and its transition can be customised to fit your design needs. You can adjust the starting and ending colours, gradient spread, or even change the gradient type to suit the overall theme of your project.
 
 The Fusion button delivers a visually dynamic and engaging hover effect that makes use of four animated circles converging inward, creating an energetic fusion effect. The animation of the circles, along with the background colour transition, provides an eye-catching experience that draws attention to the button. Whether you’re looking to add some flair to a call-to-action button or enhance the interactivity of your interface, this effect will elevate your design. With easy customisation options for circle size, opacity, direction, and background styling, the Fusion button can be adapted to fit a variety of styles, making it a versatile and energetic addition to any website.
 
@@ -268,5 +268,26 @@ The Weld button introduces a dynamic hover effect where triangles appear to "wel
 * Colour & Styling: The background, text colour, and the triangles’ colours can be customised to fit your theme. You can adjust the colours of the button, triangles, and borders, as well as fine-tune the colour transitions to enhance the effect.
 
 The Weld button offers a striking hover effect that combines smooth animation with dynamic motion. The triangles converge at the centre, creating a "welding" effect that adds energy and interactivity to the button. With flexible customisation options for triangle positioning, colour transitions, and animation speed, this button is perfect for adding a unique touch to any web project.
+
+---
+
+### Stream
+
+The Stream button offers a captivating hover effect that simulates an energetic flow of lines shooting upwards and downwards across the button. Initially, the button has a soft pink background with the word "Stream" at the centre. Upon hovering, animated lines burst from both the top and bottom of the button, moving in random directions with varying opacity, creating a dynamic and fluid effect. As the animation progresses, the radial gradient of vibrant purple and pink hues gradually appears, enhancing the visual impact. Once the animation completes, the lines fade away, leaving the background with the glowing radial gradient, giving the impression of energy flowing through the button.
+
+#### How it works
+
+* Hover Interaction & Line Movement: Upon hovering over the button, multiple lines are animated to move upwards and downwards, appearing randomly across the button. These lines are dynamically created, with each line starting from either the top or bottom, then moving towards a random position on the button with varying opacity, mimicking the flow of energy or a stream.
+* Line Animation: The lines are animated using CSS keyframes. The downward-moving lines start from the top and fade out as they move downwards, while the upward-moving lines start from the bottom and fade as they rise. The random movement and fading of the lines simulate a flowing, energetic effect.
+* Radial Gradient Background Transition: The background starts as a soft pink, and as the animation progresses, a vibrant radial gradient of purple and pink hues emerges. This gradient visually enhances the flow of energy through the button, adding depth and dimension to the interaction.
+* Opacity & Random Positioning: The lines have randomised opacity and positions, which adds a sense of dynamism to the effect. As the animation proceeds, the opacity of the lines decreases, creating the appearance of the energy dissipating.
+
+#### Customisation
+
+* Line Count & Speed: You can adjust the number of lines created on hover and the speed of their movement. This will affect how quickly the lines appear and how many are generated, allowing for a more subtle or intense animation.
+* Opacity & Colour: The opacity of the lines can be controlled to create either a more subtle or more pronounced effect. Additionally, the colour of the lines and the background gradient can be customised to match the theme of your project.
+* Positioning & Direction: The starting position of the lines (either from the top or bottom) and their direction can be modified. You can adjust the randomization of their x-positions for varied effects.
+
+The Stream button provides an interactive and visually stimulating hover effect that creates a sense of energy flowing through the button. With its dynamic lines moving upwards and downwards, combined with a glowing radial gradient, it adds an exciting and modern touch to any web project. Whether you need an attention-grabbing element or a subtle dynamic interaction, this button offers a perfect balance of creativity and functionality. The customisation options ensure that it can be tailored to suit any design, making it a versatile addition to your UI.
 
 ---
