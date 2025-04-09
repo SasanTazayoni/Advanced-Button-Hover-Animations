@@ -291,3 +291,27 @@ The Stream button offers a captivating hover effect that simulates an energetic 
 The Stream button provides an interactive and visually stimulating hover effect that creates a sense of energy flowing through the button. With its dynamic lines moving upwards and downwards, combined with a glowing radial gradient, it adds an exciting and modern touch to any web project. Whether you need an attention-grabbing element or a subtle dynamic interaction, this button offers a perfect balance of creativity and functionality. The customisation options ensure that it can be tailored to suit any design, making it a versatile addition to your UI.
 
 ---
+
+### Shatter
+
+The Shatter button delivers a dramatic hover effect that simulates shards of glass breaking away from the button’s surface. Initially, the button features a deep navy background with crisp white text and a subtle light blue border, giving it a polished appearance. Upon hovering, the illusion of a solid surface is shattered—literally—as small white fragments begin to crack and fall away like splintering glass.
+
+The effect unfolds in three dynamic stages, where randomly chosen squares detach, spin, and cascade downwards with a subtle shimmer. Each fragment resembles a shard of broken glass, rotating gently as it falls and fades. Once the animation completes, the shattered pieces vanish entirely. The button reforms when the cursor leaves, ready to shatter anew.
+
+#### How it works
+
+* Glass Grid Overlay: At initialisation, a hidden grid of small square fragments is layered atop the button. These represent potential "glass shards" and are perfectly aligned to cover the entire surface, giving the button a unified, intact appearance until interacted with.
+* Hover Interaction & Shattering Effect: When hovered, the button enters a staged animation sequence where fragments randomly begin to "crack" and fall. The illusion is enhanced by slight rotation and opacity shifts, giving the impression of delicate shards breaking off and drifting downwards. The fragments become increasingly sparse as the effect progresses, making it feel as though the surface is breaking apart under stress.
+* Staged Fragmentation & Reset: The shatter occurs in multiple phases, with each stage increasing in intensity — more fragments break away with each step. Once the interaction ends (hovering off of the button for long enough), a timed reset gently restores all shards to their original positions, reconstructing the button’s glass-like facade.
+
+#### Customisation
+
+* Shard Size: Adjust the size of the fragments to control the granularity of the shatter (grid size). Smaller fragments feel like fine cracks in tempered glass, while larger pieces give a more aggressive, broken-glass aesthetic.
+* Stages & Timing: Customise how many stages of shatter occur, the timing between them, and the percentage of the button that breaks apart in each. This allows for subtle hairline cracking or a full glass-blast effect.
+* Rotation, Opacity & Orientation: Fine-tune how much each shard spins and fades as it falls to create either a slow, elegant drift or a chaotic burst of fragments. You can also vary the orientation of the shards—adjusting how they tilt, rotate, and fall—to add even more realism and unpredictability to the shatter effect.
+* Colour & Background: The base colour of the button, the shard overlay, and the exposed surface can be customised to fit your project’s palette — whether it's a frosty glass break or a high-tech interface rupture.
+
+The Shatter button adds a visceral, glass-breaking moment to your UI, capturing attention with tactile realism and visual drama. It’s perfect for calls to action or destructive-themed interactions, offering a unique blend of style, responsiveness, and interactivity. Whether used sparingly or boldly, it creates a striking first impression — like cracking open a moment of impact.
+
+---
+
