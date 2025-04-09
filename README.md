@@ -340,3 +340,23 @@ The Illuminate button brings depth and interactivity to your UI with a gentle, f
 
 ---
 
+### Water
+
+The Water button delivers a soothing and immersive hover effect that simulates the sensation of water rising and droplets falling — as though the button itself is being gently filled with liquid. Initially styled with a soft sky-blue background and black text, the button invites curiosity. When hovered over, a translucent wave of water begins to rise from the bottom, accompanied by falling droplets that mimic water trickling down a glass surface.
+
+This fluid interaction makes the button feel alive and reactive, evoking the calm, organic quality of water in motion. Once the cursor leaves, the water gently recedes and the droplets cease, resetting the button for the next interaction.
+
+#### How it works
+
+* Rising Water Fill: A semi-transparent blue overlay, implemented using a ```::after``` pseudo-element, acts as the rising "water." When the user hovers, this overlay expands upward from the base of the button, creating a smooth fill effect that visually simulates the button being submerged. The height transition is purposefully slowed on hover (0.9s), giving the water time to rise, and sped up on exit (0.3s) to suggest quick drainage.
+* Droplet Animation: During the hover interaction, additional droplets are created dynamically and fall over the button’s surface. These droplets vary in size and fall speed, contributing to a natural, irregular flow. Each droplet rotates slightly and features rounded edges to reinforce the look of a water bead. They fade away as they fall, simulating absorption.
+* Hover Threshold: The droplets stop generating once the "water" fill reaches 75% of the button’s height. This subtle constraint mimics how water saturates a surface, ensuring the animation feels purposeful and not overwhelming.
+
+#### Customisation
+
+* Water Fill Colour & Speed: The rising fill can be recoloured to match your brand or theme — from icy blue to glowing neon — by changing the ```background-color``` in .```water-button::after```. The transition speed of the fill effect can be adjusted using the ```transition: height``` property in both ```.water-button::after``` (on hover) and ```.water-button:not(:hover)::after``` (on exit), depending on whether you want a serene soak or a sudden splash.
+* Droplet Frequency & Size: The frequency of droplet creation can be modified by adjusting the interval timing in the ```setInterval()``` function inside the JavaScript (```mouseover``` event), which controls how often droplets appear. The droplet size range is controlled via the ```Math.random() * 5 + 10``` calculation — changing this affects whether droplets appear small like mist or large like heavy raindrops. This lets you set the mood: a light drizzle, a steady stream, or a single droplet at a time.
+* Maximum Fill Height: The height at which droplets stop appearing can be customised by adjusting the ```maxDropletHeight = buttonHeight * 0.75``` value in JavaScript. A lower multiplier (e.g. ```0.5```) creates a subtle, partially-filled look, while a higher one (e.g. ```0.9```) gives the illusion of near-total submersion in liquid.
+* Droplet Style & Orientation: Each droplet's visual character can be modified through CSS. Change the ```background-color``` in ```.droplet``` to affect tone, and adjust ```opacity``` for translucency. The ```transform: rotate(45deg)``` defines the droplet’s orientation — altering this can shift the feel from stylised to natural. Additionally, the droplet's ```border-radius``` (e.g. ```border-bottom-left-radius```, ```border-top-right-radius```) controls its shape and softness, allowing you to move from crisp droplets to smooth, organic rivulets.
+
+The Water Button offers a visually calming and tactile experience that evokes the movement and tranquillity of water. With a gentle rising fill and falling droplets that dance across its surface, it brings organic motion to your interface. Ideal for nature-inspired designs, wellness brands, or anything that calls for a refreshing, immersive touch — and with robust customisation, it’s as adaptable as water itself.
