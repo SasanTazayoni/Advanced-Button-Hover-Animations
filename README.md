@@ -382,7 +382,7 @@ The Static button delivers a jarring, electrified visual that evokes the look an
 * Static Density & Texture: The fine-grain look of the static can be adjusted by modifying the stop distances in the ```repeating-radial-gradient``` and ```repeating-conic-gradient```. Smaller percentages result in denser “snow,” while larger ones produce more sparse, lo-fi noise.
 * Flash Duration: The length of the glitch can be changed by editing the ```setTimeout()``` in the ```initializeStaticEffect``` function.
 * Opacity & Intensity: Change the value in ```.static-flash::before { opacity: 0.65; }``` to control how intense the static appears. Lower opacities make it subtle like a weak signal; higher values create more disruptive visual noise.
-* Animation Frequency: Adjusting the ```@keyframes static``` timing and the ```animation``` speed lets you create either a frantic buzz or slow pulse, depending on the tone you want the static to carry.
+* Animation Frequency: Adjusting the ```@keyframes static``` timing and the ```animation``` speed enables the creation of either a frantic buzz or slow pulse.
 
 The Static button introduces a momentary break in visual consistency — a controlled anomaly that grabs the user’s attention like an error in the matrix. Short-lived but unmistakable, it is a perfect fit for digital experiences that want to embrace retro-futurism, signal disruption, or interactive surprise.
 
