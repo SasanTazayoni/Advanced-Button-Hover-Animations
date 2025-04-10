@@ -1,0 +1,36 @@
+.static-button {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+  background: #007bff;
+  color: #fff;
+  transition: background-color 0.4s ease-in-out;
+}
+
+.static-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-radial-gradient(#000 0 0.0001%, #fff 0 0.0002%) 60% 60%/3000px
+      3000px,
+    repeating-conic-gradient(#000 0 0.001%, #fff 0 0.002%) 60% 60%/3000px 3000px;
+  background-blend-mode: difference;
+  opacity: 0;
+  animation: static 0.1s infinite alternate;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.static-button:hover {
+  background-color: #8000b0;
+}
+
+.static-button.static-flash::before {
+  opacity: 0.65;
+}
+
+@keyframes static {
+  100% {
+    background-position: 50% 0, 60% 50%;
+  }
+}

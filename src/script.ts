@@ -8,6 +8,7 @@ import { initializeStreamEffect } from "./effects/stream/stream.ts";
 import { initializeShatterEffect } from "./effects/shatter/shatter.ts";
 import { initializeIlluminateEffect } from "./effects/illuminate/illuminate.ts";
 import { initializeWaterEffect } from "./effects/water/water.ts";
+import { initializeStaticEffect } from "./effects/static/static.ts";
 
 const trailButton = document.querySelector<HTMLButtonElement>(".trail-button")!;
 const rippleButton =
@@ -26,6 +27,8 @@ const shatterButton =
 const illuminateButton =
   document.querySelector<HTMLButtonElement>(".illuminate-button")!;
 const waterButton = document.querySelector<HTMLButtonElement>(".water-button")!;
+const staticButton =
+  document.querySelector<HTMLButtonElement>(".static-button")!;
 
 initializeTrailEffect(trailButton);
 initializeRippleEffect(rippleButton);
@@ -37,3 +40,4 @@ initializeStreamEffect(streamButton);
 initializeShatterEffect(shatterButton);
 initializeIlluminateEffect(illuminateButton);
 initializeWaterEffect(waterButton);
+initializeStaticEffect(staticButton);
