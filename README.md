@@ -27,7 +27,7 @@ You can check them out [here!](https://sasantazayoni.github.io/Advanced-Button-H
 
 ### Sweep
 
-The Sweep button uses a linear-gradient background that creates a dynamic sweeping animation across the button surface. This gradient typically features two main colours with a sharply contrasting colour placed in between — often a lighter tone like white — to establish the illusion of a “sweep.” The gradient is expanded beyond the button’s visible area using background-size: 400%, allowing for noticeable movement when the background-position shifts from 0% to 100% on hover. This creates a left-to-right sweeping motion. You can use completely different colours or even shades of a single colour with varying contrast; the key is that the middle "fade" colour must contrast both surrounding colours to maintain the visual impact. The entire animation is smoothed using transition: all 0.3s ease, making the effect feel fluid and responsive. With simple tweaks to direction, colours, and intensity, the sweep effect can be customised to match any visual style.
+The Sweep button uses a linear-gradient background that creates a dynamic sweeping animation across the button surface. This gradient typically features two main colours with a sharply contrasting colour placed in between — often a lighter tone like white — to establish the illusion of a “sweep.” The gradient is expanded beyond the button’s visible area using background-size: 400%, allowing for noticeable movement when the background-position shifts from 0% to 100% on hover. This creates a left-to-right sweeping motion. Completely different colours or even shades of a single colour with varying contrast can be used; the key is that the middle "fade" colour must contrast both surrounding colours to maintain the visual impact. The entire animation is smoothed using transition: all 0.3s ease, making the effect feel fluid and responsive. With simple tweaks to direction, colours, and intensity, the sweep effect can be customised to match any visual style.
 
 #### How it works
 
@@ -36,9 +36,9 @@ The Sweep button uses a linear-gradient background that creates a dynamic sweepi
 
 #### Customisation
 
-* Colours & Direction: The colours used in the gradient can be customised to match any design palette. The key is to maintain enough contrast between the central highlight colour and the surrounding tones to preserve the sweeping illusion. You can also adjust the direction of the sweep (for example, top to bottom or diagonal) by changing the angle of the ```linear-gradient```.
-* Speed & Smoothness: The animation timing is controlled by the ```transition``` property. You can speed up or slow down the sweep effect by changing the duration or easing function. Try ```ease-in-out``` for a more gradual build-up and release.
-* Gradient Complexity: For more nuanced visual effects, you can add more than three colour stops to the gradient. This allows for subtle multi-colour sweeps or stylised lighting effects.
+* Colours & Direction: The colours used in the gradient can be customised to match any design palette. The key is to maintain enough contrast between the central highlight colour and the surrounding tones to preserve the sweeping illusion. The direction of the sweep (for example, top to bottom or diagonal) can also be adjusted by changing the angle of the ```linear-gradient```.
+* Speed & Smoothness: The animation timing is controlled by the ```transition``` property. The sweep effect can sped up or slowed down by changing the duration or easing function. ```ease-in-out``` can be used for a more gradual build-up and release.
+* Gradient Complexity: For more nuanced visual effects, more than three colour stops can be added to the gradient. This allows for subtle multi-colour sweeps or stylised lighting effects.
 
 The Sweep button is ideal for modern, animated interfaces where motion is used to guide the user’s attention. Its customisable gradient and smooth transition make it a versatile component that can be tailored to suit a wide variety of visual themes and user interactions.
 
@@ -56,7 +56,7 @@ The Neon button delivers a bold, luminous effect that draws inspiration from cla
 
 #### Customisation
 
-* Glow Intensity: The depth and vividness of the glow can be fine-tuned by adjusting the number of ```drop-shadow``` layers and their respective blur radii. Adding more layers with subtle differences in radius creates a more pronounced halo effect, while fewer layers result in a gentler glow. You can also experiment with shadow offsets and opacity levels to refine the overall look.
+* Glow Intensity: The depth and vividness of the glow can be fine-tuned by adjusting the number of ```drop-shadow``` layers and their respective blur radii. Adding more layers with subtle differences in radius creates a more pronounced halo effect, while fewer layers result in a gentler glow. Shadow offsets and opacity levels can also be experimented with to refine the overall look.
 * Colour Scheme: The glow colour, text, and background are fully customisable through CSS. By modifying the ```color```, ```background```, and ```filter``` properties, developers can tailor the button to fit a wide range of aesthetics — from vibrant cyberpunk themes to sleek, modern UIs.
 * Background Compatibility: While the Neon button is most striking against dark or neutral backgrounds where the glow can fully radiate, it can also be effective on lighter backgrounds with slight adjustments to the glow intensity and shadow colour.
 
@@ -77,7 +77,7 @@ The Trail button offers a sleek and highly interactive hover experience that vis
 
 #### Customisation
 
-* Glow Colour & Intensity: The radial glow’s appearance can be adjusted by modifying the gradient used in the ```::before``` pseudo-element. You can change its colour, size, or opacity to produce a softer or more intense highlight.
+* Glow Colour & Intensity: The radial glow’s appearance can be adjusted by modifying the gradient used in the ```::before``` pseudo-element. Its colour, size, or opacity can be changed to produce a softer or more intense highlight.
 * Trail Dot Styling: Each trail dot’s size, colour, and blur radius can be customised in the JavaScript or CSS. The ```filter: blur()``` property controls the softness of the dots, while the background colour and opacity determine how prominent they appear.
 * Fade Timing: The lifespan and fading speed of the trail elements are controlled through JavaScript timers and CSS transitions. Developers can fine-tune how quickly dots appear and disappear, allowing for denser trails or a subtler effect.
 
@@ -97,9 +97,12 @@ The Ripple button introduces an energetic and tactile animation that simulates t
 
 #### Customisation
 
-* Ripple Appearance: Developers can customise the ripple’s colour by changing the background property in .ripple-button > span (currently #000). The size of the ripple is determined by the width and height values in the @keyframes ripple animation (set to 300px at 100%). You can add blur by applying filter: blur(Xpx) to .ripple-button > span, and adjust duration via the animation: ripple 0.6s linear infinite; property — increasing the time makes the ripple slower and more dramatic, while reducing it speeds things up.
-* Speed & Opacity: The ripple’s expansion and fade timing is defined through CSS animations. You can adjust the animation-duration and easing curve to create anything from a quick pulse to a slow, cinematic ripple.
-* Layered Effects: The ripple can be combined with additional hover effects like gradient backgrounds, glowing borders, or text transformations to create rich, multi-layered interactions. This makes the component adaptable to a variety of design themes.
+* Ripple Appearance: The ripple’s colour is set by the ```background``` property in ```.ripple-button > span``` (currently ```#000```). Its size is controlled by the ```width``` and ```height``` values at ```100%``` in the ```@keyframes ripple``` rule (set to ```300px```). A blur effect can be added with the ```filter``` property in ```.ripple-button > span```, such as ```filter: blur(4px)```. The ```animation``` duration is set in the animation shorthand (```animation: ripple 0.6s linear infinite```), determining how quickly the ripple expands and fades.
+* Speed & Opacity: Speed & Opacity: The expansion timing is managed by ```animation-duration``` in ```.ripple-button > span```. Opacity transition is defined in the ```@keyframes ripple``` block (opacity: ```0.7``` to ```0```), setting the fade intensity. The easing curve is specified as ```linear``` and can be changed to ```ease-out```, ```ease-in-out```, or a custom ```cubic-bezier(...)``` for different pacing.
+* Cleanup Timing: The ripple element is removed from the DOM using ```setTimeout(() => ripples.remove(), 600)``` in TypeScript. This value must match the ```animation-duration``` (currently ```0.6s```) to ensure proper synchronisation between the visual animation and element cleanup.
+* Hover Transition: The hover background colour is set in ```.ripple-button:hover``` (```background-color: #c50000```) and the text colour switches to white. The smoothness of this change is controlled by ```transition: all 0.6s``` in ```.ripple-button```.
+* Layered Effects: Additional effects can be layered using properties like ```box-shadow```, ```background-image```, ```text-shadow```, or even CSS ```filters``` in either ```.ripple-button:hover``` or ```.ripple-button > span```.
+These enhancements work best when keeping ```overflow: hidden``` on the button to contain the ripple animation.
 
 The Ripple button turns a basic click target into a visually expressive element, offering instant feedback and a sense of motion that enhances the overall user experience. Ideal for interactive and playful interfaces, it communicates energy, responsiveness, and user control in a simple, satisfying way.
 
@@ -336,7 +339,7 @@ When the cursor leaves the button, the hidden tiles slowly fade back in, resetti
 * Starting Point Logic: By default, the reveal spreads from the user's cursor position. However, this logic can be adapted to reveal from a fixed point, centre outwards, or even multiple spots at once.
 * Colours & Layers: The top layer (tiles) and the background beneath can be styled independently. This makes the effect extremely flexible — whether you're creating a glowing sci-fi interface, a soft reveal on a romantic UI, or even a spotlight effect for a theatrical theme.
 
-The Illuminate button brings depth and interactivity to your UI with a gentle, flowing hover experience. Whether you're aiming to delight users or guide attention subtly, this lighting-inspired effect offers both beauty and customisability. A perfect fit for modern interfaces that value both form and function.
+The Illuminate button brings depth and interactivity to a UI with a gentle, flowing hover experience. Whether the aim is to delight users or guide attention subtly, this lighting-inspired effect offers both beauty and customisability. A perfect fit for modern interfaces that value both form and function.
 
 ---
 
