@@ -20,7 +20,7 @@ This collection caters to a broad audience, from frontend developers and UI/UX d
 
 This base CSS defines consistent styling for all buttons in the project using CSS custom properties for flexibility and reusability. The :root section sets two variables: --button-width and --button-height, which control the default dimensions of the buttons. The .button class then applies these values along with additional styling to ensure a clean and modern appearance. Padding and font size provide comfortable spacing and readability, while border: none and border-radius: 10px give the button smooth, rounded corners. The cursor: pointer makes it clear the button is interactive, and margin: 10px ensures consistent spacing between multiple buttons. This setup creates a solid foundation that can be extended or customised for different hover animations throughout the project.
 
-You can check them out [here!](https://sasantazayoni.github.io/Advanced-Button-Hover-Animations/)
+ can check them out [here!](https://sasantazayoni.github.io/Advanced-Button-Hover-Animations/)
 
 
 ## The Buttons
@@ -313,10 +313,10 @@ The effect unfolds in three dynamic stages, where randomly chosen squares detach
 
 * Shard Size: Adjust the size of the fragments to control the granularity of the shatter (grid size). Smaller fragments feel like fine cracks in tempered glass, while larger pieces give a more aggressive, broken-glass aesthetic.
 * Stages & Timing: Customise how many stages of shatter occur, the timing between them, and the percentage of the button that breaks apart in each. This allows for subtle hairline cracking or a full glass-blast effect.
-* Rotation, Opacity & Orientation: Fine-tune how much each shard spins and fades as it falls to create either a slow, elegant drift or a chaotic burst of fragments. You can also vary the orientation of the shards—adjusting how they tilt, rotate, and fall—to add even more realism and unpredictability to the shatter effect.
-* Colour & Background: The base colour of the button, the shard overlay, and the exposed surface can be customised to fit your project’s palette — whether it's a frosty glass break or a high-tech interface rupture.
+* Rotation, Opacity & Orientation: Fine-tune how much each shard spins and fades as it falls to create either a slow, elegant drift or a chaotic burst of fragments. The orientation of the shards — adjusting how they tilt, rotate, and fall can also be varied — to add even more realism and unpredictability to the shatter effect.
+* Colour & Background: The base colour of the button, the shard overlay, and the exposed surface can be customised to fit a project’s palette — whether it's a frosty glass break or a high-tech interface rupture.
 
-The Shatter button adds a visceral, glass-breaking moment to your UI, capturing attention with tactile realism and visual drama. It’s perfect for calls to action or destructive-themed interactions, offering a unique blend of style, responsiveness, and interactivity. Whether used sparingly or boldly, it creates a striking first impression — like cracking open a moment of impact.
+The Shatter button adds a visceral, glass-breaking moment to a UI, capturing attention with tactile realism and visual drama. It’s perfect for calls to action or destructive-themed interactions, offering a unique blend of style, responsiveness, and interactivity. Whether used sparingly or boldly, it creates a striking first impression — like cracking open a moment of impact.
 
 ---
 
@@ -336,10 +336,9 @@ When the cursor leaves the button, the hidden tiles slowly fade back in, resetti
 
 #### Customisation
 
-* Grid Density (Square Size): Adjust the size of the individual tiles to control the smoothness of the reveal. Smaller squares create a finer, more detailed lighting effect, while larger ones result in chunkier, pixelated transitions.
-* Fade Timing & Speed: The duration of the fade effect for each square can be adjusted to control how quickly or softly the reveal appears. Faster transitions feel snappier and more digital, while slower ones give a smoother, more cinematic look.
-* Starting Point Logic: By default, the reveal spreads from the user's cursor position. However, this logic can be adapted to reveal from a fixed point, centre outwards, or even multiple spots at once.
-* Colours & Layers: The top layer (tiles) and the background beneath can be styled independently. This makes the effect extremely flexible — whether you're creating a glowing sci-fi interface, a soft reveal on a romantic UI, or even a spotlight effect for a theatrical theme.
+* Grid Density (Square Size): Adjust the ```squareSize``` variable in the script to control the size of each masking tile. Smaller values (e.g. 3–5 pixels) provide a finer, smoother reveal. Larger sizes result in a more pixelated, blocky effect.
+* Fade Timing & Speed: The transition for each tile is defined by the CSS property ```transition: opacity 0.5s ease```. The reveal propagation speed is controlled by a ```setTimeout``` delay of ```20ms``` between tile reveals. Both can be modified to produce faster or slower lighting effects.
+* Colours & Layers: The background colour of each masking tile is controlled by ```square.style.backgroundColor``` (default: ```rgb(165, 0, 0)```). The base button background is set via the ```.illuminate-button``` class (```background-color: rgb(255, 105, 105)```). Border and text colours are defined in ```.illuminate-button``` and its child ```<span>``` element. These can be changed independently to match different themes or brand colours.
 
 The Illuminate button brings depth and interactivity to a UI with a gentle, flowing hover experience. Whether the aim is to delight users or guide attention subtly, this lighting-inspired effect offers both beauty and customisability. A perfect fit for modern interfaces that value both form and function.
 
