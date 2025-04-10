@@ -20,7 +20,7 @@ This collection caters to a broad audience, from frontend developers and UI/UX d
 
 This base CSS defines consistent styling for all buttons in the project using CSS custom properties for flexibility and reusability. The :root section sets two variables: --button-width and --button-height, which control the default dimensions of the buttons. The .button class then applies these values along with additional styling to ensure a clean and modern appearance. Padding and font size provide comfortable spacing and readability, while border: none and border-radius: 10px give the button smooth, rounded corners. The cursor: pointer makes it clear the button is interactive, and margin: 10px ensures consistent spacing between multiple buttons. This setup creates a solid foundation that can be extended or customised for different hover animations throughout the project.
 
- can check them out [here!](https://sasantazayoni.github.io/Advanced-Button-Hover-Animations/)
+You can check them out [here!](https://sasantazayoni.github.io/Advanced-Button-Hover-Animations/)
 
 
 ## The Buttons
