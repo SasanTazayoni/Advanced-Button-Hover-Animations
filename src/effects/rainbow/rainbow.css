@@ -1,0 +1,19 @@
+.rainbow-button {
+  color: white;
+  background: linear-gradient(
+    90deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+  background-size: 300% 100%;
+  background-position: var(--x, 50%) center;
+  transition: background-position 0.1s ease;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  outline: none;
+}

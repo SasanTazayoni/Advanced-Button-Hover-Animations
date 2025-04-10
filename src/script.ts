@@ -9,6 +9,7 @@ import { initializeShatterEffect } from "./effects/shatter/shatter.ts";
 import { initializeIlluminateEffect } from "./effects/illuminate/illuminate.ts";
 import { initializeWaterEffect } from "./effects/water/water.ts";
 import { initializeStaticEffect } from "./effects/static/static.ts";
+import { initializeRainbowEffect } from "./effects/rainbow/rainbow.ts";
 
 const trailButton = document.querySelector<HTMLButtonElement>(".trail-button")!;
 const rippleButton =
@@ -29,6 +30,8 @@ const illuminateButton =
 const waterButton = document.querySelector<HTMLButtonElement>(".water-button")!;
 const staticButton =
   document.querySelector<HTMLButtonElement>(".static-button")!;
+const rainbowButton =
+  document.querySelector<HTMLButtonElement>(".rainbow-button")!;
 
 initializeTrailEffect(trailButton);
 initializeRippleEffect(rippleButton);
@@ -41,3 +44,4 @@ initializeShatterEffect(shatterButton);
 initializeIlluminateEffect(illuminateButton);
 initializeWaterEffect(waterButton);
 initializeStaticEffect(staticButton);
+initializeRainbowEffect(rainbowButton);
