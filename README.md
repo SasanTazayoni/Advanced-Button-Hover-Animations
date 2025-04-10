@@ -364,3 +364,26 @@ This fluid interaction makes the button feel alive and reactive, evoking the cal
 * Droplet Style & Orientation: Each droplet's visual character can be modified through CSS. Change the ```background-color``` in ```.droplet``` to affect tone, and adjust ```opacity``` for translucency. The ```transform: rotate(45deg)``` defines the droplet’s orientation — altering this can shift the feel from stylised to natural. Additionally, the droplet's ```border-radius``` (e.g. ```border-bottom-left-radius```, ```border-top-right-radius```) controls its shape and softness, allowing the movement from crisp droplets to smooth, organic rivulets.
 
 The Water Button offers a visually calming and tactile experience that evokes the movement and tranquillity of water. With a gentle rising fill and falling droplets that dance across its surface, it brings organic motion to an interface. Ideal for nature-inspired designs, wellness brands, or anything that calls for a refreshing, immersive touch — and with robust customisation, it’s as adaptable as water itself.
+
+---
+
+### Static
+
+The Static button delivers a jarring, electrified visual that evokes the look and feel of television static or analog signal interference. Styled with a bold blue background and crisp white text, it appears stable at first glance. But upon interaction, a burst of visual noise flashes across its surface — a chaotic storm of black-and-white interference that briefly disrupts its clean appearance before settling back into stillness. The effect captures a moment of glitch, making the button feel like it's caught in a fleeting transmission error. It's ideal for interfaces with retro, digital, or cyberpunk themes — or wherever a quick spark of visual disruption can enhance engagement.
+
+#### How it works
+
+* Interference Overlay: A complex combination of radial and conic gradients layered inside a ```::before``` pseudo-element replicates the random dot patterns of television static. These patterns shift continuously using a rapid ```@keyframes``` animation, simulating analog noise.
+* Triggered Flash: On hover, the static overlay quickly fades in, reaches full opacity at 0.65, then fades out again — all within 300 milliseconds. This flash of noise acts like a brief visual glitch, giving the illusion of a corrupted signal or momentary disruption in the interface.
+* Background Flicker: Simultaneously, the button’s background color transitions from its stable blue (```#007bff```) to a vivid purple hue (```#8000b0```), reinforcing the sense of a sudden jolt or interference.
+
+#### Customisation
+
+* Static Density & Texture: The fine-grain look of the static can be adjusted by modifying the stop distances in the ```repeating-radial-gradient``` and ```repeating-conic-gradient```. Smaller percentages result in denser “snow,” while larger ones produce more sparse, lo-fi noise.
+* Flash Duration: The length of the glitch can be changed by editing the ```setTimeout()``` in the ```initializeStaticEffect``` function.
+* Opacity & Intensity: Change the value in ```.static-flash::before { opacity: 0.65; }``` to control how intense the static appears. Lower opacities make it subtle like a weak signal; higher values create more disruptive visual noise.
+* Animation Frequency: Adjusting the ```@keyframes static``` timing and the ```animation``` speed lets you create either a frantic buzz or slow pulse, depending on the tone you want the static to carry.
+
+The Static button introduces a momentary break in visual consistency — a controlled anomaly that grabs the user’s attention like an error in the matrix. Short-lived but unmistakable, it is a perfect fit for digital experiences that want to embrace retro-futurism, signal disruption, or interactive surprise.
+
+---
