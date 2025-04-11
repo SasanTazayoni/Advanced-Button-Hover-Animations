@@ -13,6 +13,7 @@ export function initializeRainbowEffect(button: HTMLButtonElement): void {
     if (isHovering) {
       button.style.backgroundPosition = `${x}% center`;
       button.style.color = x < 50 ? "black" : "white";
+      button.style.opacity = "1";
     }
   });
 
@@ -27,6 +28,7 @@ export function initializeRainbowEffect(button: HTMLButtonElement): void {
 
     button.style.backgroundPosition = `${x}% center`;
     button.style.color = x < 50 ? "black" : "white";
+    button.style.opacity = "0.4";
     isHovering = false;
   });
 }
