@@ -8,7 +8,7 @@ export function initializeRainbowEffect(button: HTMLButtonElement): void {
   button.addEventListener("mousemove", (e: MouseEvent) => {
     const rect = button.getBoundingClientRect();
     let x = ((e.clientX - rect.left) / rect.width) * 100;
-    x = clamp(x, 5, 95);
+    x = clamp(x, 2, 98);
 
     if (isHovering) {
       button.style.backgroundPosition = `${x}% center`;
@@ -24,7 +24,7 @@ export function initializeRainbowEffect(button: HTMLButtonElement): void {
   button.addEventListener("mouseleave", (e: MouseEvent) => {
     const rect = button.getBoundingClientRect();
     let x = ((e.clientX - rect.left) / rect.width) * 100;
-    x = clamp(x, 5, 95);
+    x = clamp(x, 2, 98);
 
     button.style.backgroundPosition = `${x}% center`;
     button.style.color = x < 50 ? "black" : "white";
