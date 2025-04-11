@@ -20,7 +20,7 @@ This collection caters to a broad audience, from frontend developers and UI/UX d
 
 This base CSS defines consistent styling for all buttons in the project using CSS custom properties for flexibility and reusability. The :root section sets two variables: --button-width and --button-height, which control the default dimensions of the buttons. The .button class then applies these values along with additional styling to ensure a clean and modern appearance. Padding and font size provide comfortable spacing and readability, while border: none and border-radius: 10px give the button smooth, rounded corners. The cursor: pointer makes it clear the button is interactive, and margin: 10px ensures consistent spacing between multiple buttons. This setup creates a solid foundation that can be extended or customised for different hover animations throughout the project.
 
- can check them out [here!](https://sasantazayoni.github.io/Advanced-Button-Hover-Animations/)
+You can check them out [here!](https://sasantazayoni.github.io/Advanced-Button-Hover-Animations/)
 
 
 ## The Buttons
@@ -382,8 +382,27 @@ The Static button delivers a jarring, electrified visual that evokes the look an
 * Static Density & Texture: The fine-grain look of the static can be adjusted by modifying the stop distances in the ```repeating-radial-gradient``` and ```repeating-conic-gradient```. Smaller percentages result in denser “snow,” while larger ones produce more sparse, lo-fi noise.
 * Flash Duration: The length of the glitch can be changed by editing the ```setTimeout()``` in the ```initializeStaticEffect``` function.
 * Opacity & Intensity: Change the value in ```.static-flash::before { opacity: 0.65; }``` to control how intense the static appears. Lower opacities make it subtle like a weak signal; higher values create more disruptive visual noise.
-* Animation Frequency: Adjusting the ```@keyframes static``` timing and the ```animation``` speed lets you create either a frantic buzz or slow pulse, depending on the tone you want the static to carry.
+* Animation Frequency: Adjusting the ```@keyframes static``` timing and the ```animation``` speed enables the creation of either a frantic buzz or slow pulse.
 
 The Static button introduces a momentary break in visual consistency — a controlled anomaly that grabs the user’s attention like an error in the matrix. Short-lived but unmistakable, it is a perfect fit for digital experiences that want to embrace retro-futurism, signal disruption, or interactive surprise.
+
+---
+
+### Rainbow
+
+The Rainbow Button introduces a dynamic, spectrum-based hover effect that responds to the user’s cursor position across the button’s horizontal axis. At rest, the button features a multi-coloured linear gradient flowing from red to violet. The text is centrally aligned, and its colour adapts based on the cursor’s horizontal placement to maintain visual clarity.
+
+#### How it works
+
+* Cursor-Driven Gradient Shift: As the user moves the cursor over the button, the background gradient scrolls horizontally in response to the cursor’s x-axis position. This creates a fluid rainbow shift beneath the text, mimicking a window into a broader spectrum. The effect feels intuitive and tactile, as if the user is dragging the rainbow with their movement.
+* Adaptive Colour Contrast: In real-time, the text colour transitions between black and white depending on whether the cursor is on the left or right half of the button. This ensures legibility regardless of which colours pass beneath the text, enhancing both form and function.
+* Persistent Gradient Lock: Upon cursor exit, the background gradient locks in place at the final cursor position. This feature preserves the last hovered hue, allowing the button to maintain a personalised state that reflects recent interaction. The final locked colour maintains the adaptive text contrast to preserve accessibility.
+
+#### Customisation
+
+* Gradient Range & Speed: The size of the gradient background and the responsiveness of the horizontal shift can be fine-tuned to achieve faster or slower chromatic motion. The gradient itself may be altered to include more nuanced hues or follow a branded palette.
+* Text & Border Styling: The text colour thresholds and transition points may be adjusted to better suit high-contrast needs or creative styling. Similarly, border and hover outlines can be enhanced to give the button additional prominence or interactivity.
+
+The Rainbow button delivers a lively, user-responsive hover animation that feels both modern and engaging. The interaction is guided by subtlety and fluidity, using colour as the primary medium of feedback. Its intuitive response to cursor movement, along with its ability to retain the final colour state, creates a playful and expressive interaction ideal for vibrant, creative interfaces.
 
 ---
