@@ -140,23 +140,15 @@ footer p {
 .cascade-bottom,
 .cascade-bottom-second,
 .cascade-bottom-third,
-.cascade-bottom-fourth,
-.cascade-bottom-fifth,
 .cascade-top,
 .cascade-top-second,
 .cascade-top-third,
-.cascade-top-fourth,
-.cascade-top-fifth,
 .cascade-right,
 .cascade-right-second,
 .cascade-right-third,
-.cascade-right-fourth,
-.cascade-right-fifth,
 .cascade-left,
 .cascade-left-second,
-.cascade-left-third,
-.cascade-left-fourth,
-.cascade-left-fifth {
+.cascade-left-third {
   position: absolute;
   border-radius: 50%;
   opacity: 0;
@@ -165,13 +157,9 @@ footer p {
 .cascade-bottom,
 .cascade-bottom-second,
 .cascade-bottom-third,
-.cascade-bottom-fourth,
-.cascade-bottom-fifth,
 .cascade-top,
 .cascade-top-second,
-.cascade-top-third,
-.cascade-top-fourth,
-.cascade-top-fifth {
+.cascade-top-third {
   left: 50%;
   transform: translateX(-50%) rotate(180deg);
 }
@@ -179,22 +167,16 @@ footer p {
 .cascade-right,
 .cascade-right-second,
 .cascade-right-third,
-.cascade-right-fourth,
-.cascade-right-fifth,
 .cascade-left,
 .cascade-left-second,
-.cascade-left-third,
-.cascade-left-fourth,
-.cascade-left-fifth {
+.cascade-left-third {
   top: 50%;
   transform: translateY(-50%);
 }
 
 .cascade-right,
 .cascade-right-second,
-.cascade-right-third,
-.cascade-right-fourth,
-.cascade-right-fifth {
+.cascade-right-third {
   background: conic-gradient(
     from 0deg,
     rgb(255, 166, 0) 0deg 180deg,
@@ -204,9 +186,7 @@ footer p {
 
 .cascade-left,
 .cascade-left-second,
-.cascade-left-third,
-.cascade-left-fourth,
-.cascade-left-fifth {
+.cascade-left-third {
   background: conic-gradient(
     from 0deg,
     transparent 0deg 180deg,
@@ -216,9 +196,7 @@ footer p {
 
 .cascade-bottom,
 .cascade-bottom-second,
-.cascade-bottom-third,
-.cascade-bottom-fourth,
-.cascade-bottom-fifth {
+.cascade-bottom-third {
   background: conic-gradient(
     from -90deg,
     rgb(255, 166, 0) 0deg 180deg,
@@ -228,9 +206,7 @@ footer p {
 
 .cascade-top,
 .cascade-top-second,
-.cascade-top-third,
-.cascade-top-fourth,
-.cascade-top-fifth {
+.cascade-top-third {
   background: conic-gradient(
     from -90deg,
     transparent 0deg 180deg,
