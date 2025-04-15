@@ -430,6 +430,6 @@ The Cascade button offers a vibrant, kinetic visual experience that suggests a b
 * Colour Palette: By changing the ```background``` colour in the conic gradients (currently ```rgb(255, 166, 0)```), you can shift the visual theme — from warm oranges to neon greens or electric blues.
 * Timing: Adjust the delays and durations to slow the cascade for a more elegant effect, or speed it up for a burst of excitement.
 
-The Cascade button is a celebration of motion — a vibrant, concentric flourish that feels almost celebratory. Whether used to draw attention to a primary action or simply to delight the user, it brings kinetic personality to modern web interfaces with an animated flair that’s as versatile as it is visually captivating.
+The Cascade button adds a sense of momentum and precision to user interaction. Its layered motion conveys energy without being overwhelming, making it ideal for interfaces where engagement needs to feel active but controlled. Rather than being purely decorative, the animation guides the user’s focus outward — suggesting progression, direction, or impact. It’s a fitting choice for calls to action that should feel intentional, confident, and visually compelling.
 
 ---
