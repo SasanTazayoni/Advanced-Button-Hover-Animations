@@ -410,3 +410,26 @@ The Rainbow Button showcases a vibrant, spectrum-responsive hover effect that vi
 The Rainbow button delivers a lively, user-responsive hover animation that feels both modern and engaging. The interaction is guided by subtlety and fluidity, using colour as the primary medium of feedback. Its intuitive response to cursor movement, along with its ability to retain the final colour state, creates a playful and expressive interaction ideal for vibrant, creative interfaces.
 
 ---
+
+### Cascade
+
+The Cascade button offers a vibrant, kinetic visual experience that suggests a burst of energy radiating in all directions. Dressed in a bold yellow base with sharp black text, it seems cheerful and inviting at rest. But as the user hovers, a chain reaction of animated colour waves erupts from the centre outward — circles spinning from the edges of the button like ripples from a drop of light. Each layer spins and fades in a sequence, giving the illusion of a radiant pulse or energetic cascade. The result is both playful and dynamic, ideal for interactive interfaces where user attention and lively transitions are key.
+
+#### How it works
+
+* Radial Pulse Layers: When the button is hovered, up to 12 circular elements (3 per edge) are dynamically appended. These are placed on all four sides — top, bottom, left, and right — and each represents a ring in the cascade.
+* Animated Rotation: Each ring uses a ```conic-gradient``` styled to resemble a semi-circular burst. These layers rotate either clockwise or counter-clockwise using CSS ```@keyframes```, with staggered delays to simulate outward flow.
+* Opacity Fade: The visual intensity decreases with each successive ring. The innermost layer appears bold and bright, while outer rings fade progressively, enhancing the sense of depth and motion.
+* Hover-triggered Generation: The elements only appear once, upon the user's first hover. This keeps the DOM light and ensures the effect feels like a one-time energy burst, not a persistent animation loop.
+
+#### Customisation
+
+* Layer Count: Reduce or increase the number of ```.cascade-*``` elements to control the depth of the cascade. For a lighter effect, use fewer layers; for a more dramatic wave, add more.
+* Thickness & Size: Modify the width/height of each ```.cascade-*``` class (e.g., ```25px```, ```50px```, ```75px```) to make each ripple larger, thicker, or more spread out.
+* Animation Direction: Alternate between ```rotateRightX```, ```rotateLeftX```, ```rotateRightY```, and ```rotateLeftY``` to vary the spin patterns.
+* Colour Palette: By changing the ```background``` colour in the conic gradients (currently ```rgb(255, 166, 0)```), you can shift the visual theme — from warm oranges to neon greens or electric blues.
+* Timing: Adjust the delays and durations to slow the cascade for a more elegant effect, or speed it up for a burst of excitement.
+
+The Cascade button adds a sense of momentum and precision to user interaction. Its layered motion conveys energy without being overwhelming, making it ideal for interfaces where engagement needs to feel active but controlled. Rather than being purely decorative, the animation guides the user’s focus outward — suggesting progression, direction, or impact. It’s a fitting choice for calls to action that should feel intentional, confident, and visually compelling.
+
+---
