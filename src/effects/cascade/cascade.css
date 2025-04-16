@@ -4,7 +4,7 @@
   color: black;
   border: none;
   overflow: hidden;
-  transition: background 0.2s ease 0.8s;
+  transition: background 2s ease;
 }
 
 .cascade-button:hover {
@@ -16,10 +16,6 @@
   z-index: 10;
 }
 
-.cascade-fade-out {
-  animation: fadeOut 0.3s forwards;
-}
-
 .cascade-bottom,
 .cascade-bottom-second,
 .cascade-bottom-third,
@@ -29,12 +25,14 @@
 .cascade-right,
 .cascade-right-second,
 .cascade-right-third,
+.cascade-right-fourth,
 .cascade-left,
 .cascade-left-second,
-.cascade-left-third {
+.cascade-left-third,
+.cascade-left-fourth {
   position: absolute;
   border-radius: 50%;
-  opacity: 0;
+  opacity: 0.2;
 }
 
 .cascade-bottom,
@@ -50,16 +48,19 @@
 .cascade-right,
 .cascade-right-second,
 .cascade-right-third,
+.cascade-right-fourth,
 .cascade-left,
 .cascade-left-second,
-.cascade-left-third {
+.cascade-left-third,
+.cascade-left-fourth {
   top: 50%;
   transform: translateY(-50%);
 }
 
 .cascade-right,
 .cascade-right-second,
-.cascade-right-third {
+.cascade-right-third,
+.cascade-right-fourth {
   background: conic-gradient(
     from 0deg,
     rgb(255, 166, 0) 0deg 180deg,
@@ -69,7 +70,8 @@
 
 .cascade-left,
 .cascade-left-second,
-.cascade-left-third {
+.cascade-left-third,
+.cascade-left-fourth {
   background: conic-gradient(
     from 0deg,
     transparent 0deg 180deg,
@@ -124,6 +126,13 @@
   z-index: 3;
 }
 
+.cascade-right-fourth,
+.cascade-left-fourth {
+  width: 100px;
+  height: 100px;
+  z-index: 2;
+}
+
 .cascade-bottom {
   top: calc(100% - 12.5px);
 }
@@ -160,6 +169,10 @@
   left: calc(100% - 37.5px);
 }
 
+.cascade-right-fourth {
+  left: calc(100% - 45px);
+}
+
 .cascade-left {
   right: calc(100% - 12.5px);
 }
@@ -172,44 +185,62 @@
   right: calc(100% - 37px);
 }
 
+.cascade-left-fourth {
+  right: calc(100% - 45px);
+}
+
 .cascade-button:hover .cascade-bottom,
 .cascade-button:hover .cascade-top {
   animation: rotateRightX 0.2s forwards;
-  opacity: 0.8;
+  opacity: 1;
+  transition: opacity 1.4s ease;
 }
 
 .cascade-button:hover .cascade-bottom-second,
 .cascade-button:hover .cascade-top-second {
   animation: rotateLeftX 0.2s forwards;
   animation-delay: 0.2s;
-  opacity: 0.6;
+  opacity: 1;
+  transition: opacity 1.4s ease 0.2s;
 }
 
 .cascade-button:hover .cascade-bottom-third,
 .cascade-button:hover .cascade-top-third {
   animation: rotateRightX 0.2s forwards;
   animation-delay: 0.4s;
-  opacity: 0.4;
+  opacity: 1;
+  transition: opacity 1.4s ease 0.4s;
 }
 
 .cascade-button:hover .cascade-right,
 .cascade-button:hover .cascade-left {
   animation: rotateLeftY 0.2s forwards;
-  opacity: 0.8;
+  opacity: 1;
+  transition: opacity 1.4s ease;
 }
 
 .cascade-button:hover .cascade-right-second,
 .cascade-button:hover .cascade-left-second {
   animation: rotateRightY 0.2s forwards;
   animation-delay: 0.2s;
-  opacity: 0.6;
+  opacity: 1;
+  transition: opacity 1.4s ease 0.2s;
 }
 
 .cascade-button:hover .cascade-right-third,
 .cascade-button:hover .cascade-left-third {
   animation: rotateLeftY 0.2s forwards;
   animation-delay: 0.4s;
-  opacity: 0.4;
+  opacity: 1;
+  transition: opacity 1.4s ease 0.4s;
+}
+
+.cascade-button:hover .cascade-right-fourth,
+.cascade-button:hover .cascade-left-fourth {
+  animation: rotateRightY 0.2s forwards;
+  animation-delay: 0.6s;
+  opacity: 1;
+  transition: opacity 1.4s ease 0.6s;
 }
 
 @keyframes rotateRightX {
@@ -245,11 +276,5 @@
   }
   100% {
     transform: translateY(-50%) rotate(-180deg);
-  }
-}
-
-@keyframes fadeOut {
-  to {
-    opacity: 0;
   }
 }

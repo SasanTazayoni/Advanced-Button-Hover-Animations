@@ -11,9 +11,11 @@ export function initializeCascadeEffect(button: HTMLButtonElement): void {
     "cascade-right",
     "cascade-right-second",
     "cascade-right-third",
+    "cascade-right-fourth",
     "cascade-left",
     "cascade-left-second",
     "cascade-left-third",
+    "cascade-left-fourth",
   ];
 
   let hasEntered = false;
