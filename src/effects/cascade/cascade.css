@@ -4,11 +4,6 @@
   color: black;
   border: none;
   overflow: hidden;
-  transition: background 2s ease;
-}
-
-.cascade-button:hover {
-  background: rgb(255, 166, 0);
 }
 
 .cascade-button > span {
