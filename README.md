@@ -427,7 +427,7 @@ The Rainbow button delivers a lively, user-responsive hover animation that feels
 
 ### Cascade
 
-The Cascade button offers a vibrant, kinetic visual experience that suggests a burst of energy radiating in all directions. Dressed in a bold yellow base with sharp black text, it seems cheerful and inviting at rest. But as the user hovers, a chain reaction of animated colour waves erupts from the centre outward — circles spinning from the edges of the button like ripples from a drop of light. Each layer spins and fades in a sequence, giving the illusion of a radiant pulse or energetic cascade. The result is both playful and dynamic, ideal for interactive interfaces where user attention and lively transitions are key.
+The Cascade button offers a vibrant, kinetic visual experience that suggests a burst of energy radiating in all directions. Dressed in a bold yellow base with sharp black text, it seems cheerful and inviting at rest. But as the user hovers, a chain reaction of animated colour waves erupts from the centre outward. Each layer spins and fades in a sequence, giving the illusion of a radiant pulse or energetic cascade. The result is both playful and dynamic, ideal for interactive interfaces where user attention and lively transitions are key.
 
 #### How it works
 
