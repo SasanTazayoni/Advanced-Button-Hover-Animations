@@ -29,7 +29,11 @@ You can check them out [here!](https://sasantazayoni.github.io/Advanced-Button-H
 
 ### Sweep
 
-The Sweep button uses a linear-gradient background that creates a dynamic sweeping animation across the button surface. This gradient typically features two main colours with a sharply contrasting colour placed in between — often a lighter tone like white — to establish the illusion of a “sweep.” The gradient is expanded beyond the button’s visible area using background-size: 400%, allowing for noticeable movement when the background-position shifts from 0% to 100% on hover. This creates a left-to-right sweeping motion. Completely different colours or even shades of a single colour with varying contrast can be used; the key is that the middle "fade" colour must contrast both surrounding colours to maintain the visual impact. The entire animation is smoothed using transition: all 0.3s ease, making the effect feel fluid and responsive. With simple tweaks to direction, colours, and intensity, the sweep effect can be customised to match any visual style.
+The Sweep button uses a linear-gradient background that creates a dynamic sweeping animation across the button surface. This gradient typically features two main colours with a sharply contrasting colour placed in between — often a lighter tone like white — to establish the illusion of a “sweep.” The gradient is expanded beyond the button’s visible area using background-size: 400%, allowing for noticeable movement when the background-position shifts from 0% to 100% on hover. This creates a left-to-right sweeping motion.
+
+💡 Inspired by Muhammad Irshad’s videos on YouTube (Online Tutorials).
+
+Completely different colours or even shades of a single colour with varying contrast can be used; the key is that the middle "fade" colour must contrast both surrounding colours to maintain the visual impact. The entire animation is smoothed using transition: all 0.3s ease, making the effect feel fluid and responsive. With simple tweaks to direction, colours, and intensity, the sweep effect can be customised to match any visual style.
 
 #### How it works
 
@@ -48,7 +52,11 @@ The Sweep button is ideal for modern, animated interfaces where motion is used t
 
 ### Neon
 
-The Neon button delivers a bold, luminous effect that draws inspiration from classic neon signage, offering a visually striking experience with minimal styling. At rest, the button features a white background with a red border and red text, creating a clean, high-contrast look. When hovered, the button undergoes a smooth transformation — the background fills with red, the text colour inverts to white, and the border becomes transparent. This shift in appearance sets the stage for the core feature of the button: a glowing neon aura that radiates from the text and border.
+The Neon button delivers a bold, luminous effect that draws inspiration from classic neon signage, offering a visually striking experience with minimal styling. At rest, the button features a white background with a red border and red text, creating a clean, high-contrast look. When hovered, the button undergoes a smooth transformation — the background fills with red, the text colour inverts to white, and the border becomes transparent.
+
+💡 Inspired by Kevin Powell’s neon button design on YouTube.
+
+This shift in appearance sets the stage for the core feature of the button: a glowing neon aura that radiates from the text and border.
 
 #### How it works
 
@@ -89,7 +97,11 @@ The Trail button is ideal for interfaces where interactivity and feedback are es
 
 ### Ripple
 
-The Ripple button introduces an energetic and tactile animation that simulates the visual of a water ripple expanding outward from the point of cursor interaction. Styled with a light red background and black text, the button maintains a clean and vibrant appearance by default. Upon hover, the background deepens to a bold red while the text switches to white, enhancing contrast and providing immediate visual feedback. The standout feature, however, is the ripple itself — a circular burst that originates precisely where the user places their cursor, adding a highly responsive and immersive effect.
+The Ripple button introduces an energetic and tactile animation that simulates the visual of a water ripple expanding outward from the point of cursor interaction. Styled with a light red background and black text, the button maintains a clean and vibrant appearance by default. Upon hover, the background deepens to a bold red while the text switches to white, enhancing contrast and providing immediate visual feedback.
+
+💡 Inspired by Muhammad Irshad’s videos on YouTube (Online Tutorials).
+
+The standout feature, however, is the ripple itself — a circular burst that originates precisely where the user places their cursor, adding a highly responsive and immersive effect.
 
 #### How it works
 
@@ -113,6 +125,8 @@ The Ripple button turns a basic click target into a visually expressive element,
 ### Border
 
 The Border button introduces a modern and visually captivating rotating border effect, achieved using a conic-gradient and layered CSS pseudo-elements. Initially styled with a soft yellow background and black text, the button presents a friendly and minimal appearance. On hover, the background transitions to a vibrant green, while the border comes to life with an animated ring of colour — adding movement and depth to the interaction.
+
+💡 Inspired by Kevin Powell’s conic-gradient border animation on YouTube.
 
 #### How it works
 
