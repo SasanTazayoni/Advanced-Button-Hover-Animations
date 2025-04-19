@@ -12,6 +12,8 @@ This project was created purely for fun and as a way to practice using TypeScrip
 
 Surprisingly, many of these buttons proved far more difficult to make than expected. What began as simple hover effects often required nuanced timing, precise transformations, and clever layering to achieve the intended visuals without sacrificing performance or responsiveness. Balancing complexity and smooth interaction demanded creative problem-solving and iterative refinement.
 
+Some animations turned out to be more popular or practical than others. Interestingly, a few of the easiest ones became the most reusable and impactful in real-world scenarios, while some of the most complex ones — despite being technically impressive — proved to be less practical or visually effective than originally imagined. This contrast offered valuable insight into the balance between effort, creativity, and usability in frontend development.
+
 This project is built with reusability in mind, allowing developers to easily customise effects, tweak parameters, and extend functionalities to suit their specific needs. By leveraging TypeScript, the animations are structured with strong typing, ensuring better error handling, clearer code organisation, and a smoother development experience.
 
 To experience the animations in action, simply apply them to any button element. Each hover effect is triggered when a user moves their cursor over the button, adding an extra layer of engagement to the user interface. Developers can tweak animation settings such as duration, easing functions, and effect intensity to create unique visual styles.
