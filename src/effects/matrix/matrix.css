@@ -1,0 +1,35 @@
+.matrix-button {
+  position: relative;
+  background: #000;
+  color: greenyellow;
+  border: none;
+  overflow: hidden;
+  text-align: center;
+}
+
+.matrix-char {
+  position: absolute;
+  color: greenyellow;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.button-label {
+  position: relative;
+  z-index: 2;
+  padding: 4px;
+}
+
+.button-label::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5) 70%);
+  border-radius: 50%;
+  z-index: -1;
+  pointer-events: none;
+}
