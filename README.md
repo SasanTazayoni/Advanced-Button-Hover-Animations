@@ -452,3 +452,31 @@ The Cascade button offers a vibrant, kinetic visual experience that suggests a b
 The Cascade button adds a sense of momentum and precision to user interaction. Its layered motion conveys energy without being overwhelming, making it ideal for interfaces where engagement needs to feel active but controlled. Rather than being purely decorative, the animation guides the user’s focus outward — suggesting progression, direction, or impact. It’s a fitting choice for calls to action that should feel intentional, confident, and visually compelling.
 
 ---
+
+### Matrix
+
+The Matrix button evokes the hypnotic, code-dripping aesthetic of cyberpunk cinema. Styled with a stark black background and bright green-yellow text, it channels the immersive visual language of encrypted systems and virtual networks. At rest, the button remains sleek and minimal — but on hover, cascading trails of katakana characters begin to fall, simulating the iconic digital rain effect seen in the Matrix films. These dynamically animated glyphs trickle down the button surface in staggered, glowing streams, giving the impression of an interface quietly decoding itself or tapping into a live data feed. The interaction is subtle yet visually arresting, conjuring the feel of a system awakening or slipping into a deeper layer of virtual space. It’s a fitting choice for experiences rooted in hacking, virtual reality, or glitchy, futuristic design.
+
+#### How it works
+
+* Code Rain Generation: When hovered, the button periodically spawns falling trails of Japanese katakana characters (like ｱ, ﾂ, ﾅ, etc.), which animate downward in vertical streams. Each trail begins at a random x-position 5 pixels apart, across the button width, and drops character by character, with fading opacity to mimic the signature layered “digital rain” effect.
+* Cooldown Control: To prevent overload or visual chaos during rapid hover-ins and outs, a cooldown timer limits how frequently new trails are generated. This ensures a controlled, consistent flow even with fast user interaction.
+* Character Fading & Cleanup: Each stream fades gradually as characters fall further, with earlier ones growing more transparent. After a short lifetime, characters are removed from the DOM to maintain performance and avoid build-up.
+* Hover-Triggered Activation: Rain begins on mouseenter, stops on mouseleave, and respects a brief delay before resuming if the user hovers again too quickly. This helps simulate a realistic stop-start rhythm without overwhelming the interface.
+* Text Elevation & Visual Clarity: To ensure the animated characters don’t obscure or clash with the button’s label, the button text is positioned on a higher z-index and given breathing room with internal padding. Additionally, a subtle radial gradient is layered behind the label via a ```::before``` pseudo-element. This soft fade to black around the text improves contrast and creates the impression that the digital rain is falling in the background, while the button text remains crisp and legible in the foreground.
+
+#### Customisation
+
+* Trail Limit: Adjust the maximum number of concurrent falling trails by editing the ```activeTrailsCount``` value. A higher limit creates a denser rainfall effect, while a lower one results in a more minimal and performance-friendly animation.
+* Character Set: Modify the ```matrixChars``` array to change the visual language of the effect. Use binary digits for a classic terminal look, emoji for playful interactions, or symbols from other writing systems to match a sci-fi or hacker theme.
+* Font Size: Change the ```fontSize``` and ```lineHeight``` values to scale the characters. Smaller values produce tighter, more rapid streams, while larger ones give a bolder, more cinematic appearance.
+* Trail Length: Control how long each animation runs by adjusting the ```trailSpeed``` value. Increasing this will let trails fall farther down the button, while lower values create shorter, snappier sequences.
+* Fade Strength: Tune the fade-out gradient of each trail by editing the opacity multiplier inside the fade logic. Changing ```index * 0.15``` to a lower number will make characters stay brighter longer, while a higher number causes them to fade faster.
+* Spawn Rate: Modify the interval between trail bursts by adjusting the delay in ```setInterval(spawnTrails, 600)```. A shorter interval increases intensity and visual chaos; a longer one introduces more calm, sporadic movement.
+* Cooldown Timing: Set the pause duration after hover by changing the ```cooldownTime```. Longer cooldowns prevent animation spam on rapid hover-exit events, while shorter ones make the effect feel more reactive and continuous.
+* Trail Spacing: Update the horizontal positioning logic to increase or reduce the space between trails. The default 5-pixel multiplier determines the grid columns where trails fall — increase this for more breathing room, or decrease it for tighter clustering.
+* Trail Lifetime: Adjust how long individual characters stay on screen by changing the ```maxLifetime```. A longer lifetime creates a thicker trail tail, while a shorter one sharpens the visual footprint and lightens the DOM load.
+
+The Matrix button captures the mystique and motion of an encrypted, ever-running digital system. It offers a stylised, interactive tribute to code itself — pulsing quietly in the background until touched, then revealing a cascading stream of characters that feel alive with encrypted purpose. Ideal for dev tools, terminal-style UIs, or any interface seeking a hint of the cybernetic unknown.
+
+---
