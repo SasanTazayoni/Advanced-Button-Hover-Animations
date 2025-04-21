@@ -51,14 +51,12 @@ export function initializeMatrixEffect(button: HTMLElement) {
   let cooldownActive = false;
   let cooldownTimeoutId: ReturnType<typeof setTimeout> | null = null;
   let hovered = false;
-  const activeXCoordinates = new Set<number>();
   let activeTrailsCount = 0;
+  const activeXCoordinates = new Set<number>();
   const cooldownTime = 600;
+
   type Trail = {
     x: number;
-    currentY: number;
-    trail: HTMLSpanElement[];
-    count: number;
     delay: number;
   };
 
@@ -75,7 +73,6 @@ export function initializeMatrixEffect(button: HTMLElement) {
       clearInterval(hoverInterval);
       hoverInterval = null;
     }
-    hoverInterval = null;
     cooldownActive = true;
 
     if (cooldownTimeoutId) clearTimeout(cooldownTimeoutId);
@@ -92,15 +89,10 @@ export function initializeMatrixEffect(button: HTMLElement) {
   });
 
   function spawnTrails() {
-    if (activeTrailsCount >= 20) return;
+    if (activeTrailsCount >= 16) return;
 
-    const numTrails = 6 + Math.floor(Math.random() * 6);
-    const fontSize = 8;
-    const lineHeight = 8;
-    const maxLifetime = 600;
-
+    const numTrails = 4 + Math.floor(Math.random() * 4);
     const trails: Trail[] = [];
-    const xCoordinates: number[] = [];
 
     for (let i = 0; i < numTrails; i++) {
       let x = Math.floor(Math.random() * 28) * 5;
@@ -109,61 +101,48 @@ export function initializeMatrixEffect(button: HTMLElement) {
       }
 
       const delay = Math.floor(Math.random() * 250) + 100;
+      trails.push({ x, delay });
       activeXCoordinates.add(x);
-      xCoordinates.push(x);
-      trails.push({ x, currentY: 2, trail: [], count: 0, delay });
+      activeTrailsCount++;
     }
 
-    activeTrailsCount += trails.length;
-
-    for (let i = 0; i < trails.length; i++) {
-      step(i);
+    for (const trail of trails) {
+      spawnTrail(trail.x, trail.delay);
     }
+  }
 
-    function step(trailIndex: number): void {
-      const trail = trails[trailIndex];
+  function spawnTrail(x: number, delayBetweenChars: number) {
+    const trailLength = 6;
+    const fadeDuration = delayBetweenChars * (trailLength - 1);
+    const chars: HTMLSpanElement[] = [];
+
+    for (let i = 0; i < trailLength; i++) {
+      const char = document.createElement("span");
+      char.textContent =
+        matrixChars[Math.floor(Math.random() * matrixChars.length)];
+      char.classList.add("matrix-char");
+      char.style.fontWeight = "bold";
+      char.style.left = `${x}px`;
+      char.style.top = `${i * 8}px`;
+      button.appendChild(char);
+      chars.push(char);
 
       setTimeout(() => {
-        if (trail.count >= 6) return;
-        const char = document.createElement("span");
-        char.textContent =
-          matrixChars[Math.floor(Math.random() * matrixChars.length)];
-        char.classList.add("matrix-char");
-        char.style.fontWeight = "bold";
-        char.style.left = `${trail.x}px`;
-        char.style.top = `${trail.currentY}px`;
-        char.style.fontSize = `${fontSize}px`;
-        char.style.lineHeight = `${lineHeight}px`;
         char.style.opacity = "1";
-        button.appendChild(char);
+      }, delayBetweenChars * i);
 
-        trail.trail.unshift(char);
+      setTimeout(() => {
+        char.style.transition = `opacity ${fadeDuration}ms linear`;
+        char.style.opacity = "0";
 
         setTimeout(() => {
           char.remove();
-          activeXCoordinates.delete(trail.x);
-          activeTrailsCount--;
-        }, maxLifetime);
-
-        trail.trail.forEach((c, index) => {
-          const fade = 1 - index * 0.15;
-          c.style.opacity = fade > 0 ? fade.toFixed(2) : "0";
-        });
-
-        if (trail.trail.length > 10) {
-          const removed = trail.trail.pop();
-          if (removed) {
-            removed.remove();
+          if (i === trailLength - 1) {
+            activeTrailsCount--;
+            activeXCoordinates.delete(x);
           }
-        }
-
-        trail.currentY += lineHeight;
-        trail.count++;
-
-        if (trail.count < 6) {
-          step(trailIndex);
-        }
-      }, trail.delay);
+        }, fadeDuration);
+      }, delayBetweenChars * (i + 1));
     }
   }
 }
