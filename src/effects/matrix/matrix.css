@@ -11,6 +11,11 @@
   position: absolute;
   color: greenyellow;
   pointer-events: none;
+  padding: 1px;
+  opacity: 0;
+  font-size: 8px;
+  line-height: 8px;
+  font-weight: bold;
   z-index: 0;
 }
 
