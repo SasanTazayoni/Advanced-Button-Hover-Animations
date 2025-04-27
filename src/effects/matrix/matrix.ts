@@ -121,7 +121,6 @@ export function initializeMatrixEffect(button: HTMLElement) {
       char.textContent =
         matrixChars[Math.floor(Math.random() * matrixChars.length)];
       char.classList.add("matrix-char");
-      char.style.fontWeight = "bold";
       char.style.left = `${x}px`;
       char.style.top = `${i * 8}px`;
       button.appendChild(char);
