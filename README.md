@@ -66,6 +66,8 @@ This shift in appearance sets the stage for the core feature of the button: a gl
 * Hover Interaction: The visual transformation on hover — including the colour inversion and glow — is handled through a CSS ```transition``` set to ```all 0.3s ease```. This ensures the changes occur quickly but fluidly, enhancing the button’s responsiveness without feeling abrupt. The border fading to transparent places full emphasis on the glowing effect, while the bold font weight ensures the text remains legible amidst the light.
 * Font & Colour: The use of bold, all-caps text enhances legibility and amplifies the dramatic style of the neon effect. Although red is used by default for a classic neon look, any bright or saturated colour can be used to achieve different moods — such as cyan, lime green, magenta, or electric blue — depending on the project’s design language.
 
+🔔 Note: This effect is most visually impactful when using a bright colour against a dark background. When applied to dark colours on light backgrounds, the glow can feel excessive and visually noisy, diminishing the overall aesthetic.
+
 #### Customisation
 
 * Glow Intensity: The depth and vividness of the glow can be fine-tuned by adjusting the number of ```drop-shadow``` layers and their respective blur radii. Adding more layers with subtle differences in radius creates a more pronounced halo effect, while fewer layers result in a gentler glow. Shadow offsets and opacity levels can also be experimented with to refine the overall look.
