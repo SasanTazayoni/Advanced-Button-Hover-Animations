@@ -4,28 +4,18 @@
   inherits: false;
 }
 
-.animated-border-button {
+.border-button {
   position: relative;
   background: rgb(255, 255, 169);
   transition: all 0.3s;
 }
 
-.animated-border-button:hover {
+.border-button:hover {
   background: rgb(146, 255, 136);
 }
 
-.animated-border-button::before,
-.animated-border-button::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  z-index: -1;
-  transition: all 0.3s;
-}
-
-.animated-border-button:hover::before,
-.animated-border-button:hover::after {
+.border-button::before,
+.border-button::after {
   background: conic-gradient(
     from var(--gradient-angle),
     greenyellow,
@@ -34,11 +24,22 @@
     #084908,
     greenyellow
   );
+  content: "";
+  position: absolute;
   inset: -0.2rem;
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.6s ease;
   animation: rotation 2s linear infinite;
 }
 
-.animated-border-button::after {
+.border-button:hover::before,
+.border-button:hover::after {
+  opacity: 1;
+}
+
+.border-button::after {
   filter: blur(0.5rem);
 }
 
