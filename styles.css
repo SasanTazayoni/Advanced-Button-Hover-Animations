@@ -140,7 +140,6 @@ footer p {
   z-index: 1;
   background: var(--overlay, rgba(100, 100, 100, 0.8));
   pointer-events: none;
-  transition: background 0.1s ease;
 }
 
 .lava-button::after {
@@ -149,13 +148,13 @@ footer p {
     #b71c1c,
     #b71c1c,
     #ff5722,
-    #d69d00,
+    #ffe602,
     #ff5722,
     #b71c1c,
     #b71c1c,
     #b71c1c,
     #ff5722,
-    #d69d00,
+    #ffe602,
     #ff5722,
     #b71c1c,
     #b71c1c
