@@ -65,12 +65,13 @@
     <button class="water-button button">Water</button>
     <button class="static-button button">Static</button>
     <button class="rainbow-button button">Rainbow</button>
-    <button class="cascade-button button">
-      <span>Cascade</span>
+    <button class="lava-button button">
+      <span>Lava</span>
     </button>
     <button class="matrix-button button">
       <span class="button-label">Matrix</span>
     </button>
+    <div class="black-square"></div>
   </div>
   <footer>
     <p>
@@ -86,6 +87,21 @@
       <i class="fa-brands fa-github"></i>
     </a>
   </footer>
+  <script>
+const lavaBtn = document.querySelector('.lava-button');
+
+lavaBtn.addEventListener('mousemove', (e) => {
+  const rect = lavaBtn.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const gradient = `radial-gradient(circle 40px at ${x}px ${y}px, transparent 0%, rgba(100, 100, 100, 0.8) 100%)`;
+  lavaBtn.style.setProperty('--overlay', gradient);
+});
+
+lavaBtn.addEventListener('mouseleave', () => {
+  lavaBtn.style.setProperty('--overlay', 'rgba(100, 100, 100, 0.8)');
+});
+  </script>
   <script
       src="https://kit.fontawesome.com/cc28b3bda6.js"
       crossorigin="anonymous">
