@@ -73,6 +73,14 @@
     </button>
     <div class="black-square"></div>
   </div>
+  <button class="cube-button">
+    <div class="cube-row">
+      <div class="cube"><span></span><span></span><span></span></div>
+      <div class="cube"><span></span><span></span><span></span></div>
+      <div class="cube"><span></span><span></span><span></span></div>
+      <!-- Add as many .cube elements as needed -->
+    </div>
+  </button>
   <footer>
     <p>
       &copy; Advanced Button Hover Animations 2024 created by Sasan Tazayoni
@@ -101,6 +109,44 @@ lavaBtn.addEventListener('mousemove', (e) => {
 lavaBtn.addEventListener('mouseleave', () => {
   lavaBtn.style.setProperty('--overlay', 'rgba(100, 100, 100, 0.8)');
 });
+function fillButtonWithCubes(buttonSelector) {
+  const button = document.querySelector(buttonSelector);
+  const cubeSize = 20;
+  const gap = 1;
+  const totalCubeWidth = cubeSize + gap;
+
+  const buttonWidth = button.clientWidth;
+  const buttonHeight = button.clientHeight;
+
+  const cols = Math.ceil(buttonWidth / totalCubeWidth);
+  const rows = Math.ceil(buttonHeight / cubeSize);
+
+  // Clear previous cubes
+  button.querySelectorAll('.cube-row').forEach(row => row.remove());
+
+  for (let r = 0; r < rows; r++) {
+    const row = document.createElement('div');
+    row.className = 'cube-row';
+
+    for (let c = 0; c < cols + 1; c++) {
+      const cube = document.createElement('div');
+      cube.className = 'cube';
+
+      for (let i = 0; i < 3; i++) {
+        cube.appendChild(document.createElement('span'));
+      }
+
+      row.appendChild(cube);
+    }
+
+    button.prepend(row); // Add behind label
+  }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  fillButtonWithCubes('.cube-button');
+});
+
   </script>
   <script
       src="https://kit.fontawesome.com/cc28b3bda6.js"
