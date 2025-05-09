@@ -10,6 +10,7 @@ import { initializeIlluminateEffect } from "./effects/illuminate/illuminate.ts";
 import { initializeWaterEffect } from "./effects/water/water.ts";
 import { initializeStaticEffect } from "./effects/static/static.ts";
 import { initializeRainbowEffect } from "./effects/rainbow/rainbow.ts";
+import { initializeLavaEffect } from "./effects/lava/lava.ts";
 import { initializeMatrixEffect } from "./effects/matrix/matrix.ts";
 
 const trailButton = document.querySelector<HTMLButtonElement>(".trail-button")!;
@@ -33,6 +34,7 @@ const staticButton =
   document.querySelector<HTMLButtonElement>(".static-button")!;
 const rainbowButton =
   document.querySelector<HTMLButtonElement>(".rainbow-button")!;
+const lavaButton = document.querySelector<HTMLButtonElement>(".lava-button")!;
 const matrixButton =
   document.querySelector<HTMLButtonElement>(".matrix-button")!;
 
@@ -48,4 +50,5 @@ initializeIlluminateEffect(illuminateButton);
 initializeWaterEffect(waterButton);
 initializeStaticEffect(staticButton);
 initializeRainbowEffect(rainbowButton);
+initializeLavaEffect(lavaButton);
 initializeMatrixEffect(matrixButton);

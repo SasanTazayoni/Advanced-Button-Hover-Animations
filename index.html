@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="./src/effects/water/water.css">
   <link rel="stylesheet" href="./src/effects/static/static.css">
   <link rel="stylesheet" href="./src/effects/rainbow/rainbow.css">
+  <link rel="stylesheet" href="./src/effects/lava/lava.css">
   <link rel="stylesheet" href="./src/effects/matrix/matrix.css">
   <script type="module" src="./src/script.ts"></script>
   <title>Advanced Button Hover Animations</title>
@@ -85,21 +86,6 @@
       <i class="fa-brands fa-github"></i>
     </a>
   </footer>
-  <script>
-const lavaBtn = document.querySelector('.lava-button');
-
-lavaBtn.addEventListener('mousemove', (e) => {
-  const rect = lavaBtn.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-  const gradient = `radial-gradient(circle 40px at ${x}px ${y}px, transparent 0%, rgba(30, 30, 30, 0.9) 100%)`;
-  lavaBtn.style.setProperty('--overlay', gradient);
-});
-
-lavaBtn.addEventListener('mouseleave', () => {
-  lavaBtn.style.removeProperty('--overlay');
-});
-  </script>
   <script
       src="https://kit.fontawesome.com/cc28b3bda6.js"
       crossorigin="anonymous">

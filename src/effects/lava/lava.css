@@ -1,0 +1,59 @@
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.lava-button {
+  position: relative;
+  overflow: hidden;
+  color: white;
+  background-color: transparent;
+}
+
+.lava-button span {
+  position: relative;
+  z-index: 3;
+}
+
+.lava-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: var(--overlay, rgba(30, 30, 30, 0.9));
+  pointer-events: none;
+}
+
+.lava-button::after {
+  background: conic-gradient(
+    from var(--gradient-angle),
+    #b71c1c,
+    #b71c1c,
+    #d69d00,
+    #b71c1c,
+    #b71c1c,
+    #b71c1c,
+    #d69d00,
+    #b71c1c,
+    #b71c1c
+  );
+  background-position: var(--x) var(--y);
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 0;
+  transition: all 0.6s ease;
+  animation: lavaflow 2s linear infinite;
+  filter: blur(0.6rem);
+}
+
+@keyframes lavaflow {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
+}
