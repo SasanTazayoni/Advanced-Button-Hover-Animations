@@ -1,7 +1,7 @@
 import { initializeTrailEffect } from "./effects/trail/trail.ts";
 import { initializeRippleEffect } from "./effects/ripple/ripple.ts";
 import { initializeSpiralEffect } from "./effects/spiral/spiral.ts";
-import { initializePixelationEffect } from "./effects/pixels/pixels.ts";
+import { initializePixelsEffect } from "./effects/pixels/pixels.ts";
 import { initializeInterlaceEffect } from "./effects/interlace/interlace.ts";
 import { initializeWeldEffect } from "./effects/weld/weld.ts";
 import { initializeStreamEffect } from "./effects/stream/stream.ts";
@@ -41,7 +41,7 @@ const matrixButton =
 initializeTrailEffect(trailButton);
 initializeRippleEffect(rippleButton);
 initializeSpiralEffect(spiralButton);
-initializePixelationEffect(pixelsButton);
+initializePixelsEffect(pixelsButton);
 initializeInterlaceEffect(interlaceButton);
 initializeWeldEffect(weldButton);
 initializeStreamEffect(streamButton);

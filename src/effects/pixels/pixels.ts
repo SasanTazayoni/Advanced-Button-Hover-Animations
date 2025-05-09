@@ -1,4 +1,4 @@
-export const initializePixelationEffect = (button: HTMLButtonElement): void => {
+export const initializePixelsEffect = (button: HTMLButtonElement): void => {
   let filling = false;
   let clearing = false;
   let filledSquares = new Set<string>();
