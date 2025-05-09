@@ -133,14 +133,32 @@ footer p {
   z-index: 3;
 }
 
+.grid-overlay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: grid;
+  gap: 2px;
+  pointer-events: none;
+  background-color: transparent;
+}
+
+.grid-overlay .square {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+}
+
 .lava-button::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 2;
   background: var(--overlay, rgba(100, 100, 100, 0.8));
   pointer-events: none;
-  transition: background 0.3s ease;
 }
 
 .lava-button::after {
@@ -148,15 +166,11 @@ footer p {
     from var(--gradient-angle),
     #b71c1c,
     #b71c1c,
-    #ff5722,
     #d69d00,
-    #ff5722,
     #b71c1c,
     #b71c1c,
     #b71c1c,
-    #ff5722,
     #d69d00,
-    #ff5722,
     #b71c1c,
     #b71c1c
   );
@@ -167,7 +181,7 @@ footer p {
   border-radius: inherit;
   z-index: 0;
   transition: all 0.6s ease;
-  animation: lavaflow 10s linear infinite;
+  animation: lavaflow 5s linear infinite;
   filter: blur(0.6rem);
 }
 
@@ -178,71 +192,4 @@ footer p {
   100% {
     --gradient-angle: 360deg;
   }
-}
-
-.cube-button {
-  position: relative;
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Align children (rows) to the left */
-  width: 100%; /* Ensure full button width */
-  padding: 0; /* Remove padding that offsets content */
-  z-index: 4;
-  width: 140px;
-}
-
-.cube-row {
-  display: flex;
-  gap: 4px;
-  height: 20px;
-  position: relative;
-  margin: 0; /* Remove default spacing if any */
-}
-
-.cube-row:nth-child(even) {
-  transform: translateX(-20px);
-}
-.cube-row:nth-child(odd) {
-  transform: translateX(-10px);
-}
-
-.cube {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-}
-
-.cube span {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-/* Top face */
-.cube span:nth-child(1) {
-  clip-path: polygon(50% 0%, 100% 25%, 50% 50%, 0 25%);
-  background: #222;
-  z-index: 3;
-}
-
-/* Left face */
-.cube span:nth-child(2) {
-  clip-path: polygon(0% 75%, 50% 100%, 50% 50%, 0 25%);
-  background: #1a1a1a;
-  z-index: 2;
-  transform: translate(-1px, 1px);
-  transform-origin: top left;
-}
-
-/* Right face */
-.cube span:nth-child(3) {
-  clip-path: polygon(100% 75%, 50% 100%, 50% 50%, 100% 25%);
-  background: #111;
-  z-index: 1;
-  transform: translate(1px, 1px);
-  transform-origin: top right;
 }
