@@ -428,34 +428,6 @@ The Rainbow button delivers a lively, user-responsive hover animation that feels
 
 ---
 
-### Cascade
-
-The Cascade button offers a vibrant, kinetic visual experience that suggests a burst of energy radiating in all directions. Dressed in a bold yellow base with sharp black text, it seems cheerful and inviting at rest. But as the user hovers, a chain reaction of animated colour waves erupts from the centre outward. Each layer spins and fades in a sequence, giving the illusion of a radiant pulse or energetic cascade. The result is both playful and dynamic, ideal for interactive interfaces where user attention and lively transitions are key.
-
-#### How it works
-
-* Dynamic Layer Insertion: On the user's first hover, 14 circular ```.cascade-*``` elements are dynamically appended to the button (```top```, ```bottom```, ```left```, and ```right``` sides). This happens only once per button instance to keep the DOM clean and prevent repeated stacking.
-* Radial Animation: Each cascade element uses a conic-gradient styled as a semi-circular flare, with directional designs that change based on side:
-
-  * Top and Bottom: rotate on the X-axis
-  * Left and Right: rotate on the Y-axis
-
-* Staggered Activation: Layers animate sequentially with slight delays (0.2s increments) using ```@keyframes```, producing an outward-flowing ripple with each layer spinning either clockwise or counter-clockwise.
-* Opacity Trail: The innermost circles are most visible (opacity 1.0), while outer layers fade progressively (down to opacity 0.2), enhancing the depth and realism of the effect.
-* Hover-Triggered Burst: The cascade effect is triggered only once when the user hovers for the first time. This creates a unique, memorable burst without looping distractions.
-
-#### Customisation
-
-* Layer Depth: You can control how many ```.cascade-*``` layers appear per edge by modifying the ```classes``` array in ```initializeCascadeEffect```.
-* Ring Size: Customise the ```width``` and ```height``` of each ```.cascade-*``` ring (```25px```, ```50px```, ```75px```, ```100px```, etc.) to make effects tighter or more expansive.
-* Spin Direction: Mix and match between ```rotateRightX```, ```rotateLeftX```, ```rotateRightY```, and ```rotateLeftY``` to create more variation across sides and layers.
-* Colour Theme: Edit the ```conic-gradient``` color values (```rgb(255, 166, 0)``` and ```transparent```) to change the cascade's aesthetic — warm tones, cool blues, neon bursts, etc.
-* Animation Timing: Play with ```animation-delay```, ```animation-duration```, and ```transition``` values for a slower pulse or a snappier blast.
-
-The Cascade button adds a sense of momentum and precision to user interaction. Its layered motion conveys energy without being overwhelming, making it ideal for interfaces where engagement needs to feel active but controlled. Rather than being purely decorative, the animation guides the user’s focus outward — suggesting progression, direction, or impact. It’s a fitting choice for calls to action that should feel intentional, confident, and visually compelling.
-
----
-
 ### Matrix
 
 The Matrix button evokes the hypnotic, code-dripping aesthetic of cyberpunk cinema. Styled with a stark black background and bright green-yellow text, it channels the immersive visual language of encrypted systems and virtual networks. At rest, the button remains sleek and minimal — but on hover, cascading trails of katakana characters begin to fall, simulating the iconic digital rain effect seen in the Matrix films. These dynamically animated glyphs trickle down the button surface in staggered, glowing streams, giving the impression of an interface quietly decoding itself or tapping into a live data feed. The interaction is subtle yet visually arresting, conjuring the feel of a system awakening or slipping into a deeper layer of virtual space. It’s a fitting choice for experiences rooted in hacking, virtual reality, or glitchy, futuristic design.
