@@ -21,19 +21,16 @@ export const initializePixelsEffect = (button: HTMLButtonElement): void => {
         return;
       }
 
-      for (let i = 0; i < 4; i++) {
-        if (filledSquares.size >= totalSquares) {
-          break;
-        }
-
+      for (let i = 0; i < 4 && filledSquares.size < totalSquares; i++) {
         let randomCol: number, randomRow: number;
         let found = false;
 
         while (!found) {
           randomCol = Math.floor(Math.random() * cols);
           randomRow = Math.floor(Math.random() * rows);
+          const key = `${randomRow}-${randomCol}`;
 
-          if (!filledSquares.has(`${randomRow}-${randomCol}`)) {
+          if (!filledSquares.has(key)) {
             found = true;
 
             const squareX = randomCol * squareSize;
@@ -43,13 +40,12 @@ export const initializePixelsEffect = (button: HTMLButtonElement): void => {
             colorSquare.style.position = "absolute";
             colorSquare.style.width = `${squareSize}px`;
             colorSquare.style.height = `${squareSize}px`;
-            colorSquare.style.backgroundColor = "#48d1cc";
             colorSquare.style.background = `radial-gradient(circle, rgb(175, 238, 238) 0%, rgba(64, 224, 208, 1) 70%)`;
             colorSquare.style.left = `${squareX}px`;
             colorSquare.style.top = `${squareY}px`;
             colorSquare.style.zIndex = "-1";
             button.appendChild(colorSquare);
-            filledSquares.add(`${randomRow}-${randomCol}`);
+            filledSquares.add(key);
           }
         }
       }
@@ -72,19 +68,13 @@ export const initializePixelsEffect = (button: HTMLButtonElement): void => {
         return;
       }
 
-      for (let i = 0; i < 4; i++) {
-        if (filledSquares.size === 0) {
-          break;
-        }
-
+      for (let i = 0; i < 4 && filledSquares.size > 0; i++) {
         const randomIndex = Math.floor(Math.random() * filledSquares.size);
         const squareToRemoveKey = Array.from(filledSquares)[randomIndex];
+        const [row, col] = squareToRemoveKey.split("-").map(Number);
+
         const squareToRemove = button.querySelector(
-          `div[style*="top: ${
-            parseInt(squareToRemoveKey.split("-")[0], 10) * 5
-          }px"][style*="left: ${
-            parseInt(squareToRemoveKey.split("-")[1], 10) * 5
-          }px"]`
+          `div[style*="top: ${row * 5}px"][style*="left: ${col * 5}px"]`
         ) as HTMLDivElement;
         squareToRemove?.remove();
         filledSquares.delete(squareToRemoveKey);
