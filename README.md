@@ -416,13 +416,12 @@ The Rainbow Button showcases a vibrant, spectrum-responsive hover effect that vi
 
 * Cursor-Driven Gradient Shift: As the user moves the cursor across the button, the horizontal position of the gradient background shifts in real time. This movement allows different segments of the rainbow to glide across the button, creating the sensation of navigating through a continuous colour spectrum.
 * Adaptive Text Contrast: Depending on the cursor’s horizontal location, the text colour toggles between black (left half) and white (right half). This ensures optimal contrast and legibility over any section of the gradient, adapting intelligently to maintain readability across the full range of colours.
-* Opacity Transition: When the cursor enters the button area, the opacity smoothly transitions from 0.4 to 1, giving the effect of the button becoming active or "illuminated" in response to interaction. Upon exit, the opacity fades back to 0.4, returning the button to its resting state while preserving the final position of the gradient for a lingering sense of interaction.
 * Persistent Gradient Lock: When the cursor leaves the button, the gradient background remains locked in the position last hovered. This feature gives the button a memory of the interaction, enhancing the sense of responsiveness and visual feedback.
 
 #### Customisation
 
 * Gradient Range & Responsiveness: The background’s size and movement speed can be adjusted for subtle or bold rainbow shifts. Developers may customise the spectrum, introduce brand colours, or modify the gradient spread.
-* Opacity & Transition Styling: The initial and active opacity levels can be tailored to suit different visual themes — from light glass-like effects to bold solid states. The timing and easing of the transition can also be fine-tuned for a snappier or more fluid response.
+* Visual Styling & Transitions: While the current implementation uses full opacity, developers can introduce opacity changes or glass-like effects if desired. Additionally, the timing and easing of the background-position transition can be adjusted for a snappier or more fluid interactive feel.
 * Text & Contrast Behaviour: The logic governing text colour contrast may be adapted for different thresholds, such as splitting the range into more zones or blending the colours instead of switching strictly between black and white.
 
 The Rainbow button delivers a lively, user-responsive hover animation that feels both modern and engaging. The interaction is guided by subtlety and fluidity, using colour as the primary medium of feedback. Its intuitive response to cursor movement, along with its ability to retain the final colour state, creates a playful and expressive interaction ideal for vibrant, creative interfaces.
