@@ -340,27 +340,27 @@ The Shatter button adds a visceral, glass-breaking moment to a UI, capturing att
 
 ---
 
-### Illuminate
+### Cascade
 
-The Illuminate Button features an engaging hover effect that mimics light gradually revealing the surface beneath. At a glance, the button presents a rich red background with soft pink borders and text. But once a user interacts with it, the real magic begins — as if a glowing light were illuminating the button from within, pixel by pixel.
+The Cascade button introduces a dynamic and immersive hover effect that simulates a ripple of light revealing the surface beneath. Initially appearing as a richly styled button with a vivid red background and soft pink text and border, it transforms into an interactive field of light as the user moves their cursor across it.
 
-As the user hovers or moves their cursor across the button, small square fragments begin to fade away from the point of contact, unveiling the illuminated content below. This ripple-like effect spreads outwards from the cursor in a smooth cascade, simulating the appearance of a glowing reveal or a torchlight sweeping across a darkened surface.
+When the cursor enters the button, the surface appears to be covered with a tiled mask of small squares. These squares begin fading out from the point of contact, spreading outward in a wave-like pattern. This creates a visual effect resembling light cascading over the surface — much like a digital torch revealing details in the dark.
 
-When the cursor leaves the button, the hidden tiles slowly fade back in, resetting the button’s appearance and preparing it for the next interaction.
+When the cursor leaves, the masked tiles gradually fade back in, restoring the button to its original state and preparing it for the next interaction.
 
 #### How it works
 
-* Grid Overlay & Structure: A grid of small square elements is dynamically generated and layered over the button. Each square acts as a “masking” tile, hiding the base layer. On hover, these tiles begin to disappear from the point of cursor contact, spreading to neighbouring tiles in all directions. This controlled fade mimics the natural behaviour of light illuminating a surface.
-* Hover & Movement Detection: The effect triggers as soon as the user hovers over the button. The script calculates the mouse’s position, determines the corresponding tile in the grid, and begins fading it out. From there, adjacent tiles are revealed recursively in a smooth and continuous manner as long as the cursor remains over the button.
-* Reset on Exit: When the cursor leaves the button, all previously hidden tiles fade back in, effectively “re-darkening” the surface. This reset ensures that the animation can be triggered again and again with a consistent visual experience.
+* Dynamic Grid Overlay: A grid of square tiles is generated dynamically and positioned over the button. Each tile acts as a cover that hides the illuminated layer beneath. These tiles fade out in sequence when hovered, simulating the effect of cascading reveal.
+* Cursor-Driven Animation: On hover or movement, the cursor’s position is tracked, and the nearest tile is identified. From that point, adjacent tiles begin fading in all directions in a recursive wave, creating a smooth cascade that follows the user's motion.
+* Automatic Reset: When the user’s cursor leaves the button, all previously faded tiles gradually fade back in, resetting the button’s appearance for the next interaction.
 
 #### Customisation
 
-* Grid Density (Square Size): Adjust the ```squareSize``` variable in the script to control the size of each masking tile. Smaller values (e.g. 3–5 pixels) provide a finer, smoother reveal. Larger sizes result in a more pixelated, blocky effect.
-* Fade Timing & Speed: The transition for each tile is defined by the CSS property ```transition: opacity 0.5s ease```. The reveal propagation speed is controlled by a ```setTimeout``` delay of ```20ms``` between tile reveals. Both can be modified to produce faster or slower lighting effects.
-* Colours & Layers: The background colour of each masking tile is controlled by ```square.style.backgroundColor``` (default: ```rgb(165, 0, 0)```). The base button background is set via the ```.illuminate-button``` class (```background-color: rgb(255, 105, 105)```). Border and text colours are defined in ```.illuminate-button``` and its child ```<span>``` element. These can be changed independently to match different themes or brand colours.
+* Tile Size (Grid Density): Modify the ```squareSize``` variable in the script to increase or decrease the number of squares. Smaller sizes (e.g., 4–5px) yield a finer, smoother visual effect, while larger sizes create a blockier, pixelated reveal.
+* Fade & Animation Speed: Each square’s fade transition is controlled via the CSS property ```transition: opacity 0.5s ease```. The speed at which adjacent squares are revealed is managed with a ```20ms``` delay, allowing you to fine-tune the cascade effect.
+* Color Styling: The tile colour is set via JavaScript (```rgb(165, 0, 0)``` by default), while the base button style (background, border, and text color) is managed in the ```.cascade-button``` class and its inner ```<span>```. These can be easily customised for various visual themes.
 
-The Illuminate button brings depth and interactivity to a UI with a gentle, flowing hover experience. Whether the aim is to delight users or guide attention subtly, this lighting-inspired effect offers both beauty and customisability. A perfect fit for modern interfaces that value both form and function.
+The Cascade button is ideal for interfaces that seek a balance of aesthetic intrigue and user engagement. Whether you're guiding attention or adding subtle interactivity, this effect delivers a high-impact experience with customisable depth and polish.
 
 ---
 
