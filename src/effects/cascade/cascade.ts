@@ -1,4 +1,4 @@
-export function initializeIlluminateEffect(button: HTMLButtonElement): void {
+export function initializeCascadeEffect(button: HTMLButtonElement): void {
   const squareSize = 5;
   const buttonWidth = button.offsetWidth;
   const buttonHeight = button.offsetHeight;

@@ -6,7 +6,7 @@ import { initializeInterlaceEffect } from "./effects/interlace/interlace.ts";
 import { initializeWeldEffect } from "./effects/weld/weld.ts";
 import { initializeStreamEffect } from "./effects/stream/stream.ts";
 import { initializeShatterEffect } from "./effects/shatter/shatter.ts";
-import { initializeIlluminateEffect } from "./effects/illuminate/illuminate.ts";
+import { initializeCascadeEffect } from "./effects/cascade/cascade.ts";
 import { initializeWaterEffect } from "./effects/water/water.ts";
 import { initializeStaticEffect } from "./effects/static/static.ts";
 import { initializeRainbowEffect } from "./effects/rainbow/rainbow.ts";
@@ -27,8 +27,8 @@ const streamButton =
   document.querySelector<HTMLButtonElement>(".stream-button")!;
 const shatterButton =
   document.querySelector<HTMLButtonElement>(".shatter-button")!;
-const illuminateButton =
-  document.querySelector<HTMLButtonElement>(".illuminate-button")!;
+const cascadeButton =
+  document.querySelector<HTMLButtonElement>(".cascade-button")!;
 const waterButton = document.querySelector<HTMLButtonElement>(".water-button")!;
 const staticButton =
   document.querySelector<HTMLButtonElement>(".static-button")!;
@@ -46,7 +46,7 @@ initializeInterlaceEffect(interlaceButton);
 initializeWeldEffect(weldButton);
 initializeStreamEffect(streamButton);
 initializeShatterEffect(shatterButton);
-initializeIlluminateEffect(illuminateButton);
+initializeCascadeEffect(cascadeButton);
 initializeWaterEffect(waterButton);
 initializeStaticEffect(staticButton);
 initializeRainbowEffect(rainbowButton);
