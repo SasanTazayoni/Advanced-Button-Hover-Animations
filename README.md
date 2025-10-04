@@ -399,28 +399,6 @@ The Rainbow Button showcases a vibrant, spectrum-responsive hover effect that vi
 
 The Rainbow button delivers a lively, user-responsive hover animation that feels both modern and engaging. The interaction is guided by subtlety and fluidity, using colour as the primary medium of feedback. Its intuitive response to cursor movement, along with its ability to retain the final colour state, creates a playful and expressive interaction ideal for vibrant, creative interfaces.
 
-### How it works
-
-- Dynamic Conic Gradient: The background of the button features a continuously rotating conic gradient, driven by a CSS @property animation on --gradient-angle. The gradient mixes lava-toned colours like deep crimson and molten amber, flowing endlessly in a circular motion to simulate internal pressure and fluid heat.
-- Cursor-Responsive Radial Masking: As the user moves the cursor across the button, a radial gradient is applied to the ::before overlay layer, centred at the cursor’s position. This gradient creates a transparent "window" in the darkened overlay, revealing the glowing lava beneath and giving the illusion of a hotspot following the user’s movements.
-- Blurred Glow Effect: The lava animation is rendered through the ::after pseudo-element with a subtle blur filter, diffusing the vivid colours into a soft, molten glow. This produces a sense of heat and depth, further enhanced by the rotating gradient animation.
-- Layered Composition: The interaction layers are carefully ordered — the text label sits on top (z-index: 3), the dynamic dark overlay beneath it (::before), and the animated lava flow at the bottom (::after). This structure ensures the button text remains legible while still visually embedded in the fiery landscape below.
-
-### Customisation
-
-- Lava Palette & Flow Style: Adjust the colours in the `conic-gradient` to match branding needs — for example, shifting towards oranges and yellows for a brighter fire theme or incorporating purples and charcoals for a more mystical volcanic aesthetic.
-- Rotation Speed: Modify the `animation` duration (currently `2s`) in the `lavaflow` keyframes to slow down or speed up the flow of the lava background.
-- Overlay Intensity: The opacity and spread of the radial mask can be tailored by changing the gradient’s stop points or radius (`circle 40px`) in the `updateOverlay` function. This controls how sharp or diffused the spotlight effect appears.
-- Blur Strength: The glow softness can be intensified or sharpened by changing the `blur(0.6rem)` value on the `::after` element — increasing this will create a more diffuse aura, while reducing it brings clarity to the swirling lava detail.
-
-The Lava Button provides a rich, tactile interaction that feels alive — perfect for interfaces that aim to evoke power, energy, or elemental themes. Its reactive design draws users in with heat and motion, offering a visceral, glowing feedback mechanism that’s as dynamic as it is dramatic.
-
----
-
-### Lava
-
-The Lava Button simulates the molten flow and reactive glow of volcanic energy. Designed with a conic-gradient backdrop that continuously rotates, it gives the impression of swirling heat and smouldering intensity. At rest, the button emits a soft, blurred pulse of deep reds and burnt golds. As the user hovers and moves their cursor, a dark radial overlay follows beneath the pointer, mimicking the effect of lava cooling or the crust breaking under surface heat. This combination of movement and responsive shading creates a richly layered, organic interaction.
-
 ---
 
 ### Matrix
