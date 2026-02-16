@@ -367,14 +367,14 @@ The Static button delivers a jarring, electrified visual that evokes the look an
 #### How it works
 
 - Interference Overlay: A complex combination of radial and conic gradients layered inside a `::before` pseudo-element replicates the random dot patterns of television static. These patterns shift continuously using a rapid `@keyframes` animation, simulating analog noise.
-- Triggered Flash: On hover, the static overlay quickly fades in, reaches full opacity at 0.65, then fades out again — all within 300 milliseconds. This flash of noise acts like a brief visual glitch, giving the illusion of a corrupted signal or momentary disruption in the interface.
+- Triggered Flash: On hover, the static overlay quickly fades in, reaches full opacity at 0.75, then fades out again — all within 300 milliseconds. This flash of noise acts like a brief visual glitch, giving the illusion of a corrupted signal or momentary disruption in the interface.
 - Background Flicker: Simultaneously, the button’s background color transitions from its stable blue (`#007bff`) to a vivid purple hue (`#8000b0`), reinforcing the sense of a sudden jolt or interference.
 
 #### Customisation
 
 - Static Density & Texture: The fine-grain look of the static can be adjusted by modifying the stop distances in the `repeating-radial-gradient` and `repeating-conic-gradient`. Smaller percentages result in denser “snow,” while larger ones produce more sparse, lo-fi noise.
 - Flash Duration: The length of the glitch can be changed by editing the `setTimeout()` in the `initializeStaticEffect` function.
-- Opacity & Intensity: Change the value in `.static-flash::before { opacity: 0.65; }` to control how intense the static appears. Lower opacities make it subtle like a weak signal; higher values create more disruptive visual noise.
+- Opacity & Intensity: Change the value in `.static-flash::before { opacity: 0.75; }` to control how intense the static appears. Lower opacities make it subtle like a weak signal; higher values create more disruptive visual noise.
 - Animation Frequency: Adjusting the `@keyframes static` timing and the `animation` speed enables the creation of either a frantic buzz or slow pulse.
 
 The Static button introduces a momentary break in visual consistency — a controlled anomaly that grabs the user’s attention like an error in the matrix. Short-lived but unmistakable, it is a perfect fit for digital experiences that want to embrace retro-futurism, signal disruption, or interactive surprise.
