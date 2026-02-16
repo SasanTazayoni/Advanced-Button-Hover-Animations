@@ -74,21 +74,14 @@ export function initializeStreamEffect(button: HTMLButtonElement): void {
     }, 1);
   }
 
-  function removeLines() {
-    const linesDown = button.querySelectorAll(".line-downwards");
-    const linesUp = button.querySelectorAll(".line-upwards");
-    linesDown.forEach((line) => line.remove());
-    linesUp.forEach((line) => line.remove());
-  }
-
   function resetCooldown() {
     setTimeout(() => {
       cooldown = false;
-      maxOpacity = 0.6;
-    }, 600);
+      maxOpacity = 0.9;
+    }, 300);
   }
 
-  button.addEventListener("mouseover", () => {
+  button.addEventListener("mouseenter", () => {
     if (cooldown) return;
     cooldown = true;
 
@@ -98,17 +91,11 @@ export function initializeStreamEffect(button: HTMLButtonElement): void {
       clearInterval(lineInterval);
       clearInterval(opacityInterval);
 
-      removeLines();
-
       resetCooldown();
     }, 600);
   });
 
   button.addEventListener("mouseleave", () => {
-    setTimeout(() => {
-      removeLines();
-    }, 600);
-
     if (cooldown) return;
     cooldown = true;
 
