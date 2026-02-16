@@ -18,5 +18,5 @@ export const initializeRippleEffect = (button: HTMLButtonElement): void => {
     }
   }
 
-  button.addEventListener("mouseover", createRipple);
+  button.addEventListener("mouseenter", createRipple);
 };
