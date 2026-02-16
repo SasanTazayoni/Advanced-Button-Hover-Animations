@@ -63,7 +63,7 @@ export function initializeMatrixEffect(button: HTMLElement) {
   button.addEventListener("mouseenter", () => {
     hovered = true;
     if (hoverInterval || cooldownActive) return;
-    hoverInterval = setInterval(spawnTrails, 600);
+    hoverInterval = setInterval(spawnTrails, 200);
     spawnTrails();
   });
 
@@ -82,7 +82,7 @@ export function initializeMatrixEffect(button: HTMLElement) {
       cooldownTimeoutId = null;
 
       if (hovered && !hoverInterval) {
-        hoverInterval = setInterval(spawnTrails, 600);
+        hoverInterval = setInterval(spawnTrails, 200);
         spawnTrails();
       }
     }, cooldownTime);
@@ -91,7 +91,7 @@ export function initializeMatrixEffect(button: HTMLElement) {
   function spawnTrails() {
     if (activeTrailsCount >= 16) return;
 
-    const numTrails = 4 + Math.floor(Math.random() * 4);
+    const numTrails = 1 + Math.floor(Math.random() * 3);
     const trails: Trail[] = [];
 
     for (let i = 0; i < numTrails; i++) {
@@ -100,7 +100,7 @@ export function initializeMatrixEffect(button: HTMLElement) {
         x = Math.floor(Math.random() * 28) * 5;
       }
 
-      const delay = Math.floor(Math.random() * 250) + 100;
+      const delay = Math.floor(Math.random() * 300) + 50;
       trails.push({ x, delay });
       activeXCoordinates.add(x);
       activeTrailsCount++;
