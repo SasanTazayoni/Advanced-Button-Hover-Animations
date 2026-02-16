@@ -1,13 +1,19 @@
 export const initializeTrailEffect = (button: HTMLButtonElement): void => {
-  button.onmousemove = (e) => {
+  let lastSpawn = 0;
+
+  button.addEventListener("mousemove", (e) => {
     let x = e.pageX - button.offsetLeft;
     let y = e.pageY - button.offsetTop;
 
     button.style.setProperty("--x", x + "px");
     button.style.setProperty("--y", y + "px");
 
+    const now = Date.now();
+    if (now - lastSpawn < 25) return;
+    lastSpawn = now;
+
     createFadingCircle(button, e);
-  };
+  });
 };
 
 const createFadingCircle = (button: HTMLButtonElement, e: MouseEvent): void => {
