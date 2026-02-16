@@ -1,11 +1,18 @@
 export const initializePixelsEffect = (button: HTMLButtonElement): void => {
   let filling = false;
   let clearing = false;
-  let filledSquares = new Set<string>();
+  const filledSquares = new Set<string>();
 
-  button.addEventListener("mouseover", function () {
+  const computedPos = getComputedStyle(button).position;
+  if (computedPos === "static") button.style.position = "relative";
+
+  button.addEventListener("mouseenter", () => {
     filling = true;
     clearing = false;
+
+    if (button.querySelectorAll(".pixel-square").length === 0) {
+      filledSquares.clear();
+    }
 
     const width = button.clientWidth;
     const height = button.clientHeight;
@@ -16,13 +23,16 @@ export const initializePixelsEffect = (button: HTMLButtonElement): void => {
     const totalSquares = cols * rows;
 
     const fillSquare = () => {
+      if (!filling) return;
+
       if (filledSquares.size >= totalSquares) {
         filling = false;
         return;
       }
 
       for (let i = 0; i < 4 && filledSquares.size < totalSquares; i++) {
-        let randomCol: number, randomRow: number;
+        let randomCol = 0;
+        let randomRow = 0;
         let found = false;
 
         while (!found) {
@@ -37,13 +47,20 @@ export const initializePixelsEffect = (button: HTMLButtonElement): void => {
             const squareY = randomRow * squareSize;
 
             const colorSquare = document.createElement("div");
+            colorSquare.className = "pixel-square";
+            colorSquare.dataset.row = String(randomRow);
+            colorSquare.dataset.col = String(randomCol);
+
             colorSquare.style.position = "absolute";
             colorSquare.style.width = `${squareSize}px`;
             colorSquare.style.height = `${squareSize}px`;
-            colorSquare.style.background = `radial-gradient(circle, rgb(175, 238, 238) 0%, rgba(64, 224, 208, 1) 70%)`;
+            colorSquare.style.background =
+              "radial-gradient(circle, rgb(175, 238, 238) 0%, rgba(64, 224, 208, 1) 70%)";
             colorSquare.style.left = `${squareX}px`;
             colorSquare.style.top = `${squareY}px`;
             colorSquare.style.zIndex = "-1";
+            colorSquare.style.pointerEvents = "none";
+
             button.appendChild(colorSquare);
             filledSquares.add(key);
           }
@@ -51,14 +68,14 @@ export const initializePixelsEffect = (button: HTMLButtonElement): void => {
       }
 
       if (filling && filledSquares.size < totalSquares) {
-        setTimeout(fillSquare, 1);
+        setTimeout(fillSquare, 6);
       }
     };
 
     fillSquare();
   });
 
-  button.addEventListener("mouseleave", function () {
+  button.addEventListener("mouseleave", () => {
     filling = false;
     clearing = true;
 
@@ -68,16 +85,23 @@ export const initializePixelsEffect = (button: HTMLButtonElement): void => {
         return;
       }
 
+      const keys = Array.from(filledSquares);
+
       for (let i = 0; i < 4 && filledSquares.size > 0; i++) {
-        const randomIndex = Math.floor(Math.random() * filledSquares.size);
-        const squareToRemoveKey = Array.from(filledSquares)[randomIndex];
+        const randomIndex = Math.floor(Math.random() * keys.length);
+        const squareToRemoveKey = keys[randomIndex];
+        if (!squareToRemoveKey) continue;
+
         const [row, col] = squareToRemoveKey.split("-").map(Number);
 
         const squareToRemove = button.querySelector(
-          `div[style*="top: ${row * 5}px"][style*="left: ${col * 5}px"]`
-        ) as HTMLDivElement;
+          `.pixel-square[data-row="${row}"][data-col="${col}"]`,
+        ) as HTMLDivElement | null;
+
         squareToRemove?.remove();
         filledSquares.delete(squareToRemoveKey);
+
+        keys.splice(randomIndex, 1);
       }
 
       setTimeout(removeSquare, 1);
