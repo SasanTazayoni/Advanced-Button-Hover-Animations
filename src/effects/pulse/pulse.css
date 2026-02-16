@@ -1,0 +1,95 @@
+.pulse-button {
+  position: relative;
+  background: #ffff00;
+  color: black;
+  border: none;
+  overflow: hidden;
+}
+
+.pulse-button > span {
+  position: relative;
+  z-index: 10;
+}
+
+.pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid rgb(255, 166, 0);
+  background: transparent;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pulse-ring.active {
+  animation: pulseExpand 0.6s ease-out forwards;
+}
+
+.pulse-ring-2.active {
+  animation-delay: 0.1s;
+}
+
+@keyframes pulseExpand {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.5;
+  }
+  70% {
+    opacity: 0.2;
+  }
+  85% {
+    transform: translate(-50%, -50%) scale(7);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(9);
+    opacity: 0;
+  }
+}
+
+.pulse-edge {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.pulse-top {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to bottom, rgb(255, 166, 0), transparent);
+}
+
+.pulse-bottom {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to top, rgb(255, 166, 0), transparent);
+}
+
+.pulse-left {
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, rgb(255, 166, 0), transparent);
+}
+
+.pulse-right {
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgb(255, 166, 0), transparent);
+}
+
+.pulse-edge.active {
+  opacity: 1;
+}

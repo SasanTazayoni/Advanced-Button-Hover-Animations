@@ -11,6 +11,7 @@ import { initializeWaterEffect } from "./effects/water/water.ts";
 import { initializeStaticEffect } from "./effects/static/static.ts";
 import { initializeRainbowEffect } from "./effects/rainbow/rainbow.ts";
 import { initializeMatrixEffect } from "./effects/matrix/matrix.ts";
+import { initializePulseEffect } from "./effects/pulse/pulse.ts";
 
 const trailButton = document.querySelector<HTMLButtonElement>(".trail-button")!;
 const rippleButton =
@@ -35,6 +36,8 @@ const rainbowButton =
   document.querySelector<HTMLButtonElement>(".rainbow-button")!;
 const matrixButton =
   document.querySelector<HTMLButtonElement>(".matrix-button")!;
+const pulseButton =
+  document.querySelector<HTMLButtonElement>("#pulse")!;
 
 initializeTrailEffect(trailButton);
 initializeRippleEffect(rippleButton);
@@ -49,3 +52,4 @@ initializeWaterEffect(waterButton);
 initializeStaticEffect(staticButton);
 initializeRainbowEffect(rainbowButton);
 initializeMatrixEffect(matrixButton);
+initializePulseEffect(pulseButton);
