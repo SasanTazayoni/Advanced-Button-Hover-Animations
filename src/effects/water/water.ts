@@ -44,7 +44,8 @@ export function initializeWaterEffect(button: HTMLButtonElement): void {
   }
 
   let dropletInterval: ReturnType<typeof setInterval>;
-  button.addEventListener("mouseover", () => {
+  button.addEventListener("mouseenter", () => {
+    clearInterval(dropletInterval);
     dropletInterval = setInterval(() => {
       const computedStyle = getComputedStyle(button, "::after");
       const pseudoHeight = parseFloat(computedStyle.height);
