@@ -252,12 +252,12 @@ The Fusion button delivers a visually dynamic and engaging hover effect that mak
 
 ### Weld
 
-The Weld button introduces a dynamic hover effect where triangles appear to "weld" together as the user interacts with the button. Initially, the button has a dark grey background with a soft border, and the text "Weld" is displayed at the centre. Upon hovering, the triangles positioned at the top and bottom of the button move towards the centre and interlock like sharp teeth. As the triangles meet at the middle, the button’s appearance transforms, transitioning from a yellow to a light red colour, giving the sense that the triangles are being heated and welded together, solidifying the interaction. When the animation completes, the borders are removed, revealing a solid single-coloured background as if the triangles have fused together into a cohesive whole.
+The Weld button introduces a dynamic hover effect where triangles appear to "weld" together as the user interacts with the button. Initially, the button has a dark grey background with a soft border, and the text "Weld" is displayed at the centre. Upon hovering, the triangles positioned at the top and bottom of the button move towards the centre and interlock like sharp teeth. As the triangles meet at the middle, the button's appearance transforms, transitioning from a semi-transparent light grey through a glowing orange/gold and back to a solid light grey, giving the sense that the triangles are being heated and welded together, solidifying the interaction. When the animation completes, the borders are removed, revealing a solid single-coloured background as if the triangles have fused together into a cohesive whole.
 
 #### How it works
 
 - Hover Interaction & Triangle Movement: On hover, two triangles positioned at the top and bottom edges of the button begin to converge towards the centre and interlock.
-- Background Colour & Border Transition: As the triangles converge, the background colour of the button changes from a dark grey to a yellow and light red gradient. This colour change represents the heating and welding process, symbolising the moment when the triangles fuse together. Upon completion of the animation, the button’s border disappears, leaving behind a unified, solid colour background.
+- Background Colour & Border Transition: The colour shift is driven by the `@keyframes weld` animation, which transitions the triangle `border-top-color` and `border-bottom-color` properties through three stages. This simulates the heating and cooling of the weld. Upon completion of the animation, the button's border disappears, leaving behind a unified, solid colour background.
 
 #### Customisation
 
