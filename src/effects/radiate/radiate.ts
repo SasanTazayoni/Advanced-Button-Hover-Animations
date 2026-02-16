@@ -1,4 +1,8 @@
 export const initializeRadiateEffect = (button: HTMLButtonElement): void => {
+  let activeIntervals: ReturnType<typeof setInterval>[] = [];
+  let activeTimeouts: ReturnType<typeof setTimeout>[] = [];
+  let currentCircles: HTMLDivElement[] = [];
+
   function createCircles() {
     const buttonWidth = Math.ceil(button.offsetWidth);
 
@@ -15,15 +19,15 @@ export const initializeRadiateEffect = (button: HTMLButtonElement): void => {
       { size: 1, opacity: 0.05 },
     ];
 
-    const circles = createCircleElements(circlesData, buttonWidth);
-    fadeInCircles(circles);
+    currentCircles = createCircleElements(circlesData, buttonWidth);
+    fadeInCircles(currentCircles);
 
-    setTimeout(() => {
+    const activeTimeout = setTimeout(() => {
       button.classList.add("active");
-    }, circles.length * 30);
+    }, currentCircles.length * 30);
+    activeTimeouts.push(activeTimeout);
 
-    handleSequentialOpacity(circles);
-    setupMouseLeave(circles);
+    handleSequentialOpacity(currentCircles);
   }
 
   function createCircleElements(
@@ -46,15 +50,16 @@ export const initializeRadiateEffect = (button: HTMLButtonElement): void => {
 
   function fadeInCircles(circles: HTMLDivElement[]): void {
     circles.forEach((circle, index) => {
-      setTimeout(() => {
+      const timeout = setTimeout(() => {
         circle.style.opacity = "1";
       }, index * 30);
+      activeTimeouts.push(timeout);
     });
   }
 
   function handleSequentialOpacity(circles: HTMLDivElement[]): void {
     circles.forEach((circle, index) => {
-      setTimeout(() => {
+      const timeout = setTimeout(() => {
         let opacity = parseFloat(
           circle.style.backgroundColor.match(
             /rgba\(0, 120, 0, (\d(\.\d+)?)\)/
@@ -69,25 +74,32 @@ export const initializeRadiateEffect = (button: HTMLButtonElement): void => {
           }
           circle.style.opacity = opacity.toString();
         }, 30);
+        activeIntervals.push(intervalId);
       }, index * 60 + 60);
+      activeTimeouts.push(timeout);
     });
   }
 
-  function setupMouseLeave(circles: HTMLDivElement[]): void {
-    button.addEventListener("mouseleave", () => {
-      circles.forEach((circle) => {
-        circle.style.opacity = "0";
+  function cleanup() {
+    activeIntervals.forEach((id) => clearInterval(id));
+    activeTimeouts.forEach((id) => clearTimeout(id));
+    activeIntervals = [];
+    activeTimeouts = [];
+
+    currentCircles.forEach((circle) => {
+      circle.style.opacity = "0";
+    });
+    setTimeout(() => {
+      currentCircles.forEach((circle) => {
+        if (button.contains(circle)) {
+          button.removeChild(circle);
+        }
       });
-      setTimeout(() => {
-        circles.forEach((circle) => {
-          if (button.contains(circle)) {
-            button.removeChild(circle);
-          }
-        });
-        button.classList.remove("active");
-      }, 300);
-    });
+      currentCircles = [];
+      button.classList.remove("active");
+    }, 300);
   }
 
-  button.addEventListener("mouseover", createCircles);
+  button.addEventListener("mouseenter", createCircles);
+  button.addEventListener("mouseleave", cleanup);
 };
