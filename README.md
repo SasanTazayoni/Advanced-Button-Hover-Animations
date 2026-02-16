@@ -144,13 +144,13 @@ The Blink button offers an eye-catching interaction that adds an element of move
 
 ---
 
-### Spiral
+### Radiate
 
-The Spiral button introduces an engaging and visually dynamic hover effect that creates a sequence of expanding circles, each with decreasing opacity. Initially, the button has a light green background with black text. Upon hovering, concentric circles begin to appear at the centre of the button and expand outward, creating a spiral-like effect. The button background colour transitions to a darker green, enhancing the interactive feedback and further emphasising the effect.
+The Radiate button introduces an engaging and visually dynamic hover effect that creates a sequence of expanding circles, each with decreasing opacity. Initially, the button has a light green background with black text. Upon hovering, concentric circles begin to appear at the centre of the button and expand outward, creating a radiating effect. The button background colour transitions to a darker green, enhancing the interactive feedback and further emphasising the effect.
 
 #### How it works
 
-- Hover Interaction: The hover effect begins when the user places their cursor over the button. A series of circles is generated at the button’s centre, each expanding in size and fading out in opacity. The circles are placed with absolute positioning, and their sizes and opacity are controlled via CSS, creating the illusion of a spiral effect emanating from the centre.
+- Hover Interaction: The hover effect begins when the user places their cursor over the button. A series of circles is generated at the button’s centre, each expanding in size and fading out in opacity. The circles are placed with absolute positioning, and their sizes and opacity are controlled via CSS, creating the illusion of a radiating effect emanating from the centre.
 - Animation: The circles expand and fade out sequentially, using CSS transitions and `opacity` manipulation. The `setTimeout` and `setInterval` functions control the timing of the circle’s appearance and fading effect. Each circle gradually fades out as it expands, enhancing the overall dynamic feel of the interaction.
 - Button Background Colour: As the circles expand and complete their animation, the button’s background colour shifts to a darker shade of green (`rgb(6, 224, 6)`). This colour change provides additional visual feedback that highlights the button's interactivity.
 - Mouse Leave Behaviour: When the cursor leaves the button, the circles gradually fade out and are removed from the button. The button’s background colour reverts to its initial light green shade, ensuring a smooth and clean transition between interactions.
@@ -159,7 +159,7 @@ The Spiral button introduces an engaging and visually dynamic hover effect that 
 
 - Circle Size & Opacity: The size and opacity of the circles are defined in the `circlesData` array in JavaScript, where each object sets a `size` (as a fraction of the button’s width) and an `opacity` value (used in the `rgba()` background color). To customise these, edit the values inside `circlesData`, such as `{ size: 0.3, opacity: 0.4 }`. The final rendered size is calculated using `circle.style.width` and `height`, and the transparency is controlled through `circle.style.backgroundColor`.
 - Speed & Timing: The speed at which circles appear is determined by the `setTimeout` delay in `fadeInCircles` (`index * 30`), while their sequential fade-out begins with a second delay in `handleSequentialOpacity` (`index * 60 + 60`). The fade itself occurs via a loop that decreases opacity every 30ms (`opacity -= 0.1` in `setInterval`). These values can be adjusted to make the animation feel faster, slower, or smoother.
-- Button Background Colour: The initial background colour is set via `.spiral-button { background-color: #a7ffa9; }`, and the hover/active colour is controlled by `.spiral-button.active { background-color: rgb(6, 224, 6); }`. These values can be updated directly in the CSS to match a specific theme.
+- Button Background Colour: The initial background colour is set via `.radiate-button { background-color: #a7ffa9; }`, and the hover/active colour is controlled by `.radiate-button.active { background-color: rgb(6, 224, 6); }`. These values can be updated directly in the CSS to match a specific theme.
 - Circle Colour & Transition Style: Each circle uses `background-color: rgba(0, 120, 0, opacity)` to define its fill. The RGB values can be changed to adjust the colour hue, while the alpha value is tied to the `opacity` in `circlesData`. The fade behaviour is styled by `.circle { transition: opacity 0.6s ease; }`, which can be adjusted for different easing curves or fade durations.
 - Cleanup Timing: The timing for removing the circles after mouse leave is set via `setTimeout(..., 300)` in the `setupMouseLeave` function. This delay should match the `transition` duration used in `.circle` to ensure the fade completes before removal — update both together if making timing changes.
 

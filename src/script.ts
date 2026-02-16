@@ -1,6 +1,6 @@
 import { initializeTrailEffect } from "./effects/trail/trail.ts";
 import { initializeRippleEffect } from "./effects/ripple/ripple.ts";
-import { initializeSpiralEffect } from "./effects/spiral/spiral.ts";
+import { initializeRadiateEffect } from "./effects/radiate/radiate.ts";
 import { initializePixelsEffect } from "./effects/pixels/pixels.ts";
 import { initializeInterlaceEffect } from "./effects/interlace/interlace.ts";
 import { initializeWeldEffect } from "./effects/weld/weld.ts";
@@ -15,8 +15,8 @@ import { initializeMatrixEffect } from "./effects/matrix/matrix.ts";
 const trailButton = document.querySelector<HTMLButtonElement>(".trail-button")!;
 const rippleButton =
   document.querySelector<HTMLButtonElement>(".ripple-button")!;
-const spiralButton =
-  document.querySelector<HTMLButtonElement>(".spiral-button")!;
+const radiateButton =
+  document.querySelector<HTMLButtonElement>(".radiate-button")!;
 const pixelsButton =
   document.querySelector<HTMLButtonElement>(".pixels-button")!;
 const interlaceButton =
@@ -38,7 +38,7 @@ const matrixButton =
 
 initializeTrailEffect(trailButton);
 initializeRippleEffect(rippleButton);
-initializeSpiralEffect(spiralButton);
+initializeRadiateEffect(radiateButton);
 initializePixelsEffect(pixelsButton);
 initializeInterlaceEffect(interlaceButton);
 initializeWeldEffect(weldButton);
