@@ -12,7 +12,7 @@ import { initializeStaticEffect } from "./effects/static/static.ts";
 import { initializeRainbowEffect } from "./effects/rainbow/rainbow.ts";
 import { initializeMatrixEffect } from "./effects/matrix/matrix.ts";
 import { initializePulseEffect } from "./effects/pulse/pulse.ts";
-import { initializeSpiralEffect } from "./effects/spiral/spiral.ts";
+import { initializeVortexEffect } from "./effects/vortex/vortex.ts";
 
 const trailButton = document.querySelector<HTMLButtonElement>(".trail-button")!;
 const rippleButton =
@@ -39,8 +39,8 @@ const matrixButton =
   document.querySelector<HTMLButtonElement>(".matrix-button")!;
 const pulseButton =
   document.querySelector<HTMLButtonElement>("#pulse")!;
-const spiralButton =
-  document.querySelector<HTMLButtonElement>("#spiral")!;
+const vortexButton =
+  document.querySelector<HTMLButtonElement>("#vortex")!;
 
 initializeTrailEffect(trailButton);
 initializeRippleEffect(rippleButton);
@@ -56,4 +56,4 @@ initializeStaticEffect(staticButton);
 initializeRainbowEffect(rainbowButton);
 initializeMatrixEffect(matrixButton);
 initializePulseEffect(pulseButton);
-initializeSpiralEffect(spiralButton);
+initializeVortexEffect(vortexButton);

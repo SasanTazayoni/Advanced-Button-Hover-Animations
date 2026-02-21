@@ -1,4 +1,4 @@
-export function initializeSpiralEffect(button: HTMLButtonElement): void {
+export function initializeVortexEffect(button: HTMLButtonElement): void {
   if (!button) return;
 
   const squareCount = Math.ceil(Math.log(2 / 140) / Math.log(0.99));
@@ -15,7 +15,7 @@ export function initializeSpiralEffect(button: HTMLButtonElement): void {
       const targetOpacity = (0.1 + (index / squareCount) * 0.2).toFixed(3);
 
       const square = document.createElement("div");
-      square.classList.add("spiral-square");
+      square.classList.add("vortex-square");
       square.style.width = `${squareSize}px`;
       square.style.height = `${squareSize}px`;
       square.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
@@ -49,7 +49,6 @@ export function initializeSpiralEffect(button: HTMLButtonElement): void {
       }
     });
 
-    // Read all opacities in one batch before writing any styles
     const frozenOpacities = activeSquares.map(
       (square) => window.getComputedStyle(square).opacity,
     );
@@ -59,7 +58,6 @@ export function initializeSpiralEffect(button: HTMLButtonElement): void {
       square.style.opacity = frozenOpacities[index];
     });
 
-    // Force a single reflow, then apply transitions
     button.getBoundingClientRect();
 
     activeSquares.forEach((square) => {

@@ -1,4 +1,4 @@
-.spiral-button {
+.vortex-button {
   position: relative;
   background: #3d0066;
   color: #fff;
@@ -6,16 +6,16 @@
   overflow: hidden;
 }
 
-.spiral-button:hover {
+.vortex-button:hover {
   z-index: 10;
 }
 
-.spiral-button > span {
+.vortex-button > span {
   position: relative;
   z-index: 10;
 }
 
-.spiral-square {
+.vortex-square {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -25,7 +25,7 @@
   opacity: 0;
 }
 
-@keyframes spiral-appear {
+@keyframes vortex-appear {
   0% {
     opacity: 0;
   }
@@ -34,6 +34,6 @@
   }
 }
 
-.spiral-square.active {
-  animation: spiral-appear 0.3s ease forwards;
+.vortex-square.active {
+  animation: vortex-appear 0.3s ease forwards;
 }
