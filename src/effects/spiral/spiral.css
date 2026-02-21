@@ -1,0 +1,39 @@
+.spiral-button {
+  position: relative;
+  background: #3d0066;
+  color: #fff;
+  border: none;
+  overflow: hidden;
+}
+
+.spiral-button:hover {
+  z-index: 10;
+}
+
+.spiral-button > span {
+  position: relative;
+  z-index: 10;
+}
+
+.spiral-square {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: transparent;
+  border: 2px solid rgba(200, 100, 255, 1);
+  pointer-events: none;
+  opacity: 0;
+}
+
+@keyframes spiral-appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: var(--opacity-target, 0.5);
+  }
+}
+
+.spiral-square.active {
+  animation: spiral-appear 0.3s ease forwards;
+}
