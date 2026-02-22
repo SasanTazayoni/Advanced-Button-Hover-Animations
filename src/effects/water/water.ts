@@ -1,11 +1,5 @@
 export function initializeWaterEffect(button: HTMLButtonElement): void {
-  const buttonHeight = parseInt(
-    getComputedStyle(document.documentElement).getPropertyValue(
-      "--button-height"
-    )
-  );
-
-  const maxDropletHeight = buttonHeight * 0.75;
+  const STOP_DELAY = 405;
 
   function createDroplet() {
     const droplet = document.createElement("div");
@@ -15,50 +9,49 @@ export function initializeWaterEffect(button: HTMLButtonElement): void {
     droplet.style.width = `${size}px`;
     droplet.style.height = `${size}px`;
 
-    const buttonRect = button.getBoundingClientRect();
-    droplet.style.left = `${
-      Math.random() * (buttonRect.width - size) + buttonRect.left
-    }px`;
-
-    droplet.style.top = `${buttonRect.top + size / 2}px`;
+    const buttonWidth = button.offsetWidth;
+    const buttonHeight = button.offsetHeight;
+    droplet.style.left = `${Math.random() * (buttonWidth - size)}px`;
+    droplet.style.top = `${size / 2}px`;
     droplet.style.opacity = "0.5";
-    document.body.appendChild(droplet);
+    button.appendChild(droplet);
 
     const fallDuration = Math.random() * 200 + 200;
 
     setTimeout(() => {
-      const targetTop = buttonRect.bottom - size;
-      droplet.style.transition = `top ${fallDuration}ms linear`;
-      droplet.style.top = `${targetTop}px`;
+      droplet.style.transition = `top ${fallDuration}ms linear, opacity ${fallDuration * 0.15}ms linear ${fallDuration * 0.85}ms`;
+      droplet.style.top = `${buttonHeight - size}px`;
+      droplet.style.opacity = "0";
 
-      let opacity = 0.5;
-      const fadeOutInterval = setInterval(() => {
-        opacity -= 0.05;
-        droplet.style.opacity = opacity.toString();
-        if (opacity <= 0) {
-          clearInterval(fadeOutInterval);
-          droplet.remove();
-        }
-      }, 50);
+      droplet.addEventListener(
+        "transitionend",
+        (e) => {
+          if (e.propertyName === "opacity") droplet.remove();
+        },
+        { once: true },
+      );
     }, 10);
   }
 
-  let dropletInterval: ReturnType<typeof setInterval>;
-  button.addEventListener("mouseenter", () => {
-    clearInterval(dropletInterval);
-    dropletInterval = setInterval(() => {
-      const computedStyle = getComputedStyle(button, "::after");
-      const pseudoHeight = parseFloat(computedStyle.height);
+  let dropletInterval: ReturnType<typeof setInterval> | null = null;
+  let stopTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
-      if (pseudoHeight >= maxDropletHeight) {
-        clearInterval(dropletInterval);
-      } else {
-        createDroplet();
-      }
-    }, 1);
+  button.addEventListener("mouseenter", () => {
+    dropletInterval = setInterval(createDroplet, 3);
+    stopTimeoutId = setTimeout(() => {
+      clearInterval(dropletInterval!);
+      dropletInterval = null;
+    }, STOP_DELAY);
   });
 
   button.addEventListener("mouseleave", () => {
-    clearInterval(dropletInterval);
+    if (dropletInterval !== null) {
+      clearInterval(dropletInterval);
+      dropletInterval = null;
+    }
+    if (stopTimeoutId !== null) {
+      clearTimeout(stopTimeoutId);
+      stopTimeoutId = null;
+    }
   });
 }
