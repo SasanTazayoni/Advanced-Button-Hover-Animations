@@ -1,6 +1,6 @@
 .vortex-button {
   position: relative;
-  background: #3d0066;
+  background: #001833;
   color: #fff;
   border: none;
   overflow: hidden;
@@ -19,21 +19,18 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  box-sizing: border-box;
+  width: calc(140px * pow(0.96, var(--i)));
+  height: calc(140px * pow(0.96, var(--i)));
+  transform: translate(-50%, -50%) rotate(calc(var(--i) * 10deg));
   background: transparent;
-  border: 2px solid rgba(200, 100, 255, 1);
+  border: 2px solid rgba(30, 160, 255, 1);
   pointer-events: none;
   opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
-@keyframes vortex-appear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: var(--opacity-target, 0.5);
-  }
-}
-
-.vortex-square.active {
-  animation: vortex-appear 0.3s ease forwards;
+.vortex-button:hover .vortex-square {
+  opacity: calc(0.3 + (var(--i) / var(--n)) * 0.4);
+  transition-delay: calc(var(--i) * 7ms);
 }
