@@ -10,6 +10,7 @@ export function initializeShatterEffect(button: HTMLButtonElement): void {
   const removalDelays: number[] = [0, 200, 400];
   let removalTimeouts: ReturnType<typeof setTimeout>[] = [];
   let restorationTimeout: ReturnType<typeof setTimeout>;
+  let squares: HTMLDivElement[] = [];
 
   function createSquaresContainer(): HTMLDivElement {
     const squaresContainer = document.createElement("div");
@@ -34,7 +35,7 @@ export function initializeShatterEffect(button: HTMLButtonElement): void {
       square.style.opacity = "0.6";
       square.style.position = "absolute";
       square.style.zIndex = "2";
-      square.style.transition = "transform 0.6s, opacity 0.6s";
+      square.style.transition = "transform 0.6s, opacity 0.4s 0.6s";
 
       const x = (i % Math.floor(buttonWidth / squareSize)) * squareSize;
       const y =
@@ -43,12 +44,11 @@ export function initializeShatterEffect(button: HTMLButtonElement): void {
       square.style.left = `${x}px`;
       square.style.top = `${y}px`;
       squaresContainer.appendChild(square);
+      squares.push(square);
     }
   }
 
   function removeRandomSquares(percentage: number): void {
-    const squares: NodeListOf<HTMLDivElement> =
-      button.querySelectorAll<HTMLDivElement>(".square");
     const squaresToRemove: number = Math.floor(totalSquares * percentage);
     const removedSet: Set<number> = new Set();
 
@@ -59,10 +59,7 @@ export function initializeShatterEffect(button: HTMLButtonElement): void {
         const square = squares[randomIndex];
         const randomSpin = Math.random() * 720 - 360;
         square.style.transform = `translateY(40px) rotate(${randomSpin}deg)`;
-
-        setTimeout(() => {
-          square.style.opacity = "0";
-        }, 600);
+        square.style.opacity = "0";
       }
     }
   }
@@ -78,12 +75,10 @@ export function initializeShatterEffect(button: HTMLButtonElement): void {
   }
 
   function resetSquares(): void {
-    const squares: NodeListOf<Element> = button.querySelectorAll(".square");
-    squares.forEach((square) => {
-      const squareElem = square as HTMLElement;
-      squareElem.style.opacity = "0.6";
-      squareElem.style.transform = "translateY(0) rotate(0deg)";
-    });
+    for (const square of squares) {
+      square.style.opacity = "0.6";
+      square.style.transform = "translateY(0) rotate(0deg)";
+    }
   }
 
   function addEventListeners() {
