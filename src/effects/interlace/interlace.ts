@@ -3,6 +3,12 @@ export const initializeInterlaceEffect = (button: HTMLButtonElement): void => {
   const numberOfLines = 28;
   const buttonWidth = button.offsetWidth;
 
+  const probe = document.createElement("span");
+  probe.classList.add("line");
+  button.appendChild(probe);
+  const halfLineWidth = probe.offsetWidth / 2;
+  probe.remove();
+
   const createLine = (
     className: string,
     position: "top" | "bottom",
@@ -11,12 +17,10 @@ export const initializeInterlaceEffect = (button: HTMLButtonElement): void => {
     for (let i = 0; i < numberOfLines; i++) {
       const line = document.createElement("span");
       line.classList.add("line", className);
-      button.appendChild(line);
-
-      const halfLineWidth = line.offsetWidth / 2;
       line.style[position] = `${i * lineHeight}px`;
       line.style.left = `${offset(halfLineWidth, i)}px`;
       line.style.transitionDelay = `${0.025 * i}s`;
+      button.appendChild(line);
     }
   };
 
