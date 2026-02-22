@@ -1,21 +1,18 @@
 export function initializePulseEffect(button: HTMLButtonElement): void {
   if (!button) return;
 
-  const edges = ["pulse-top", "pulse-bottom", "pulse-left", "pulse-right"];
-  let edgesCreated = false;
+  const edgeClassNames = ["pulse-top", "pulse-bottom", "pulse-left", "pulse-right"];
   let isHovering = false;
+
+  const pulseEdges: HTMLDivElement[] = edgeClassNames.map((className) => {
+    const div = document.createElement("div");
+    div.classList.add("pulse-edge", className);
+    button.appendChild(div);
+    return div;
+  });
 
   button.addEventListener("mouseenter", () => {
     isHovering = true;
-
-    if (!edgesCreated) {
-      edgesCreated = true;
-      edges.forEach((className) => {
-        const div = document.createElement("div");
-        div.classList.add("pulse-edge", className);
-        button.appendChild(div);
-      });
-    }
 
     const rings: HTMLDivElement[] = [];
 
@@ -29,9 +26,7 @@ export function initializePulseEffect(button: HTMLButtonElement): void {
 
     setTimeout(() => {
       if (isHovering) {
-        button.querySelectorAll(".pulse-edge").forEach((el) => {
-          el.classList.add("active");
-        });
+        pulseEdges.forEach((el) => el.classList.add("active"));
       }
     }, 200);
 
@@ -43,8 +38,6 @@ export function initializePulseEffect(button: HTMLButtonElement): void {
 
   button.addEventListener("mouseleave", () => {
     isHovering = false;
-    button.querySelectorAll(".pulse-edge").forEach((el) => {
-      el.classList.remove("active");
-    });
+    pulseEdges.forEach((el) => el.classList.remove("active"));
   });
 }
