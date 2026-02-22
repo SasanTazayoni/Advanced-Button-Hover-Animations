@@ -1,54 +1,37 @@
 export const initializeRadiateEffect = (button: HTMLButtonElement): void => {
   let activeIntervals: ReturnType<typeof setInterval>[] = [];
   let activeTimeouts: ReturnType<typeof setTimeout>[] = [];
-  let currentCircles: HTMLDivElement[] = [];
 
-  function createCircles() {
-    const buttonWidth = Math.ceil(button.offsetWidth);
+  const circlesData: { size: number; opacity: number }[] = [
+    { size: 0.1, opacity: 0.5 },
+    { size: 0.2, opacity: 0.45 },
+    { size: 0.3, opacity: 0.4 },
+    { size: 0.4, opacity: 0.35 },
+    { size: 0.5, opacity: 0.3 },
+    { size: 0.6, opacity: 0.25 },
+    { size: 0.7, opacity: 0.2 },
+    { size: 0.8, opacity: 0.15 },
+    { size: 0.9, opacity: 0.1 },
+    { size: 1, opacity: 0.05 },
+  ];
 
-    const circlesData: { size: number; opacity: number }[] = [
-      { size: 0.1, opacity: 0.5 },
-      { size: 0.2, opacity: 0.45 },
-      { size: 0.3, opacity: 0.4 },
-      { size: 0.4, opacity: 0.35 },
-      { size: 0.5, opacity: 0.3 },
-      { size: 0.6, opacity: 0.25 },
-      { size: 0.7, opacity: 0.2 },
-      { size: 0.8, opacity: 0.15 },
-      { size: 0.9, opacity: 0.1 },
-      { size: 1, opacity: 0.05 },
-    ];
+  const buttonWidth = Math.ceil(button.offsetWidth);
+  const fragment = document.createDocumentFragment();
+  const circles: HTMLDivElement[] = [];
 
-    currentCircles = createCircleElements(circlesData, buttonWidth);
-    fadeInCircles(currentCircles);
+  circlesData.forEach((circleData) => {
+    const size = circleData.size * buttonWidth;
+    const circle = document.createElement("div");
+    circle.className = "circle";
+    circle.style.width = `${size}px`;
+    circle.style.height = `${size}px`;
+    circle.style.backgroundColor = `rgba(0, 120, 0, ${circleData.opacity})`;
+    fragment.appendChild(circle);
+    circles.push(circle);
+  });
+  button.appendChild(fragment);
 
-    const activeTimeout = setTimeout(() => {
-      button.classList.add("active");
-    }, currentCircles.length * 30);
-    activeTimeouts.push(activeTimeout);
-
-    handleSequentialOpacity(currentCircles);
-  }
-
-  function createCircleElements(
-    circlesData: { size: number; opacity: number }[],
-    buttonWidth: number
-  ): HTMLDivElement[] {
-    const circles: HTMLDivElement[] = [];
-    circlesData.forEach((circleData) => {
-      const size = circleData.size * buttonWidth;
-      const circle = document.createElement("div");
-      circle.className = "circle";
-      circle.style.width = `${size}px`;
-      circle.style.height = `${size}px`;
-      circle.style.backgroundColor = `rgba(0, 120, 0, ${circleData.opacity})`;
-      button.appendChild(circle);
-      circles.push(circle);
-    });
-    return circles;
-  }
-
-  function fadeInCircles(circles: HTMLDivElement[]): void {
+  function fadeInCircles(): void {
     circles.forEach((circle, index) => {
       const timeout = setTimeout(() => {
         circle.style.opacity = "1";
@@ -57,14 +40,10 @@ export const initializeRadiateEffect = (button: HTMLButtonElement): void => {
     });
   }
 
-  function handleSequentialOpacity(circles: HTMLDivElement[]): void {
+  function handleSequentialOpacity(): void {
     circles.forEach((circle, index) => {
       const timeout = setTimeout(() => {
-        let opacity = parseFloat(
-          circle.style.backgroundColor.match(
-            /rgba\(0, 120, 0, (\d(\.\d+)?)\)/
-          )?.[1] ?? "0"
-        );
+        let opacity = circlesData[index].opacity;
 
         const intervalId: ReturnType<typeof setInterval> = setInterval(() => {
           opacity -= 0.1;
@@ -80,26 +59,29 @@ export const initializeRadiateEffect = (button: HTMLButtonElement): void => {
     });
   }
 
-  function cleanup() {
+  function startAnimation(): void {
+    fadeInCircles();
+
+    const activeTimeout = setTimeout(() => {
+      button.classList.add("active");
+    }, circles.length * 30);
+    activeTimeouts.push(activeTimeout);
+
+    handleSequentialOpacity();
+  }
+
+  function cleanup(): void {
     activeIntervals.forEach((id) => clearInterval(id));
     activeTimeouts.forEach((id) => clearTimeout(id));
     activeIntervals = [];
     activeTimeouts = [];
 
-    currentCircles.forEach((circle) => {
+    circles.forEach((circle) => {
       circle.style.opacity = "0";
     });
-    setTimeout(() => {
-      currentCircles.forEach((circle) => {
-        if (button.contains(circle)) {
-          button.removeChild(circle);
-        }
-      });
-      currentCircles = [];
-      button.classList.remove("active");
-    }, 300);
+    button.classList.remove("active");
   }
 
-  button.addEventListener("mouseenter", createCircles);
+  button.addEventListener("mouseenter", startAnimation);
   button.addEventListener("mouseleave", cleanup);
 };
