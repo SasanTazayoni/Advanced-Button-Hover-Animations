@@ -154,17 +154,27 @@ The Radiate button introduces an engaging and visually dynamic hover effect that
 #### How it works
 
 - **Initialisation:** All ten circles are created once at initialisation using a `DocumentFragment` for a single batched DOM insertion. Each circle’s size (as a fraction of the button’s width) and background colour opacity are set at this point and never change. The circles remain in the DOM permanently at `opacity: 0`, eliminating any per-interaction DOM creation or removal.
-- **Hover Interaction:** When the cursor enters the button (`mouseenter`), the circles fade in sequentially via staggered `setTimeout` calls (`index * 30ms`), each setting `opacity` to `1` and relying on the CSS `0.6s ease` transition to animate the change.
-- **Animation:** Shortly after each circle fades in, a second staggered sequence begins (`index * 60 + 60ms`). Each circle’s opacity is stepped down by `0.1` every `30ms` via `setInterval`, starting from its initial per-circle opacity value, until it reaches `0`. This produces the characteristic stepped fade-out that gives the effect its feel.
-- **Button Background Colour:** As the circles complete their fade-in, the button’s background colour shifts to a darker shade of green (`rgb(6, 224, 6)`), timed via a `setTimeout` keyed to the last circle’s fade-in delay. This provides additional visual feedback highlighting the button’s interactivity.
-- **Timer Management:** All active timeouts and intervals are tracked and cleared when the cursor leaves the button, preventing overlapping animations during rapid hover interactions.
-- **Mouse Leave Behaviour:** When the cursor leaves the button (`mouseleave`), all pending timers are cancelled and every circle’s opacity is immediately reset to `0`. The button’s background colour reverts to its initial light green shade.
+
+- **Hover Interaction:** When the cursor enters the button (`mouseenter`), the animation starts. Before scheduling anything new, the implementation clears all existing timers and resets every circle to `opacity: 0`. A forced reflow (`void button.offsetHeight`) is then used to ensure the next fade-in reliably triggers the CSS opacity transition, even during rapid re-hover.
+
+- **Fade-in Sequence:** Circles fade in sequentially using staggered `setTimeout` calls (`index * 30ms`). Each timeout sets the circle’s `opacity` to `1`, relying on the CSS transition (`opacity 0.6s ease`) to animate the change.
+
+- **Fade-out Sequence:** Shortly after each circle fades in, a second staggered sequence begins (`index * 60 + 60ms`). Each circle’s opacity is stepped down by `0.1` every `30ms` via `setInterval`, starting from its initial per-circle opacity value, until it reaches `0`. This produces the characteristic stepped fade-out that gives the effect its feel.
+
+- **Button Background Colour:** As the circles complete their fade-in, the button’s background colour shifts to a darker shade of green (`rgb(6, 224, 6)`) by adding the `active` class. This is timed with a `setTimeout` keyed to the last circle’s fade-in delay (`circles.length * 30ms`).
+
+- **Rapid Hover Reliability:** A `runId` token is incremented each time the animation starts and when it cleans up. Every timeout and interval captures the current `runId` and exits early if it no longer matches, preventing stale callbacks from a previous hover from interfering with a new animation.
+
+- **Mouse Leave Behaviour:** When the cursor leaves the button (`mouseleave`), `runId` is incremented to invalidate pending callbacks, all active timeouts/intervals are cleared, every circle’s opacity is immediately reset to `0`, and the button’s `active` class is removed.
 
 #### Customisation
 
 - **Circle Size & Opacity:** The size and opacity of each circle are defined in the `circlesData` array, where each object sets a `size` (as a fraction of the button’s width) and an `opacity` value used in the `rgba()` background colour. Edit values such as `{ size: 0.3, opacity: 0.4 }` to adjust the visual weight and reach of the effect.
-- **Speed & Timing:** The fade-in stagger is controlled by `index * 30` in `fadeInCircles`. The fade-out stagger and start point are controlled by `index * 60 + 60` in `handleSequentialOpacity`, with the step rate set by the `setInterval` delay of `30ms`. Adjusting these values changes how fast or slow the animation feels.
+
+- **Speed & Timing:** The fade-in stagger is controlled by `index * 30` in the fade-in `setTimeout`. The fade-out stagger and start point are controlled by `index * 60 + 60` in the second `setTimeout`, with the step rate set by the `setInterval` delay of `30ms` and a decrement of `0.1` per tick. Adjusting these values changes how fast or slow the animation feels.
+
 - **Button Background Colour:** The initial background colour is set via `.radiate-button { background-color: #a7ffa9; }`, and the active colour is controlled by `.radiate-button.active { background-color: rgb(6, 224, 6); }`. Update both in the CSS to match a specific theme.
+
 - **Circle Colour & Transition Style:** Each circle uses `background-color: rgba(0, 120, 0, opacity)` for its fill. The RGB values can be changed to adjust the colour hue, while the alpha is tied to the `opacity` field in `circlesData`. The fade-in behaviour is governed by `.circle { transition: opacity 0.6s ease; }`, which can be adjusted for different easing curves or durations.
 
 Overall, this button adds a distinctive, fluid animation to any user interface, ideal for attention-grabbing calls to action. By adjusting the size, speed, and opacity of the circles, developers can tailor the effect to match their desired aesthetic, making it a versatile and engaging UI component.

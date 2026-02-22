@@ -1,6 +1,7 @@
 export const initializeRadiateEffect = (button: HTMLButtonElement): void => {
   let activeIntervals: ReturnType<typeof setInterval>[] = [];
   let activeTimeouts: ReturnType<typeof setTimeout>[] = [];
+  let runId = 0;
 
   const circlesData: { size: number; opacity: number }[] = [
     { size: 0.1, opacity: 0.5 },
@@ -31,54 +32,74 @@ export const initializeRadiateEffect = (button: HTMLButtonElement): void => {
   });
   button.appendChild(fragment);
 
-  function fadeInCircles(): void {
-    circles.forEach((circle, index) => {
-      const timeout = setTimeout(() => {
-        circle.style.opacity = "1";
-      }, index * 30);
-      activeTimeouts.push(timeout);
-    });
+  function clearTimers(): void {
+    activeIntervals.forEach(clearInterval);
+    activeTimeouts.forEach(clearTimeout);
+    activeIntervals = [];
+    activeTimeouts = [];
   }
 
-  function handleSequentialOpacity(): void {
-    circles.forEach((circle, index) => {
-      const timeout = setTimeout(() => {
-        let opacity = circlesData[index].opacity;
-
-        const intervalId: ReturnType<typeof setInterval> = setInterval(() => {
-          opacity -= 0.1;
-          if (opacity <= 0) {
-            opacity = 0;
-            clearInterval(intervalId);
-          }
-          circle.style.opacity = opacity.toString();
-        }, 30);
-        activeIntervals.push(intervalId);
-      }, index * 60 + 60);
-      activeTimeouts.push(timeout);
-    });
+  function hardResetCircles(): void {
+    circles.forEach((c) => (c.style.opacity = "0"));
+    void button.offsetHeight;
   }
 
   function startAnimation(): void {
-    fadeInCircles();
+    runId += 1;
+    const myRun = runId;
+
+    clearTimers();
+    hardResetCircles();
+    button.classList.remove("active");
+
+    circles.forEach((circle, index) => {
+      const t = setTimeout(() => {
+        if (runId !== myRun) return;
+        circle.style.opacity = "1";
+      }, index * 30);
+      activeTimeouts.push(t);
+    });
 
     const activeTimeout = setTimeout(() => {
+      if (runId !== myRun) return;
       button.classList.add("active");
     }, circles.length * 30);
     activeTimeouts.push(activeTimeout);
 
-    handleSequentialOpacity();
+    circles.forEach((circle, index) => {
+      const t = setTimeout(
+        () => {
+          if (runId !== myRun) return;
+
+          let opacity = circlesData[index].opacity;
+
+          const intervalId = setInterval(() => {
+            if (runId !== myRun) {
+              clearInterval(intervalId);
+              return;
+            }
+
+            opacity -= 0.1;
+            if (opacity <= 0) {
+              opacity = 0;
+              clearInterval(intervalId);
+            }
+            circle.style.opacity = String(opacity);
+          }, 30);
+
+          activeIntervals.push(intervalId);
+        },
+        index * 60 + 60,
+      );
+
+      activeTimeouts.push(t);
+    });
   }
 
   function cleanup(): void {
-    activeIntervals.forEach((id) => clearInterval(id));
-    activeTimeouts.forEach((id) => clearTimeout(id));
-    activeIntervals = [];
-    activeTimeouts = [];
-
-    circles.forEach((circle) => {
-      circle.style.opacity = "0";
-    });
+    runId += 1;
+    clearTimers();
+    circles.forEach((circle) => (circle.style.opacity = "0"));
     button.classList.remove("active");
   }
 
