@@ -2,12 +2,16 @@ export function initializeWaterEffect(button: HTMLButtonElement): void {
   const STOP_DELAY = 405;
   const POOL_SIZE = 140;
 
+  const buttonWidth = button.offsetWidth;
+  const buttonHeight = button.offsetHeight;
+
   const freeList: HTMLDivElement[] = [];
   const fragment = document.createDocumentFragment();
 
   for (let i = 0; i < POOL_SIZE; i++) {
     const droplet = document.createElement("div");
     droplet.classList.add("droplet");
+    droplet.style.top = "0";
     droplet.style.transition = "none";
     droplet.style.opacity = "0";
     fragment.appendChild(droplet);
@@ -33,26 +37,24 @@ export function initializeWaterEffect(button: HTMLButtonElement): void {
     droplet.style.width = `${size}px`;
     droplet.style.height = `${size}px`;
 
-    const buttonWidth = button.offsetWidth;
-    const buttonHeight = button.offsetHeight;
     droplet.style.left = `${Math.random() * (buttonWidth - size)}px`;
-    droplet.style.top = `${size / 2}px`;
+    droplet.style.transform = `translateY(${size / 2}px) rotate(45deg)`;
     droplet.style.opacity = "0.5";
 
     const fallDuration = Math.random() * 200 + 200;
 
     setTimeout(() => {
-      droplet.style.transition = `top ${fallDuration}ms linear, opacity ${fallDuration * 0.15}ms linear ${fallDuration * 0.85}ms`;
-      droplet.style.top = `${buttonHeight - size}px`;
-      droplet.style.opacity = "0";
+      droplet.style.transition = `transform ${fallDuration}ms linear`;
+      droplet.style.transform = `translateY(${buttonHeight - size}px) rotate(45deg)`;
 
-      droplet.addEventListener(
-        "transitionend",
-        (e) => {
-          if (e.propertyName === "opacity") release(droplet);
-        },
-        { once: true },
-      );
+      setTimeout(() => {
+        droplet.style.transition = `opacity ${Math.round(fallDuration * 0.25)}ms linear`;
+        droplet.style.opacity = "0";
+
+        droplet.addEventListener("transitionend", () => release(droplet), {
+          once: true,
+        });
+      }, fallDuration);
     }, 10);
   }
 
