@@ -12,6 +12,7 @@ export function initializeMatrixEffect(button: HTMLElement) {
 
   const pool: HTMLSpanElement[] = [];
   const freeList: HTMLSpanElement[] = [];
+  const activeSpans = new Set<HTMLSpanElement>();
 
   const fragment = document.createDocumentFragment();
   for (let i = 0; i < TRAIL_LENGTH * MAX_TRAILS; i++) {
@@ -24,10 +25,14 @@ export function initializeMatrixEffect(button: HTMLElement) {
   button.appendChild(fragment);
 
   function acquire(): HTMLSpanElement | null {
-    return freeList.pop() ?? null;
+    const span = freeList.pop() ?? null;
+    if (span) activeSpans.add(span);
+    return span;
   }
 
   function release(span: HTMLSpanElement): void {
+    if (!activeSpans.has(span)) return;
+    activeSpans.delete(span);
     span.style.transition = "";
     span.style.opacity = "0";
     freeList.push(span);
@@ -47,6 +52,7 @@ export function initializeMatrixEffect(button: HTMLElement) {
       span.style.transition = "";
       span.style.opacity = "0";
     }
+    activeSpans.clear();
     freeList.length = 0;
     freeList.push(...pool);
     activeXCoordinates.clear();
