@@ -50,12 +50,12 @@ export function initializeShatterEffect(button: HTMLButtonElement): void {
 
   function removeRandomSquares(percentage: number): void {
     const squaresToRemove: number = Math.floor(totalSquares * percentage);
-    const removedSet: Set<number> = new Set();
+    const removedIndices: Set<number> = new Set();
 
-    while (removedSet.size < squaresToRemove) {
+    while (removedIndices.size < squaresToRemove) {
       const randomIndex = Math.floor(Math.random() * totalSquares);
-      if (!removedSet.has(randomIndex)) {
-        removedSet.add(randomIndex);
+      if (!removedIndices.has(randomIndex)) {
+        removedIndices.add(randomIndex);
         const square = squares[randomIndex];
         const randomSpin = Math.random() * 720 - 360;
         square.style.transform = `translateY(40px) rotate(${randomSpin}deg)`;

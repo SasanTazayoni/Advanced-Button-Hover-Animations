@@ -1,7 +1,7 @@
 export function initializeWeldEffect(weldButton: HTMLButtonElement): void {
   const triangleBorderWidth = 20;
-  const computedStyles = getComputedStyle(weldButton);
-  const borderLeftWidth = parseInt(computedStyles.borderLeftWidth, 10);
+  const buttonStyles = getComputedStyle(weldButton);
+  const borderLeftWidth = parseInt(buttonStyles.borderLeftWidth, 10);
   const arrowUpPosition = (index: number): string =>
     `${
       triangleBorderWidth * (index * 2 - 1) + index * 6 - borderLeftWidth / 2
@@ -40,11 +40,11 @@ export function initializeWeldEffect(weldButton: HTMLButtonElement): void {
     },
   ];
 
-  function applyHoverStyles(isHover: boolean): void {
+  function applyHoverStyles(isHovering: boolean): void {
     for (const { elements, hoverPosition, defaultValue } of arrowGroups) {
       for (const arrow of elements) {
-        arrow.classList.toggle("hover", isHover);
-        arrow.style[hoverPosition] = isHover ? "50%" : defaultValue;
+        arrow.classList.toggle("hover", isHovering);
+        arrow.style[hoverPosition] = isHovering ? "50%" : defaultValue;
       }
     }
   }

@@ -3,11 +3,11 @@ export const initializeInterlaceEffect = (button: HTMLButtonElement): void => {
   const numberOfLines = 28;
   const buttonWidth = button.offsetWidth;
 
-  const probe = document.createElement("span");
-  probe.classList.add("line");
-  button.appendChild(probe);
-  const halfLineWidth = probe.offsetWidth / 2;
-  probe.remove();
+  const lineWidthProbe = document.createElement("span");
+  lineWidthProbe.classList.add("line");
+  button.appendChild(lineWidthProbe);
+  const halfLineWidth = lineWidthProbe.offsetWidth / 2;
+  lineWidthProbe.remove();
 
   const createLine = (
     className: string,

@@ -63,13 +63,13 @@ export function initializeCascadeEffect(button: HTMLButtonElement): void {
         [row, col - 1],
         [row, col + 1],
       ];
-      for (const [nr, nc] of neighbors) {
-        if (nr >= 0 && nr < rows && nc >= 0 && nc < cols) {
-          const nIdx = nr * cols + nc;
-          if (!revealed[nIdx]) {
-            revealed[nIdx] = 1;
-            squares[nIdx].style.opacity = "0";
-            nextFrontier.push(nIdx);
+      for (const [neighborRow, neighborCol] of neighbors) {
+        if (neighborRow >= 0 && neighborRow < rows && neighborCol >= 0 && neighborCol < cols) {
+          const neighborIdx = neighborRow * cols + neighborCol;
+          if (!revealed[neighborIdx]) {
+            revealed[neighborIdx] = 1;
+            squares[neighborIdx].style.opacity = "0";
+            nextFrontier.push(neighborIdx);
           }
         }
       }

@@ -33,19 +33,19 @@ export function initializeWaterEffect(button: HTMLButtonElement): void {
     const droplet = acquire();
     if (!droplet) return;
 
-    const size = Math.random() * 5 + 10;
-    droplet.style.width = `${size}px`;
-    droplet.style.height = `${size}px`;
+    const dropletSize = Math.random() * 5 + 10;
+    droplet.style.width = `${dropletSize}px`;
+    droplet.style.height = `${dropletSize}px`;
 
-    droplet.style.left = `${Math.random() * (buttonWidth - size)}px`;
-    droplet.style.transform = `translateY(${size / 2}px) rotate(45deg)`;
+    droplet.style.left = `${Math.random() * (buttonWidth - dropletSize)}px`;
+    droplet.style.transform = `translateY(${dropletSize / 2}px) rotate(45deg)`;
     droplet.style.opacity = "0.5";
 
     const fallDuration = Math.random() * 200 + 200;
 
     setTimeout(() => {
       droplet.style.transition = `transform ${fallDuration}ms linear`;
-      droplet.style.transform = `translateY(${buttonHeight - size}px) rotate(45deg)`;
+      droplet.style.transform = `translateY(${buttonHeight - dropletSize}px) rotate(45deg)`;
 
       setTimeout(() => {
         droplet.style.transition = `opacity ${Math.round(fallDuration * 0.25)}ms linear`;

@@ -3,7 +3,7 @@ export const initializeRadiateEffect = (button: HTMLButtonElement): void => {
   let activeTimeouts: ReturnType<typeof setTimeout>[] = [];
   let runId = 0;
 
-  const circlesData: { size: number; opacity: number }[] = [
+  const circleConfigs: { size: number; opacity: number }[] = [
     { size: 0.1, opacity: 0.5 },
     { size: 0.2, opacity: 0.45 },
     { size: 0.3, opacity: 0.4 },
@@ -20,7 +20,7 @@ export const initializeRadiateEffect = (button: HTMLButtonElement): void => {
   const fragment = document.createDocumentFragment();
   const circles: HTMLDivElement[] = [];
 
-  circlesData.forEach((circleData) => {
+  circleConfigs.forEach((circleData) => {
     const size = circleData.size * buttonWidth;
     const circle = document.createElement("div");
     circle.className = "circle";
@@ -46,7 +46,7 @@ export const initializeRadiateEffect = (button: HTMLButtonElement): void => {
 
   function startAnimation(): void {
     runId += 1;
-    const myRun = runId;
+    const capturedRunId = runId;
 
     clearTimers();
     hardResetCircles();
@@ -54,14 +54,14 @@ export const initializeRadiateEffect = (button: HTMLButtonElement): void => {
 
     circles.forEach((circle, index) => {
       const t = setTimeout(() => {
-        if (runId !== myRun) return;
+        if (runId !== capturedRunId) return;
         circle.style.opacity = "1";
       }, index * 30);
       activeTimeouts.push(t);
     });
 
     const activeTimeout = setTimeout(() => {
-      if (runId !== myRun) return;
+      if (runId !== capturedRunId) return;
       button.classList.add("active");
     }, circles.length * 30);
     activeTimeouts.push(activeTimeout);
@@ -69,12 +69,12 @@ export const initializeRadiateEffect = (button: HTMLButtonElement): void => {
     circles.forEach((circle, index) => {
       const t = setTimeout(
         () => {
-          if (runId !== myRun) return;
+          if (runId !== capturedRunId) return;
 
-          let opacity = circlesData[index].opacity;
+          let opacity = circleConfigs[index].opacity;
 
           const intervalId = setInterval(() => {
-            if (runId !== myRun) {
+            if (runId !== capturedRunId) {
               clearInterval(intervalId);
               return;
             }

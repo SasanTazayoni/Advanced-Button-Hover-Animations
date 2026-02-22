@@ -42,7 +42,7 @@ export function initializeMatrixEffect(button: HTMLElement) {
   let allTimeoutIds: ReturnType<typeof setTimeout>[] = [];
   let cooldownActive = false;
   let cooldownTimeoutId: ReturnType<typeof setTimeout> | null = null;
-  let hovered = false;
+  let isHovering = false;
   let activeTrailsCount = 0;
   const activeXCoordinates = new Set<number>();
   const cooldownTime = 600;
@@ -62,14 +62,14 @@ export function initializeMatrixEffect(button: HTMLElement) {
   type Trail = { x: number; delay: number };
 
   button.addEventListener("mouseenter", () => {
-    hovered = true;
+    isHovering = true;
     if (hoverInterval || cooldownActive) return;
     hoverInterval = setInterval(spawnTrails, 200);
     spawnTrails();
   });
 
   button.addEventListener("mouseleave", () => {
-    hovered = false;
+    isHovering = false;
     if (hoverInterval !== null) {
       clearInterval(hoverInterval);
       hoverInterval = null;
@@ -85,7 +85,7 @@ export function initializeMatrixEffect(button: HTMLElement) {
       cooldownActive = false;
       cooldownTimeoutId = null;
 
-      if (hovered && !hoverInterval) {
+      if (isHovering && !hoverInterval) {
         hoverInterval = setInterval(spawnTrails, 200);
         spawnTrails();
       }
@@ -120,23 +120,23 @@ export function initializeMatrixEffect(button: HTMLElement) {
     const fadeDuration = delayBetweenChars * (TRAIL_LENGTH - 1);
 
     for (let i = 0; i < TRAIL_LENGTH; i++) {
-      const char = acquire();
-      if (!char) continue;
+      const charSpan = acquire();
+      if (!charSpan) continue;
 
-      char.textContent = matrixChars[Math.floor(Math.random() * matrixChars.length)];
-      char.style.left = `${x}px`;
-      char.style.top = `${i * 8}px`;
+      charSpan.textContent = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+      charSpan.style.left = `${x}px`;
+      charSpan.style.top = `${i * 8}px`;
 
       allTimeoutIds.push(setTimeout(() => {
-        char.style.opacity = "1";
+        charSpan.style.opacity = "1";
       }, delayBetweenChars * i));
 
       allTimeoutIds.push(setTimeout(() => {
-        char.style.transition = `opacity ${fadeDuration}ms linear`;
-        char.style.opacity = "0";
+        charSpan.style.transition = `opacity ${fadeDuration}ms linear`;
+        charSpan.style.opacity = "0";
 
         allTimeoutIds.push(setTimeout(() => {
-          release(char);
+          release(charSpan);
           if (i === TRAIL_LENGTH - 1) {
             activeTrailsCount--;
             activeXCoordinates.delete(x);
