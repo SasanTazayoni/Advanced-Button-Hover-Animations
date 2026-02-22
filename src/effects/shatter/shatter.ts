@@ -94,6 +94,7 @@ export function initializeShatterEffect(button: HTMLButtonElement): void {
 
     button.addEventListener("mouseleave", () => {
       removalTimeouts.forEach((timeoutId) => clearTimeout(timeoutId));
+      removalTimeouts = [];
       restorationTimeout = setTimeout(resetSquares, 1000);
     });
   }
