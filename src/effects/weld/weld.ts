@@ -9,62 +9,46 @@ export function initializeWeldEffect(weldButton: HTMLButtonElement): void {
   const arrowDownPosition = (index: number): string =>
     `${index * (triangleBorderWidth * 2 + 6) + borderLeftWidth}px`;
 
-  type ArrowConfig = {
-    class: string;
-    positions: string[];
+  type ArrowGroup = {
+    elements: HTMLDivElement[];
     hoverPosition: "top" | "bottom";
     defaultValue: string;
   };
 
-  const arrowConfigurations: ArrowConfig[] = [
+  const arrowGroups: ArrowGroup[] = [
     {
-      class: "arrow-up",
-      positions: [
-        arrowUpPosition(0),
-        arrowUpPosition(1),
-        arrowUpPosition(2),
-        arrowUpPosition(3),
-      ],
+      elements: [arrowUpPosition(0), arrowUpPosition(1), arrowUpPosition(2), arrowUpPosition(3)].map((left) => {
+        const arrow = document.createElement("div");
+        arrow.classList.add("arrow-up");
+        arrow.style.left = left;
+        weldButton.appendChild(arrow);
+        return arrow;
+      }),
       hoverPosition: "bottom",
       defaultValue: "-65%",
     },
     {
-      class: "arrow-down",
-      positions: [
-        arrowDownPosition(0),
-        arrowDownPosition(1),
-        arrowDownPosition(2),
-      ],
+      elements: [arrowDownPosition(0), arrowDownPosition(1), arrowDownPosition(2)].map((left) => {
+        const arrow = document.createElement("div");
+        arrow.classList.add("arrow-down");
+        arrow.style.left = left;
+        weldButton.appendChild(arrow);
+        return arrow;
+      }),
       hoverPosition: "top",
       defaultValue: "-65%",
     },
   ];
 
-  function createArrows({ class: arrowClass, positions }: ArrowConfig): void {
-    positions.forEach((left) => {
-      const arrow = document.createElement("div");
-      arrow.classList.add(arrowClass);
-      arrow.style.left = left;
-      weldButton.appendChild(arrow);
-    });
+  function applyHoverStyles(isHover: boolean): void {
+    for (const { elements, hoverPosition, defaultValue } of arrowGroups) {
+      for (const arrow of elements) {
+        arrow.classList.toggle("hover", isHover);
+        arrow.style[hoverPosition] = isHover ? "50%" : defaultValue;
+      }
+    }
   }
-
-  arrowConfigurations.forEach(createArrows);
 
   weldButton.addEventListener("mouseenter", () => applyHoverStyles(true));
   weldButton.addEventListener("mouseleave", () => applyHoverStyles(false));
-
-  function applyHoverStyles(isHover: boolean): void {
-    arrowConfigurations.forEach(
-      ({ class: arrowClass, hoverPosition, defaultValue }) => {
-        const arrows = weldButton.querySelectorAll<HTMLButtonElement>(
-          `.${arrowClass}`
-        )!;
-        arrows.forEach((arrow) => {
-          arrow.classList.toggle("hover", isHover);
-          arrow.style[hoverPosition] = isHover ? "50%" : defaultValue;
-        });
-      }
-    );
-  }
 }
