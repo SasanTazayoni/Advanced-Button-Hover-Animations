@@ -92,7 +92,7 @@ The standout feature is the ripple itself — a circular burst that originates p
 
 #### Customisation
 
-- **Ripple Appearance:** The ripple’s colour is set by the `background` property in `.ripple-button > span` (currently `#000`). Its size is controlled by the `width` and `height` values in the `@keyframes ripple` rule (set to `300px`). A blur effect can be added with the `filter` property in `.ripple-button > span`, such as `filter: blur(4px)`.
+- **Ripple Appearance:** The ripple’s colour is set by the `background` property in `.ripple-button > span` (currently `#000`). Its size is controlled by the `width` and `height` properties on `.ripple-button > span` (set to `300px`). The expansion is animated via `transform: scale()` in `@keyframes ripple`. A blur effect can be added with the `filter` property in `.ripple-button > span`, such as `filter: blur(4px)`.
 - **Speed & Opacity:** The expansion timing is managed by `animation-duration` in `.ripple-button > span`. Opacity transition is defined in the `@keyframes ripple` block (opacity: `0.7` to `0`). The easing curve is specified as `linear` and can be changed to `ease-out`, `ease-in-out`, or a custom `cubic-bezier(...)` for different pacing.
 - **Cleanup Timing:** The ripple element is removed from the DOM using `setTimeout(() => ripple.remove(), 600)` in TypeScript. This value should match the `animation-duration` (currently `0.6s`) to keep visual and DOM timing in sync.
 - **Hover Transition:** The hover background colour is set in `.ripple-button:hover` (`background-color: #c50000`) and the text colour switches to white. The smoothness of this change is controlled by `transition: all 0.6s` in `.ripple-button`.
