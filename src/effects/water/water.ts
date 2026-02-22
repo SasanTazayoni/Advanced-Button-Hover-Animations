@@ -1,9 +1,33 @@
 export function initializeWaterEffect(button: HTMLButtonElement): void {
   const STOP_DELAY = 405;
+  const POOL_SIZE = 140;
 
-  function createDroplet() {
+  const freeList: HTMLDivElement[] = [];
+  const fragment = document.createDocumentFragment();
+
+  for (let i = 0; i < POOL_SIZE; i++) {
     const droplet = document.createElement("div");
     droplet.classList.add("droplet");
+    droplet.style.transition = "none";
+    droplet.style.opacity = "0";
+    fragment.appendChild(droplet);
+    freeList.push(droplet);
+  }
+  button.appendChild(fragment);
+
+  function acquire(): HTMLDivElement | null {
+    return freeList.pop() ?? null;
+  }
+
+  function release(droplet: HTMLDivElement): void {
+    droplet.style.transition = "none";
+    droplet.style.opacity = "0";
+    freeList.push(droplet);
+  }
+
+  function spawnDroplet(): void {
+    const droplet = acquire();
+    if (!droplet) return;
 
     const size = Math.random() * 5 + 10;
     droplet.style.width = `${size}px`;
@@ -14,7 +38,6 @@ export function initializeWaterEffect(button: HTMLButtonElement): void {
     droplet.style.left = `${Math.random() * (buttonWidth - size)}px`;
     droplet.style.top = `${size / 2}px`;
     droplet.style.opacity = "0.5";
-    button.appendChild(droplet);
 
     const fallDuration = Math.random() * 200 + 200;
 
@@ -26,7 +49,7 @@ export function initializeWaterEffect(button: HTMLButtonElement): void {
       droplet.addEventListener(
         "transitionend",
         (e) => {
-          if (e.propertyName === "opacity") droplet.remove();
+          if (e.propertyName === "opacity") release(droplet);
         },
         { once: true },
       );
@@ -37,7 +60,7 @@ export function initializeWaterEffect(button: HTMLButtonElement): void {
   let stopTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   button.addEventListener("mouseenter", () => {
-    dropletInterval = setInterval(createDroplet, 3);
+    dropletInterval = setInterval(spawnDroplet, 3);
     stopTimeoutId = setTimeout(() => {
       clearInterval(dropletInterval!);
       dropletInterval = null;
