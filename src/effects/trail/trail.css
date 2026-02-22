@@ -29,6 +29,7 @@
   width: 20px;
   height: 20px;
   pointer-events: none;
-  opacity: 0.8;
+  opacity: 0;
   filter: blur(10px);
+  transform: translate(-50%, -50%);
 }
