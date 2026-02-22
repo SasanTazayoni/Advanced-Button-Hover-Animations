@@ -24,9 +24,7 @@ export function initializeStreamEffect(button: HTMLButtonElement): void {
     line.className = directionClass;
     line.style.left = `${xPosition}px`;
     line.style.opacity = `${opacityValue}`;
-    line.style.setProperty("--random-top", `${positionValue}`);
-    line.style.setProperty("--random-bottom", `${positionValue}`);
-    line.style.setProperty(positionProperty, `${positionValue}%`);
+    line.style.setProperty(positionProperty, `${positionValue}`);
 
     button.appendChild(line);
 
@@ -71,7 +69,7 @@ export function initializeStreamEffect(button: HTMLButtonElement): void {
         opacityValue: randomOpacityUp,
         positionProperty: "--random-bottom",
       });
-    }, 1);
+    }, 4);
   }
 
   function resetCooldown() {
