@@ -70,6 +70,3 @@ export const initializeTrailEffect = (button: HTMLButtonElement): void => {
     activeCircles.clear();
   });
 };
-
-const button = document.querySelector<HTMLButtonElement>(".trail-button")!;
-initializeTrailEffect(button);
