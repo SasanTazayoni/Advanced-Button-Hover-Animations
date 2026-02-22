@@ -37,10 +37,8 @@ const rainbowButton =
   document.querySelector<HTMLButtonElement>(".rainbow-button")!;
 const matrixButton =
   document.querySelector<HTMLButtonElement>(".matrix-button")!;
-const pulseButton =
-  document.querySelector<HTMLButtonElement>("#pulse")!;
-const vortexButton =
-  document.querySelector<HTMLButtonElement>("#vortex")!;
+const pulseButton = document.querySelector<HTMLButtonElement>("#pulse")!;
+const vortexButton = document.querySelector<HTMLButtonElement>("#vortex")!;
 
 initializeTrailEffect(trailButton);
 initializeRippleEffect(rippleButton);
