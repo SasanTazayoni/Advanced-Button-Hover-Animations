@@ -327,15 +327,16 @@ When the cursor leaves, the masked tiles gradually fade back in, restoring the b
 
 #### How it works
 
-- **Dynamic Grid Overlay:** A grid of square tiles is generated dynamically and positioned over the button. Each tile acts as a cover that hides the illuminated layer beneath. These tiles fade out in sequence when hovered, simulating the effect of cascading reveal.
-- **Cursor-Driven Animation:** On hover or movement, the cursor’s position is tracked, and the nearest tile is identified. From that point, adjacent tiles begin fading in all directions in a recursive wave, creating a smooth cascade that follows the user's motion.
-- **Automatic Reset:** When the user’s cursor leaves the button, all previously faded tiles gradually fade back in, resetting the button’s appearance for the next interaction.
+- **Dynamic Grid Overlay:** A grid of square tiles is generated at initialisation using a `DocumentFragment` for a single efficient DOM insertion, then stored in a pre-indexed `HTMLDivElement[]` array for instant O(1) access throughout the animation. Each tile acts as a cover that hides the illuminated layer beneath. Shared tile styles (size, colour, transition) are defined in CSS; only the per-element `left` and `top` values are set inline.
+- **Cursor-Driven BFS Wave:** On hover or movement, the cursor’s position is resolved to a grid cell via a single `getBoundingClientRect()` call. From that cell, a breadth-first wave propagates outward — but instead of each newly revealed cell scheduling its own individual `setTimeout`, a single shared `setInterval` processes the entire current wave frontier on each tick and builds the next. This keeps the number of active timers at one regardless of how many tiles are being revealed simultaneously.
+- **Revealed State Tracking:** A flat `Uint8Array` indexed by `row × cols + col` tracks which tiles have been revealed. This gives O(1) lookup per cell with no string allocation, replacing the previous string-keyed `Set` (`"row,col"`) that allocated a new string for every revealed tile.
+- **Automatic Reset:** When the cursor leaves, the single interval is cleared immediately and the frontier is discarded. All revealed tiles are restored to full opacity in a single loop over the typed array, and all revealed flags are reset for the next interaction.
 
 #### Customisation
 
 - **Tile Size (Grid Density):** Modify the `squareSize` variable in the script to increase or decrease the number of squares. Smaller sizes (e.g., 4–5px) yield a finer, smoother visual effect, while larger sizes create a blockier, pixelated reveal.
-- **Fade & Animation Speed:** Each square’s fade transition is controlled via the CSS property `transition: opacity 0.5s ease`. The speed at which adjacent squares are revealed is managed with a `20ms` delay, allowing you to fine-tune the cascade effect.
-- **Color Styling:** The tile colour is set via JavaScript (`rgb(165, 0, 0)` by default), while the base button style (background, border, and text color) is managed in the `.cascade-button` class and its inner `<span>`. These can be easily customised for various visual themes.
+- **Fade & Wave Speed:** Each tile’s fade transition is controlled by `transition: opacity 0.5s ease` in the `.square` CSS rule. The speed at which the wave propagates outward is controlled by the `setInterval` delay (20ms per step) — reducing it makes the cascade spread faster; increasing it slows it to a more deliberate reveal.
+- **Colour Styling:** The tile colour is set by `background-color` in the `.square` CSS rule (`rgb(165, 0, 0)` by default), while the base button style (background, border, and text colour) is managed in `.cascade-button` and its inner `<span>`. These can be easily customised for various visual themes without touching the TypeScript.
 
 The Cascade button is ideal for interfaces that seek a balance of aesthetic intrigue and user engagement. Whether you're guiding attention or adding subtle interactivity, this effect delivers a high-impact experience with customisable depth and polish.
 
