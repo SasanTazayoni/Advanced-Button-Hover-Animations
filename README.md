@@ -1,6 +1,6 @@
 # Advanced Button Hover Animations
 
-![HTML](tech/html.png) ![CSS](tech/css.png) ![Typescript](tech/typescript.png) ![Vite](tech/vite.png) ![VSCode](tech/vscode.png)
+![HTML](tech/html.png) ![CSS](tech/css.png) ![Typescript](tech/typescript.png) ![Vite](tech/vite.png) ![VSCode](tech/vscode.png) ![ClaudeAI](tech/claude.png)
 
 ## Introduction
 
