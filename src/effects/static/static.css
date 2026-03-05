@@ -2,7 +2,7 @@
   position: relative;
   overflow: hidden;
   aspect-ratio: 1;
-  background: #007bff;
+  background: #0c0a2e;
   color: #fff;
   transition: background-color 0.4s ease-in-out;
 }
@@ -22,7 +22,7 @@
 }
 
 .static-button:hover {
-  background-color: #8000b0;
+  background-color: #4f46e5;
 }
 
 .static-button.static-flash::before {

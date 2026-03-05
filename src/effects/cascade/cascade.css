@@ -1,13 +1,13 @@
 .cascade-button {
   position: relative;
-  background-color: rgb(255, 105, 105);
-  border: 2px solid #ffc3fa;
+  background-color: #ef4444;
+  border: 2px solid #feb2b2;
   overflow: hidden;
 }
 
 .cascade-button > span {
   position: relative;
-  color: #ffc3fa;
+  color: #feb2b2;
   z-index: 2;
 }
 
@@ -26,7 +26,7 @@
   width: 5px;
   height: 5px;
   z-index: 1;
-  background-color: rgb(165, 0, 0);
+  background-color: #9b1c1c;
   opacity: 1;
   transition: opacity 0.5s ease;
   pointer-events: none;

@@ -6,12 +6,12 @@
 
 .border-button {
   position: relative;
-  background: rgb(255, 255, 169);
+  background: #d1fae5;
   transition: all 0.3s;
 }
 
 .border-button:hover {
-  background: rgb(146, 255, 136);
+  background: #a7f3d0;
 }
 
 .border-button::before,

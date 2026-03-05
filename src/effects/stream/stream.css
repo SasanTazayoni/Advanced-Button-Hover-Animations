@@ -3,6 +3,7 @@
   background-color: rgb(255, 223, 247);
   color: black;
   overflow: hidden;
+  border: 2px solid rgba(255, 0, 242, 0.35);
 }
 
 .stream-button::before {
