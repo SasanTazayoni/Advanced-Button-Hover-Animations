@@ -1,3 +1,4 @@
+import { initializeFusionEffect } from "./effects/fusion/fusion.ts";
 import { initializeTrailEffect } from "./effects/trail/trail.ts";
 import { initializeRippleEffect } from "./effects/ripple/ripple.ts";
 import { initializeRadiateEffect } from "./effects/radiate/radiate.ts";
@@ -14,6 +15,7 @@ import { initializeMatrixEffect } from "./effects/matrix/matrix.ts";
 import { initializePulseEffect } from "./effects/pulse/pulse.ts";
 import { initializeVortexEffect } from "./effects/vortex/vortex.ts";
 
+const fusionButton = document.querySelector<HTMLButtonElement>(".fusion-button")!;
 const trailButton = document.querySelector<HTMLButtonElement>(".trail-button")!;
 const rippleButton =
   document.querySelector<HTMLButtonElement>(".ripple-button")!;
@@ -40,6 +42,7 @@ const matrixButton =
 const pulseButton = document.querySelector<HTMLButtonElement>("#pulse")!;
 const vortexButton = document.querySelector<HTMLButtonElement>("#vortex")!;
 
+initializeFusionEffect(fusionButton);
 initializeTrailEffect(trailButton);
 initializeRippleEffect(rippleButton);
 initializeRadiateEffect(radiateButton);
