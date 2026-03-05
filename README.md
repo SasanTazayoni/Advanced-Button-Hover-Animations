@@ -246,21 +246,25 @@ The Interlace button adds an elegant, intricate hover effect to a user interface
 
 ### Fusion
 
-The Fusion button introduces an engaging hover effect where four circles move in from the outside edges towards the button's centre. Initially, the button has a rich brown background with the word "Fusion" displayed in the middle. Upon hovering, the circles animate from the top, bottom, left, and right, converging towards the centre, creating the sensation of energy pulling together. As the circles meet in the centre, the button’s background changes to a gradient yellow, giving the impression that the circles have fused together to add energy to the button.
+The Fusion button features a directional spiral-in effect driven by JavaScript. Four glowing circles are positioned just outside the button’s edges. On hover, they spiral inward — simultaneously rotating 180° and converging to the button’s centre — while fading out. The direction of rotation is determined by which side of the button the cursor enters from: entering from the left spins them counter-clockwise, entering from the right spins them clockwise. A darker overlay fades away at the same time, revealing the radial gradient background beneath.
 
 #### How it works
 
-- **Hover Interaction & Circle Movement:** Upon hovering over the button, four circles, positioned at the outer edges, begin to move towards the centre. Each circle starts with zero opacity and increases as it moves inward. The top, bottom, left, and right circles converge at the centre of the button, creating a dynamic and energetic effect.
-- **Circle Animation:** The circles are animated using CSS keyframes. They begin their journey from outside the button’s bounds, moving smoothly towards the centre. As they get closer, their opacity increases, which adds to the visual impact, making the circles feel like they are actively drawing energy towards the button’s core.
-- **Background Colour Transition:** As the circles converge in the centre, the button’s background transitions from its initial rich brown to a vibrant gradient yellow. This colour change visually represents the fusion of the circles, symbolising the gathering of energy at the centre of the button.
+- **Directional Entry Detection:** On `mouseenter`, the cursor’s horizontal position is compared to the button’s centre. If it enters from the left half, `direction` is set to `-1` (counter-clockwise); from the right, `+1` (clockwise). This flips the rotation for all four circles.
+- **JS-Driven Spiral Animation:** The animation runs via `requestAnimationFrame`. Each frame computes a normalised time value `t` (0→1 over 800ms). For the first 62.5% of the animation, circles rotate 180° while their orbital radius shrinks from 110px to 0 — both driven by an ease-in-out curve. For the remaining 37.5%, circles remain at the centre as they finish fading.
+- **Polar Coordinate Motion:** Each circle has a `startAngle` (left=180°, right=0°, top=−90°, bottom=90°). Each frame, a new angle and radius are computed and converted to `translate(dx, dy)` offsets relative to the circle’s natural CSS position.
+- **Opacity:** Circles fade linearly from fully visible (opacity 1) to transparent (opacity 0) across the entire 800ms duration.
+- **Background Transition:** A `::before` pseudo-element acts as a darker overlay over the button. It fades out via a CSS `ease-in-out` transition (0.8s) on `:hover`, timed to match the JS animation, revealing the radial gradient background beneath.
 
 #### Customisation
 
-- **Circle Size & Speed:** The speed and size of the circles can be adjusted by modifying their `width`, `height`, and animation duration. The larger the circles, the more prominent the effect will be. The speed of their movement can be controlled by adjusting the `animation` timing and the `transition` properties, allowing the fine-tuning of the speed of the circles convergence.
-- **Circle Position & Direction:** The four circles start from the top, bottom, left, and right of the button, but their initial positioning can be adjusted by tweaking the `left`, `right`, `top`, and `bottom` properties. Even more complex animations can be created by modifying the path or the amount of movement for each circle.
-- **Background Styling:** The button's background gradient and its transition can be customised to fit design needs. The starting and ending colours, gradient spread, or even the gradient type can be ajusted to suit the overall theme of a project.
+- **Animation Duration:** `DURATION` (in `fusion.ts`) controls the total animation length in milliseconds. The CSS `::before` transition duration should be updated to match if changed.
+- **Spiral Timing:** `SPIRAL_RATIO` controls what fraction of the total duration is spent spiralling (currently 0.625). The remainder is used for the circles to hold at the centre while fading.
+- **Start Radius:** `START_RADIUS` sets how far outside the button the circles begin their spiral (in pixels from the button centre). `NATURAL_RADIUS` should match the circle’s resting orbit distance as set by CSS positioning.
+- **Circle Appearance:** Circle size and colour are set in `fusion.css`. The `width`, `height`, and `background` gradient of `.left-circle`, `.right-circle`, `.top-circle`, and `.bottom-circle` can be adjusted freely.
+- **Background Styling:** The overlay colour is set on `.fusion-button::before` and the base gradient on `.fusion-button`. Both can be adjusted to match a project’s colour scheme.
 
-The Fusion button delivers a visually dynamic and engaging hover effect that makes use of four animated circles converging inward, creating an energetic fusion effect. The animation of the circles, along with the background colour transition, provides an eye-catching experience that draws attention to the button. With easy customisation options for circle size, opacity, direction, and background styling, the Fusion button can be adapted to fit a variety of styles, making it a versatile and energetic addition to any website.
+The Fusion button creates a dynamic, directional hover effect where four circles spiral inward from outside the button’s bounds, converging at the centre as they fade. The rotation direction responds to cursor entry side, adding a subtle layer of interactivity. The smooth JS-driven polar coordinate animation and simultaneous background reveal make it a visually rich and customisable component.
 
 ---
 
