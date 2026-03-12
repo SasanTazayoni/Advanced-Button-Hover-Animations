@@ -28,7 +28,21 @@ You can check them out [here!](https://sasantazayoni.github.io/Advanced-Button-H
 
 ## The Buttons
 
+#### Difficulty Key
+
+| Rating | Description |
+|---|---|
+| **Very Simple** | CSS-only or minimal JS; achievable with basic knowledge |
+| **Simple** | Straightforward logic with a small amount of CSS or JS |
+| **Moderate** | Requires some planning; multiple moving parts but manageable |
+| **Difficult** | Complex timing, DOM lifecycle management, or non-trivial logic |
+| **Very Difficult** | Algorithmic thinking, advanced animation techniques, or significant JS complexity |
+
+---
+
 ### Sweep
+
+**Difficulty to re-establish:** Simple
 
 The Sweep button uses a linear-gradient background that creates a dynamic sweeping animation across the button surface. This gradient typically features two main colours with a sharply contrasting colour placed in between — often a lighter or more neutral tone — to establish the illusion of a “sweep.” The gradient is expanded beyond the button’s visible area using background-size: 400%, allowing for noticeable movement when the background-position shifts from 0% to 100% on hover. This creates a left-to-right sweeping motion.
 
@@ -53,6 +67,8 @@ The Sweep button is ideal for modern, animated interfaces where motion is used t
 
 ### Trail
 
+**Difficulty to re-establish:** Difficult
+
 The Trail button offers a sleek and highly interactive hover experience that visually responds to the user’s cursor movement. The button maintains a clean and modern look by default. Upon hovering, the button activates a glowing radial highlight that follows the cursor in real time, accompanied by a series of soft, fading dots that create a light trail effect. This dual-layered animation transforms a standard button into an expressive, responsive visual component.
 
 #### How it works
@@ -76,6 +92,8 @@ The Trail button is ideal for interfaces where interactivity and feedback are es
 ---
 
 ### Ripple
+
+**Difficulty to re-establish:** Simple
 
 The Ripple button introduces an energetic and tactile animation that simulates the visual of a water ripple expanding outward from the point of cursor interaction. The button maintains a clean and vibrant appearance by default. Upon hover, the background deepens and the text colour adjusts for contrast, providing immediate visual feedback.
 
@@ -104,6 +122,8 @@ The Ripple button turns a basic click target into a visually expressive element,
 
 ### Border
 
+**Difficulty to re-establish:** Simple
+
 The Border button introduces a modern and visually captivating rotating border effect, achieved using a conic-gradient and layered CSS pseudo-elements. The button presents a clean resting state. On hover, the background shifts slightly, while the border comes to life with an animated ring of colour — adding movement and depth to the interaction.
 
 💡 Inspired by Kevin Powell’s conic-gradient border animation on YouTube.
@@ -128,6 +148,8 @@ This button transforms a static UI element into a vivid, motion-enhanced compone
 
 ### Blink
 
+**Difficulty to re-establish:** Very Simple
+
 The Blink button introduces a captivating and visually dynamic hover effect that creates a blinking animation over the button. The button has a clean and appealing look by default. Upon hovering, a bright overlay gradually fades in over the button with a soft blinking effect. The button background colour transitions on hover, adding a further layer of interactivity while emphasising the effect.
 
 #### How it works
@@ -148,6 +170,8 @@ The Blink button offers an eye-catching interaction that adds an element of move
 ---
 
 ### Radiate
+
+**Difficulty to re-establish:** Difficult
 
 The Radiate button introduces an engaging and visually dynamic hover effect that creates a sequence of expanding circles, each with decreasing opacity. When the cursor enters the button, concentric circles begin to appear at the centre and expand outward, creating a radiating effect. The button background colour transitions on hover, enhancing the interactive feedback and further emphasising the effect.
 
@@ -183,6 +207,8 @@ Overall, this button adds a distinctive, fluid animation to any user interface, 
 
 ### Pixels
 
+**Difficulty to re-establish:** Very Difficult
+
 The Pixels button introduces a playful and captivating pixelation animation that dynamically fills the button with vibrant pixel squares on hover. With a minimal default appearance, the button stays understated — allowing the interactive effect to take centre stage. On hover, the button surface is gradually populated by a wave of tiny coloured squares, creating a smooth filling animation reminiscent of pixel rendering or progressive data loading. When the cursor leaves, the pixels begin to dissolve, restoring the button to its original state.
 
 #### How it works
@@ -205,6 +231,8 @@ With its satisfying, low-resolution aesthetic and dynamic interaction, the Pixel
 
 ### Converge
 
+**Difficulty to re-establish:** Moderate
+
 The Converge button introduces a dynamic and visually captivating hover effect where multiple circles sweep inward across the button surface. Upon hovering, four circular elements arc in from outside the button along quarter-circle paths, gradually increasing in opacity. This creates a sense of motion, as if the circles are sweeping in to transform the button’s background.
 
 #### How it works
@@ -224,6 +252,8 @@ The Converge button offers a visually engaging hover effect, where circles appea
 ---
 
 ### Interlace
+
+**Difficulty to re-establish:** Difficult
 
 The Interlace button features a sophisticated hover effect where multiple diagonal lines appear to interlace over the button's surface, creating an engaging and dynamic visual. The button has a clean default appearance and showcases a series of animated lines that cross each other at varying angles upon hover. This effect mimics the motion of threads weaving together, creating a visually intricate and captivating interaction.
 
@@ -245,6 +275,8 @@ The Interlace button adds an elegant, intricate hover effect to a user interface
 ---
 
 ### Fusion
+
+**Difficulty to re-establish:** Very Difficult
 
 The Fusion button features a directional spiral-in effect driven by JavaScript. Four glowing circles are positioned just outside the button’s edges. On hover, they spiral inward — simultaneously rotating 180° and converging to the button’s centre — while fading out. The direction of rotation is determined by which side of the button the cursor enters from: entering from the left spins them counter-clockwise, entering from the right spins them clockwise. A darker overlay fades away at the same time, revealing the radial gradient background beneath.
 
@@ -270,6 +302,8 @@ The Fusion button creates a dynamic, directional hover effect where four circles
 
 ### Weld
 
+**Difficulty to re-establish:** Very Difficult
+
 The Weld button introduces a dynamic hover effect where triangles appear to "weld" together as the user interacts with the button. The button has a clean resting state with a soft border and the text "Weld" displayed at the centre. Upon hovering, the triangles positioned at the top and bottom of the button move towards the centre and interlock like sharp teeth. As the triangles meet at the middle, the button's appearance transforms — transitioning through a glowing heated tone and settling to a solid final colour — giving the sense that the triangles are being welded together. When the animation completes, the borders are removed, revealing a solid background as if the triangles have fused into a cohesive whole.
 
 #### How it works
@@ -288,6 +322,8 @@ The Weld button offers a striking hover effect that combines smooth animation wi
 ---
 
 ### Stream
+
+**Difficulty to re-establish:** Difficult
 
 The Stream button offers a captivating hover effect that simulates an energetic flow of lines shooting upwards and downwards across the button. Upon hovering, animated lines burst from both the top and bottom of the button, moving in random directions with varying opacity, creating a dynamic and fluid effect. Simultaneously, a vibrant radial gradient gradually fades in over 0.6s, enhancing the visual impact. Each line naturally fades out and self-removes after completing its animation, leaving the background with the glowing radial gradient, giving the impression of energy flowing through the button.
 
@@ -309,6 +345,8 @@ The Stream button provides an interactive and visually stimulating hover effect 
 ---
 
 ### Shatter
+
+**Difficulty to re-establish:** Difficult
 
 The Shatter button delivers a dramatic hover effect that simulates shards of glass breaking away from the button’s surface. The button has a polished resting appearance. Upon hovering, the illusion of a solid surface is shattered — literally — as small fragments begin to crack and fall away like splintering glass.
 
@@ -332,6 +370,8 @@ The Shatter button adds a visceral, glass-breaking moment to a UI, capturing att
 ---
 
 ### Cascade
+
+**Difficulty to re-establish:** Very Difficult
 
 The Cascade button introduces a dynamic and immersive hover effect that simulates a ripple of light revealing the surface beneath. The button has a richly styled resting state, and transforms into an interactive field of light as the user moves their cursor across it.
 
@@ -358,6 +398,8 @@ The Cascade button is ideal for interfaces that seek a balance of aesthetic intr
 
 ### Water
 
+**Difficulty to re-establish:** Difficult
+
 The Water button delivers a soothing and immersive hover effect that simulates the sensation of water rising and droplets falling — as though the button itself is being gently filled with liquid. When hovered over, a translucent wave begins to rise from the bottom, accompanied by falling droplets that mimic water trickling down a glass surface.
 
 This fluid interaction makes the button feel alive and reactive, evoking the calm, organic quality of water in motion. Once the cursor leaves, the water gently recedes and the droplets cease, resetting the button for the next interaction.
@@ -382,6 +424,8 @@ The Water Button offers a visually calming and tactile experience that evokes th
 
 ### Static
 
+**Difficulty to re-establish:** Simple
+
 The Static button delivers a jarring, electrified visual that evokes the look and feel of television static or analog signal interference. The button appears stable and minimal at first glance. But upon interaction, a burst of visual noise flashes across its surface — a chaotic storm of interference that briefly disrupts its clean appearance before settling back into stillness. The effect captures a moment of glitch, making the button feel like it's caught in a fleeting transmission error. It's ideal for interfaces with retro, digital, or cyberpunk themes — or wherever a quick spark of visual disruption can enhance engagement.
 
 #### How it works
@@ -403,6 +447,8 @@ The Static button introduces a momentary break in visual consistency — a contr
 
 ### Rainbow
 
+**Difficulty to re-establish:** Very Simple
+
 The Rainbow Button showcases a vibrant, spectrum-responsive hover effect that visually engages through dynamic colour shifts and responsive opacity. At rest, the button features a rainbow gradient spanning red to violet with reduced opacity, giving it a subdued, semi-transparent appearance. Upon hover, it springs to life, becoming fully opaque and reactive to cursor movement, creating a dynamic and interactive visual experience.
 
 #### How it works
@@ -422,6 +468,8 @@ The Rainbow button delivers a lively, user-responsive hover animation that feels
 ---
 
 ### Matrix
+
+**Difficulty to re-establish:** Very Difficult
 
 The Matrix button evokes the hypnotic, code-dripping aesthetic of cyberpunk cinema, channelling the immersive visual language of encrypted systems and virtual networks. At rest, the button remains sleek and minimal — but on hover, cascading trails of katakana characters begin to fall, simulating the iconic digital rain effect seen in the Matrix films. These dynamically animated glyphs trickle down the button surface in staggered, glowing streams, giving the impression of an interface quietly decoding itself or tapping into a live data feed. The interaction is subtle yet visually arresting, conjuring the feel of a system awakening or slipping into a deeper layer of virtual space. It’s a fitting choice for experiences rooted in hacking, virtual reality, or glitchy, futuristic design.
 
@@ -450,6 +498,8 @@ The Matrix button captures the mystique and motion of an encrypted, ever-running
 
 ### Pulse
 
+**Difficulty to re-establish:** Moderate
+
 The Pulse button delivers an elegant two-stage hover effect that combines expanding sonar-like rings with an edge glow, creating the impression of energy radiating outward and charging the button's edges. Upon hovering, two concentric rings emerge from the button's centre and expand outward, fading to transparent just before they reach the button's edges. As the rings ripple outward, a glow begins to build along all four edges of the button, as if the energy from the rings has been absorbed into the button's perimeter. When the cursor leaves, the edge glow smoothly fades back to transparent, resetting the button for the next interaction.
 
 The effect is designed to feel causal — the rings appear to trigger the glow, connecting the two stages into a single cohesive animation. Each hover creates fresh rings, so the full pulse sequence repeats naturally with every interaction.
@@ -476,6 +526,8 @@ The Pulse button combines motion and colour in a way that feels organic and inte
 ---
 
 ### Vortex
+
+**Difficulty to re-establish:** Moderate
 
 The Vortex button conjures the visual pull of a spiralling tunnel collapsing inward. The button sits quietly at rest — but on hover, a cascade of nested bordered squares materialises from the outside in, each one rotated a fixed number of degrees further than the last. The cumulative twist across all layers produces the unmistakable impression of a vortex: a geometric whirlpool tightening toward an invisible centre. The innermost squares glow brightest, drawing the eye deeper into the spiral, while the staggered reveal gives the structure a sense of assembling itself in real time. The effect carries the aesthetic of signal interference, radar pings, and collapsing coordinate systems — precise yet slightly unsettling, elegant yet mechanical. It suits interfaces that want to project depth, technical authority, or a sense of something opening up beneath the surface.
 
