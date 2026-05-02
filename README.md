@@ -284,7 +284,7 @@ The Fusion button features a directional spiral-in effect driven by JavaScript. 
 
 - **Directional Entry Detection:** On `mouseenter`, the cursor’s horizontal position is compared to the button’s centre. If it enters from the left half, `direction` is set to `-1` (counter-clockwise); from the right, `+1` (clockwise). This flips the rotation for all four circles.
 - **JS-Driven Spiral Animation:** The animation runs via `requestAnimationFrame`. Each frame computes a normalised time value `t` (0→1 over 800ms). For the first 62.5% of the animation, circles rotate 180° while their orbital radius shrinks from 110px to 0 — both driven by an ease-in-out curve. For the remaining 37.5%, circles remain at the centre as they finish fading.
-- **Polar Coordinate Motion:** Each circle has a `startAngle` (left=180°, right=0°, top=−90°, bottom=90°). Each frame, a new angle and radius are computed and converted to `translate(dx, dy)` offsets relative to the circle’s natural CSS position.
+- **Polar Coordinate Motion:** Each circle has a `startAngle` (left=180°, right=0°, top=−90°, bottom=90°). On `mouseenter`, each circle’s actual position relative to the button centre is read via `getBoundingClientRect` and stored as `cosStart`/`sinStart`. Each frame, a new angle and radius are computed and converted to `translate(dx, dy)` offsets relative to those measured positions, ensuring correct convergence at any button size.
 - **Opacity:** Circles fade linearly from fully visible (opacity 1) to transparent (opacity 0) across the entire 800ms duration.
 - **Background Transition:** A `::before` pseudo-element acts as a darker overlay over the button. It fades out via a CSS `ease-in-out` transition (0.8s) on `:hover`, timed to match the JS animation, revealing the radial gradient background beneath.
 
@@ -292,8 +292,8 @@ The Fusion button features a directional spiral-in effect driven by JavaScript. 
 
 - **Animation Duration:** `DURATION` (in `fusion.ts`) controls the total animation length in milliseconds. The CSS `::before` transition duration should be updated to match if changed.
 - **Spiral Timing:** `SPIRAL_RATIO` controls what fraction of the total duration is spent spiralling (currently 0.625). The remainder is used for the circles to hold at the centre while fading.
-- **Start Radius:** `START_RADIUS` sets how far outside the button the circles begin their spiral (in pixels from the button centre). `NATURAL_RADIUS` should match the circle’s resting orbit distance as set by CSS positioning.
-- **Circle Appearance:** Circle size and colour are set in `fusion.css`. The `width`, `height`, and `background` gradient of `.left-circle`, `.right-circle`, `.top-circle`, and `.bottom-circle` can be adjusted freely.
+- **Start Radius:** `START_RADIUS` sets how far outside the button the circles begin their spiral (in pixels from the button centre).
+- **Circle Appearance:** Circle size scales automatically with button height via the `--fusion-circle-size` CSS variable, which is set at `mouseenter`. The `background` gradient of the circles can be adjusted in `fusion.css`. The circle elements are created programmatically by `fusion.ts` — no extra markup is needed in the HTML.
 - **Background Styling:** The overlay colour is set on `.fusion-button::before` and the base gradient on `.fusion-button`. Both can be adjusted to match a project’s colour scheme.
 
 The Fusion button creates a dynamic, directional hover effect where four circles spiral inward from outside the button’s bounds, converging at the centre as they fade. The rotation direction responds to cursor entry side, adding a subtle layer of interactivity. The smooth JS-driven polar coordinate animation and simultaneous background reveal make it a visually rich and customisable component.
