@@ -1,3 +1,4 @@
+import { initializeConvergeEffect } from "./effects/converge/converge.ts";
 import { initializeFusionEffect } from "./effects/fusion/fusion.ts";
 import { initializeTrailEffect } from "./effects/trail/trail.ts";
 import { initializeRippleEffect } from "./effects/ripple/ripple.ts";
@@ -15,6 +16,7 @@ import { initializeMatrixEffect } from "./effects/matrix/matrix.ts";
 import { initializePulseEffect } from "./effects/pulse/pulse.ts";
 import { initializeVortexEffect } from "./effects/vortex/vortex.ts";
 
+const convergeButton = document.querySelector<HTMLButtonElement>(".converge-button")!;
 const fusionButton = document.querySelector<HTMLButtonElement>(".fusion-button")!;
 const trailButton = document.querySelector<HTMLButtonElement>(".trail-button")!;
 const rippleButton =
@@ -42,6 +44,7 @@ const matrixButton =
 const pulseButton = document.querySelector<HTMLButtonElement>("#pulse")!;
 const vortexButton = document.querySelector<HTMLButtonElement>("#vortex")!;
 
+initializeConvergeEffect(convergeButton);
 initializeFusionEffect(fusionButton);
 initializeTrailEffect(trailButton);
 initializeRippleEffect(rippleButton);
