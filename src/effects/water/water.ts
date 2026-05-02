@@ -1,23 +1,26 @@
 export function initializeWaterEffect(button: HTMLButtonElement): void {
   const STOP_DELAY = 405;
-  const POOL_SIZE = 140;
+  const BASE_POOL_SIZE = 140;
 
-  const buttonWidth = button.offsetWidth;
-  const buttonHeight = button.offsetHeight;
-
+  const pool: HTMLDivElement[] = [];
   const freeList: HTMLDivElement[] = [];
-  const fragment = document.createDocumentFragment();
 
-  for (let i = 0; i < POOL_SIZE; i++) {
-    const droplet = document.createElement("div");
-    droplet.classList.add("droplet");
-    droplet.style.top = "0";
-    droplet.style.transition = "none";
-    droplet.style.opacity = "0";
-    fragment.appendChild(droplet);
-    freeList.push(droplet);
+  function growPool(count: number): void {
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < count; i++) {
+      const droplet = document.createElement("div");
+      droplet.classList.add("droplet");
+      droplet.style.top = "0";
+      droplet.style.transition = "none";
+      droplet.style.opacity = "0";
+      fragment.appendChild(droplet);
+      pool.push(droplet);
+      freeList.push(droplet);
+    }
+    button.appendChild(fragment);
   }
-  button.appendChild(fragment);
+
+  growPool(BASE_POOL_SIZE);
 
   function acquire(): HTMLDivElement | null {
     return freeList.pop() ?? null;
@@ -33,6 +36,8 @@ export function initializeWaterEffect(button: HTMLButtonElement): void {
     const droplet = acquire();
     if (!droplet) return;
 
+    const buttonWidth = button.offsetWidth;
+    const buttonHeight = button.offsetHeight;
     const dropletSize = Math.random() * 5 + 10;
     droplet.style.width = `${dropletSize}px`;
     droplet.style.height = `${dropletSize}px`;
@@ -42,19 +47,15 @@ export function initializeWaterEffect(button: HTMLButtonElement): void {
     droplet.style.opacity = "0.5";
 
     const fallDuration = Math.random() * 200 + 200;
+    const fadeDuration = Math.round(fallDuration * 0.25);
+    const fadeDelay = Math.round(fallDuration * 0.75);
 
     setTimeout(() => {
-      droplet.style.transition = `transform ${fallDuration}ms linear`;
+      droplet.style.transition = `transform ${fallDuration}ms linear, opacity ${fadeDuration}ms ${fadeDelay}ms linear`;
       droplet.style.transform = `translateY(${buttonHeight - dropletSize}px) rotate(45deg)`;
+      droplet.style.opacity = "0";
 
-      setTimeout(() => {
-        droplet.style.transition = `opacity ${Math.round(fallDuration * 0.25)}ms linear`;
-        droplet.style.opacity = "0";
-
-        droplet.addEventListener("transitionend", () => release(droplet), {
-          once: true,
-        });
-      }, fallDuration);
+      setTimeout(() => release(droplet), fallDuration);
     }, 10);
   }
 
@@ -62,7 +63,13 @@ export function initializeWaterEffect(button: HTMLButtonElement): void {
   let stopTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   button.addEventListener("mouseenter", () => {
-    dropletInterval = setInterval(spawnDroplet, 3);
+    const spawnCount = Math.max(1, Math.round((button.offsetWidth * button.offsetHeight) / 7000));
+    const neededPoolSize = BASE_POOL_SIZE * spawnCount;
+    if (pool.length < neededPoolSize) growPool(neededPoolSize - pool.length);
+
+    dropletInterval = setInterval(() => {
+      for (let i = 0; i < spawnCount; i++) spawnDroplet();
+    }, 3);
     stopTimeoutId = setTimeout(() => {
       clearInterval(dropletInterval!);
       dropletInterval = null;
