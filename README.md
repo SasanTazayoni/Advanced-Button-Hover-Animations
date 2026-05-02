@@ -177,7 +177,7 @@ The Radiate button introduces an engaging and visually dynamic hover effect that
 
 #### How it works
 
-- **Initialisation:** All ten circles are created once at initialisation using a `DocumentFragment` for a single batched DOM insertion. Each circle’s size (as a fraction of the button’s width) and background colour opacity are set at this point and never change. The circles remain in the DOM permanently at `opacity: 0`, eliminating any per-interaction DOM creation or removal.
+- **Initialisation:** All ten circles are created once at initialisation using a `DocumentFragment` for a single batched DOM insertion. Each circle’s background colour opacity is set at this point and never changes. Circle sizes are computed as a fraction of the button’s width and updated automatically whenever the button is resized via a `ResizeObserver`. The circles remain in the DOM permanently at `opacity: 0`, eliminating any per-interaction DOM creation or removal.
 
 - **Hover Interaction:** When the cursor enters the button (`mouseenter`), the animation starts. Before scheduling anything new, the implementation clears all existing timers and resets every circle to `opacity: 0`. A forced reflow (`void button.offsetHeight`) is then used to ensure the next fade-in reliably triggers the CSS opacity transition, even during rapid re-hover.
 
