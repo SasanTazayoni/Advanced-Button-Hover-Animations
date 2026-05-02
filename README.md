@@ -30,12 +30,12 @@ You can check them out [here!](https://sasantazayoni.github.io/Advanced-Button-H
 
 #### Difficulty Key
 
-| Rating | Description |
-|---|---|
-| **Very Simple** | CSS-only or minimal JS; achievable with basic knowledge |
-| **Simple** | Straightforward logic with a small amount of CSS or JS |
-| **Moderate** | Requires some planning; multiple moving parts but manageable |
-| **Difficult** | Complex timing, DOM lifecycle management, or non-trivial logic |
+| Rating             | Description                                                                       |
+| ------------------ | --------------------------------------------------------------------------------- |
+| **Very Simple**    | CSS-only or minimal JS; achievable with basic knowledge                           |
+| **Simple**         | Straightforward logic with a small amount of CSS or JS                            |
+| **Moderate**       | Requires some planning; multiple moving parts but manageable                      |
+| **Difficult**      | Complex timing, DOM lifecycle management, or non-trivial logic                    |
 | **Very Difficult** | Algorithmic thinking, advanced animation techniques, or significant JS complexity |
 
 ---
@@ -67,7 +67,7 @@ The Sweep button is ideal for modern, animated interfaces where motion is used t
 
 ### Trail
 
-**Difficulty to re-establish:** Difficult
+**Difficulty to re-establish:** Moderate
 
 The Trail button offers a sleek and highly interactive hover experience that visually responds to the user’s cursor movement. The button maintains a clean and modern look by default. Upon hovering, the button activates a glowing radial highlight that follows the cursor in real time, accompanied by a series of soft, fading dots that create a light trail effect. This dual-layered animation transforms a standard button into an expressive, responsive visual component.
 
@@ -122,7 +122,7 @@ The Ripple button turns a basic click target into a visually expressive element,
 
 ### Border
 
-**Difficulty to re-establish:** Simple
+**Difficulty to re-establish:** Very simple
 
 The Border button introduces a modern and visually captivating rotating border effect, achieved using a conic-gradient and layered CSS pseudo-elements. The button presents a clean resting state. On hover, the background shifts slightly, while the border comes to life with an animated ring of colour — adding movement and depth to the interaction.
 
@@ -207,7 +207,7 @@ Overall, this button adds a distinctive, fluid animation to any user interface, 
 
 ### Pixels
 
-**Difficulty to re-establish:** Very Difficult
+**Difficulty to re-establish:** Difficult
 
 The Pixels button introduces a playful and captivating pixelation animation that dynamically fills the button with vibrant pixel squares on hover. With a minimal default appearance, the button stays understated — allowing the interactive effect to take centre stage. On hover, the button surface is gradually populated by a wave of tiny coloured squares, creating a smooth filling animation reminiscent of pixel rendering or progressive data loading. When the cursor leaves, the pixels begin to dissolve, restoring the button to its original state.
 
@@ -371,7 +371,7 @@ The Shatter button adds a visceral, glass-breaking moment to a UI, capturing att
 
 ### Cascade
 
-**Difficulty to re-establish:** Very Difficult
+**Difficulty to re-establish:** Difficult
 
 The Cascade button introduces a dynamic and immersive hover effect that simulates a ripple of light revealing the surface beneath. The button has a richly styled resting state, and transforms into an interactive field of light as the user moves their cursor across it.
 
@@ -498,7 +498,7 @@ The Matrix button captures the mystique and motion of an encrypted, ever-running
 
 ### Pulse
 
-**Difficulty to re-establish:** Moderate
+**Difficulty to re-establish:** Simple
 
 The Pulse button delivers an elegant two-stage hover effect that combines expanding sonar-like rings with an edge glow, creating the impression of energy radiating outward and charging the button's edges. Upon hovering, two concentric rings emerge from the button's centre and expand outward, fading to transparent just before they reach the button's edges. As the rings ripple outward, a glow begins to build along all four edges of the button, as if the energy from the rings has been absorbed into the button's perimeter. When the cursor leaves, the edge glow smoothly fades back to transparent, resetting the button for the next interaction.
 
