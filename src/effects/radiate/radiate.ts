@@ -16,21 +16,31 @@ export const initializeRadiateEffect = (button: HTMLButtonElement): void => {
     { size: 1, opacity: 0.05 },
   ];
 
-  const buttonWidth = Math.ceil(button.offsetWidth);
   const fragment = document.createDocumentFragment();
   const circles: HTMLDivElement[] = [];
 
   circleConfigs.forEach((circleData) => {
-    const size = circleData.size * buttonWidth;
     const circle = document.createElement("div");
     circle.className = "circle";
-    circle.style.width = `${size}px`;
-    circle.style.height = `${size}px`;
     circle.style.backgroundColor = `rgba(0, 120, 0, ${circleData.opacity})`;
     fragment.appendChild(circle);
     circles.push(circle);
   });
   button.appendChild(fragment);
+
+  function updateCircleSizes(): void {
+    const width = Math.ceil(button.offsetWidth);
+    circles.forEach((circle, i) => {
+      const size = circleConfigs[i].size * width;
+      circle.style.width = `${size}px`;
+      circle.style.height = `${size}px`;
+    });
+  }
+
+  updateCircleSizes();
+
+  const resizeObserver = new ResizeObserver(updateCircleSizes);
+  resizeObserver.observe(button);
 
   function clearTimers(): void {
     activeIntervals.forEach(clearInterval);
