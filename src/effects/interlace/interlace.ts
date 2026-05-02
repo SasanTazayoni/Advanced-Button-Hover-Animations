@@ -1,7 +1,6 @@
 export const initializeInterlaceEffect = (button: HTMLButtonElement): void => {
   const lineHeight = 4;
   const numberOfLines = 28;
-  const buttonWidth = button.offsetWidth;
 
   const lineWidthProbe = document.createElement("span");
   lineWidthProbe.classList.add("line");
@@ -12,29 +11,20 @@ export const initializeInterlaceEffect = (button: HTMLButtonElement): void => {
   const createLine = (
     className: string,
     position: "top" | "bottom",
-    offset: (halfLineWidth: number, i: number) => number
+    side: "left" | "right"
   ): void => {
     for (let i = 0; i < numberOfLines; i++) {
       const line = document.createElement("span");
       line.classList.add("line", className);
       line.style[position] = `${i * lineHeight}px`;
-      line.style.left = `${offset(halfLineWidth, i)}px`;
+      line.style[side] = `${-halfLineWidth + i * lineHeight}px`;
       line.style.transitionDelay = `${0.025 * i}s`;
       button.appendChild(line);
     }
   };
 
-  const bottomLeftOffset = (halfLineWidth: number, i: number): number =>
-    -halfLineWidth + i * lineHeight;
-  const bottomRightOffset = (halfLineWidth: number, i: number): number =>
-    buttonWidth - halfLineWidth - i * lineHeight;
-  const topLeftOffset = (halfLineWidth: number, i: number): number =>
-    -halfLineWidth + i * lineHeight;
-  const topRightOffset = (halfLineWidth: number, i: number): number =>
-    buttonWidth - halfLineWidth - i * lineHeight;
-
-  createLine("bottom-left-line", "bottom", bottomLeftOffset);
-  createLine("bottom-right-line", "bottom", bottomRightOffset);
-  createLine("top-left-line", "top", topLeftOffset);
-  createLine("top-right-line", "top", topRightOffset);
+  createLine("bottom-left-line", "bottom", "left");
+  createLine("bottom-right-line", "bottom", "right");
+  createLine("top-left-line", "top", "left");
+  createLine("top-right-line", "top", "right");
 };
