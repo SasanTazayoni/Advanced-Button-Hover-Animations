@@ -1,20 +1,19 @@
 export function initializeFusionEffect(fusionButton: HTMLButtonElement): void {
   const DURATION = 800;
   const SPIRAL_RATIO = 0.625;
-  const NATURAL_RADIUS = 70;
   const START_RADIUS = 110;
 
   const circles = [
-    { el: fusionButton.querySelector<HTMLElement>(".left-circle")!,   startAngle: Math.PI },
-    { el: fusionButton.querySelector<HTMLElement>(".right-circle")!,  startAngle: 0 },
-    { el: fusionButton.querySelector<HTMLElement>(".top-circle")!,    startAngle: -Math.PI / 2 },
-    { el: fusionButton.querySelector<HTMLElement>(".bottom-circle")!, startAngle: Math.PI / 2 },
-  ].map(({ el, startAngle }) => ({
-    el,
-    startAngle,
-    cosStart: NATURAL_RADIUS * Math.cos(startAngle),
-    sinStart: NATURAL_RADIUS * Math.sin(startAngle),
-  }));
+    { position: 'left',   startAngle: Math.PI },
+    { position: 'right',  startAngle: 0 },
+    { position: 'top',    startAngle: -Math.PI / 2 },
+    { position: 'bottom', startAngle: Math.PI / 2 },
+  ].map(({ position, startAngle }) => {
+    const el = document.createElement('span');
+    el.className = `${position}-circle`;
+    fusionButton.appendChild(el);
+    return { el, startAngle, cosStart: 0, sinStart: 0 };
+  });
 
   let animId: number | null = null;
   let startTime: number | null = null;
@@ -61,7 +60,18 @@ export function initializeFusionEffect(fusionButton: HTMLButtonElement): void {
 
   fusionButton.addEventListener("mouseenter", (e: MouseEvent) => {
     const rect = fusionButton.getBoundingClientRect();
-    direction = e.clientX - rect.left < rect.width / 2 ? -1 : 1;
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+
+    fusionButton.style.setProperty('--fusion-circle-size', `${rect.height}px`);
+
+    for (const circle of circles) {
+      const cr = circle.el.getBoundingClientRect();
+      circle.cosStart = (cr.left - rect.left + cr.width / 2) - cx;
+      circle.sinStart = (cr.top - rect.top + cr.height / 2) - cy;
+    }
+
+    direction = e.clientX - rect.left < cx ? -1 : 1;
     reset();
     animId = requestAnimationFrame(animate);
   });
