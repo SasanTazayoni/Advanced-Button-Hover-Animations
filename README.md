@@ -308,16 +308,23 @@ The Weld button introduces a dynamic hover effect where triangles appear to "wel
 
 #### How it works
 
-- **Hover Interaction & Triangle Movement:** On hover, two triangles positioned at the top and bottom edges of the button begin to converge towards the centre and interlock.
+- **Hover Interaction & Triangle Movement:** On hover, triangles positioned at the top and bottom edges of the button converge towards the centre and interlock. These triangles are dynamically generated and positioned based on the button’s dimensions, allowing the effect to scale smoothly across different sizes.
 - **Background Colour & Border Transition:** The colour shift is driven by the `@keyframes weld` animation, which transitions the triangle `border-top-color` and `border-bottom-color` properties through three stages. This simulates the heating and cooling of the weld. Upon completion of the animation, the button's border disappears, leaving behind a unified, solid colour background.
 
 #### Customisation
 
-- **Triangle Position & Number:** Triangles are generated using the `arrowGroups` array. Adjust the number of triangles by modifying the inline position arrays passed to each group's `.map()` call. Triangle placement is calculated using `arrowUpPosition()` and `arrowDownPosition()` functions. These rely on `triangleBorderWidth` and spacing logic that can be modified to fine-tune layout and symmetry.
+- **Triangle Position & Number:** Triangles are generated dynamically using a repeating pattern calculated from the button’s width. The layout is controlled via CSS custom properties:
+
+* `--weld-columns`: Defines how many triangle units span the button width. Increasing this value increases triangle density.
+* `--weld-gap-ratio`: Controls the spacing between triangles as a ratio of their width.
+* `--weld-halo-extra`: Expands the outer glow (halo) effect beyond the triangle edges.
+
+Triangle size and spacing are computed at runtime to maintain consistent proportions. A `ResizeObserver` ensures the layout updates automatically when the button is resized.
+
 - **Triangle Speed & Transition:** The speed at which the triangles move toward the centre is controlled via CSS `transition` properties in the `.arrow-up` and `.arrow-down` classes. Adjusting the `transition: 0.3s` value modifies the movement duration. The visual “welding” colour animation is defined in the `@keyframes weld` block, with timing managed by the `animation: weld 0.6s linear 0.3s forwards` rule. Tweaking these durations allows for a faster or more gradual weld effect.
 - **Colour & Styling:** Colours can be customised across multiple elements. The base button’s colour and border are defined in the `.weld-button` class, while text styling is handled in `.button-text`. Triangle colours are defined using `border-top` and `border-bottom` properties in the `.arrow-up` and `.arrow-down` styles. Intermediate and final colour transitions during the welding animation are managed within the `@keyframes weld` block. All of these can be modified to match the surrounding visual theme or create unique stylistic expressions.
 
-The Weld button offers a striking hover effect that combines smooth animation with dynamic motion. The triangles converge at the centre, creating a "welding" effect that adds energy and interactivity to the button. With flexible customisation options for triangle positioning, colour transitions, and animation speed, this button is perfect for adding a unique touch to any web project.
+The Weld button offers a striking hover effect that combines smooth animation with dynamic motion. The triangles converge at the centre, creating a "welding" effect that adds energy and interactivity to the button. With flexible customisation options for layout, colour transitions, and animation speed, this button is well-suited for adding a distinctive, responsive visual element to any web project.
 
 ---
 
