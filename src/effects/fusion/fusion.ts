@@ -9,10 +9,10 @@ export function initializeFusionEffect(fusionButton: HTMLButtonElement): void {
     { position: 'top',    startAngle: -Math.PI / 2 },
     { position: 'bottom', startAngle: Math.PI / 2 },
   ].map(({ position, startAngle }) => {
-    const el = document.createElement('span');
-    el.className = `${position}-circle`;
-    fusionButton.appendChild(el);
-    return { el, startAngle, cosStart: 0, sinStart: 0 };
+    const span = document.createElement('span');
+    span.className = `${position}-circle`;
+    fusionButton.appendChild(span);
+    return { span, startAngle, startX: 0, startY: 0 };
   });
 
   let animId: number | null = null;
@@ -31,12 +31,12 @@ export function initializeFusionEffect(fusionButton: HTMLButtonElement): void {
     const spiralEased = t <= SPIRAL_RATIO ? ease(t / SPIRAL_RATIO) : 1;
     const radius = t <= SPIRAL_RATIO ? START_RADIUS * (1 - spiralEased) : 0;
 
-    for (const { el, startAngle, cosStart, sinStart } of circles) {
+    for (const { span, startAngle, startX, startY } of circles) {
       const angle = startAngle + direction * Math.PI * spiralEased;
-      const dx = radius * Math.cos(angle) - cosStart;
-      const dy = radius * Math.sin(angle) - sinStart;
-      el.style.transform = `translate(${dx}px, ${dy}px)`;
-      el.style.opacity = String(opacity);
+      const dx = radius * Math.cos(angle) - startX;
+      const dy = radius * Math.sin(angle) - startY;
+      span.style.transform = `translate(${dx}px, ${dy}px)`;
+      span.style.opacity = String(opacity);
     }
 
     if (t < 1) {
@@ -52,9 +52,9 @@ export function initializeFusionEffect(fusionButton: HTMLButtonElement): void {
       animId = null;
     }
     startTime = null;
-    for (const { el } of circles) {
-      el.style.transform = "";
-      el.style.opacity = "0";
+    for (const { span } of circles) {
+      span.style.transform = "";
+      span.style.opacity = "0";
     }
   }
 
@@ -66,9 +66,9 @@ export function initializeFusionEffect(fusionButton: HTMLButtonElement): void {
     fusionButton.style.setProperty('--fusion-circle-size', `${rect.height}px`);
 
     for (const circle of circles) {
-      const cr = circle.el.getBoundingClientRect();
-      circle.cosStart = (cr.left - rect.left + cr.width / 2) - cx;
-      circle.sinStart = (cr.top - rect.top + cr.height / 2) - cy;
+      const cr = circle.span.getBoundingClientRect();
+      circle.startX = (cr.left - rect.left + cr.width / 2) - cx;
+      circle.startY = (cr.top - rect.top + cr.height / 2) - cy;
     }
 
     direction = e.clientX - rect.left < cx ? -1 : 1;

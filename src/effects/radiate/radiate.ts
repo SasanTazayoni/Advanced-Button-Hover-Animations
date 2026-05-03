@@ -50,7 +50,7 @@ export const initializeRadiateEffect = (button: HTMLButtonElement): void => {
   }
 
   function hardResetCircles(): void {
-    circles.forEach((c) => (c.style.opacity = "0"));
+    circles.forEach((circle) => (circle.style.opacity = "0"));
     void button.offsetHeight;
   }
 
