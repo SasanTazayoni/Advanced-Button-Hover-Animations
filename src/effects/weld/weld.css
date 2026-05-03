@@ -6,6 +6,9 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  --weld-columns: 3;
+  --weld-gap-ratio: 0.3;
+  --weld-halo-padding: 5;
 }
 
 .button-text {
@@ -19,69 +22,58 @@
   color: black;
 }
 
-.arrow-up {
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-bottom: var(--button-height) solid #d9d9d9;
-  position: absolute;
-  bottom: -65%;
-  transform: translateY(50%);
-  transition: 0.3s;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.arrow-up::before {
-  left: -25px;
-  top: -5px;
-  width: 0;
-  height: 0;
-  border-bottom: calc(var(--button-height) + 10px) solid
-    rgba(235, 235, 235, 0.5);
-  pointer-events: none;
-}
-
+.arrow-up,
 .arrow-down {
   width: 0;
   height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: var(--button-height) solid #d9d9d9;
   position: absolute;
-  top: -65%;
-  transform: translateY(-50%);
-  transition: 0.3s;
+  border-left: calc(var(--weld-arrow-border, 20px) + 1px) solid transparent;
+  border-right: calc(var(--weld-arrow-border, 20px) + 1px) solid transparent;
   pointer-events: none;
   z-index: 0;
+  transition: 0.3s;
 }
 
-.arrow-down::before {
-  left: -25px;
-  bottom: -5px;
-  width: 0;
-  height: 0;
-  border-top: calc(var(--button-height) + 10px) solid rgba(235, 235, 235, 0.5);
-  pointer-events: none;
+.arrow-up {
+  border-bottom: var(--button-height) solid #d9d9d9;
+  bottom: -65%;
+  transform: translateY(50%);
 }
 
-.arrow-down.hover {
-  top: 50%;
+.arrow-down {
+  border-top: var(--button-height) solid #d9d9d9;
+  top: -65%;
+  transform: translateY(-50%);
 }
 
 .arrow-up.hover {
-  bottom: 50%;
+  bottom: calc(50% + max(1px, var(--weld-arrow-border) * 0.02));
+}
+
+.arrow-down.hover {
+  top: calc(50% + max(1px, var(--weld-arrow-border) * 0.02));
 }
 
 .arrow-up::before,
 .arrow-down::before {
   content: "";
   position: absolute;
-  animation: none;
+  border-left: var(--weld-halo-border, 25px) solid transparent;
+  border-right: var(--weld-halo-border, 25px) solid transparent;
   transition: all 0.3s ease;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
+}
+
+.arrow-up::before {
+  left: calc(-1 * var(--weld-halo-border, 25px));
+  top: -5px;
+  border-bottom: calc(var(--button-height) + 10px) solid
+    rgba(235, 235, 235, 0.5);
+}
+
+.arrow-down::before {
+  left: calc(-1 * var(--weld-halo-border, 25px));
+  bottom: -5px;
+  border-top: calc(var(--button-height) + 10px) solid rgba(235, 235, 235, 0.5);
 }
 
 .weld-button:hover .arrow-up::before,
@@ -95,8 +87,8 @@
     border-top-color: rgba(235, 235, 235, 0.5);
   }
   50% {
-    border-bottom-color: rgba(255, 166, 0, 0.75);
-    border-top-color: rgba(255, 166, 0, 0.75);
+    border-bottom-color: rgba(255, 94, 0, 0.75);
+    border-top-color: rgba(255, 94, 0, 0.75);
   }
   100% {
     border-bottom-color: rgba(235, 235, 235, 1);
