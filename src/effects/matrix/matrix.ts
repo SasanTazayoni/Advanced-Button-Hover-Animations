@@ -38,6 +38,17 @@ export function initializeMatrixEffect(button: HTMLElement) {
     freeList.push(span);
   }
 
+  function getLayout(): { charSize: number; colStep: number; cols: number } {
+    const charSize = Math.max(8, Math.round(button.offsetHeight / TRAIL_LENGTH));
+    const colStep = Math.round(charSize * 5 / 8);
+    const cols = Math.max(1, Math.floor(button.offsetWidth / colStep));
+    button.style.setProperty("--matrix-char-size", `${charSize}px`);
+    return { charSize, colStep, cols };
+  }
+
+  getLayout();
+  new ResizeObserver(getLayout).observe(button);
+
   let hoverInterval: ReturnType<typeof setInterval> | null = null;
   let allTimeoutIds: ReturnType<typeof setTimeout>[] = [];
   let cooldownActive = false;
@@ -95,8 +106,9 @@ export function initializeMatrixEffect(button: HTMLElement) {
   function spawnTrails() {
     if (activeTrailsCount >= MAX_TRAILS) return;
 
+    const { colStep, cols, charSize } = getLayout();
     const numTrails = 1 + Math.floor(Math.random() * 3);
-    const available = Array.from({ length: 28 }, (_, i) => i * 5)
+    const available = Array.from({ length: cols }, (_, i) => i * colStep)
       .filter(x => !activeXCoordinates.has(x));
 
     for (let i = available.length - 1; i > 0; i--) {
@@ -112,11 +124,11 @@ export function initializeMatrixEffect(button: HTMLElement) {
     for (const trail of trails) {
       activeXCoordinates.add(trail.x);
       activeTrailsCount++;
-      spawnTrail(trail.x, trail.delay);
+      spawnTrail(trail.x, trail.delay, charSize);
     }
   }
 
-  function spawnTrail(x: number, delayBetweenChars: number) {
+  function spawnTrail(x: number, delayBetweenChars: number, charSize: number) {
     const fadeDuration = delayBetweenChars * (TRAIL_LENGTH - 1);
 
     for (let i = 0; i < TRAIL_LENGTH; i++) {
@@ -125,7 +137,7 @@ export function initializeMatrixEffect(button: HTMLElement) {
 
       charSpan.textContent = matrixChars[Math.floor(Math.random() * matrixChars.length)];
       charSpan.style.left = `${x}px`;
-      charSpan.style.top = `${i * 8}px`;
+      charSpan.style.top = `${i * charSize}px`;
 
       allTimeoutIds.push(setTimeout(() => {
         charSpan.style.opacity = "1";
