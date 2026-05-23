@@ -16,48 +16,26 @@ import { initializeMatrixEffect } from "./effects/matrix/matrix.ts";
 import { initializePulseEffect } from "./effects/pulse/pulse.ts";
 import { initializeVortexEffect } from "./effects/vortex/vortex.ts";
 
-const convergeButton = document.querySelector<HTMLButtonElement>(".converge-button")!;
-const fusionButton = document.querySelector<HTMLButtonElement>(".fusion-button")!;
-const trailButton = document.querySelector<HTMLButtonElement>(".trail-button")!;
-const rippleButton =
-  document.querySelector<HTMLButtonElement>(".ripple-button")!;
-const radiateButton =
-  document.querySelector<HTMLButtonElement>(".radiate-button")!;
-const pixelsButton =
-  document.querySelector<HTMLButtonElement>(".pixels-button")!;
-const interlaceButton =
-  document.querySelector<HTMLButtonElement>(".interlace-button")!;
-const weldButton = document.querySelector<HTMLButtonElement>(".weld-button")!;
-const streamButton =
-  document.querySelector<HTMLButtonElement>(".stream-button")!;
-const shatterButton =
-  document.querySelector<HTMLButtonElement>(".shatter-button")!;
-const cascadeButton =
-  document.querySelector<HTMLButtonElement>(".cascade-button")!;
-const waterButton = document.querySelector<HTMLButtonElement>(".water-button")!;
-const staticButton =
-  document.querySelector<HTMLButtonElement>(".static-button")!;
-const rainbowButton =
-  document.querySelector<HTMLButtonElement>(".rainbow-button")!;
-const matrixButton =
-  document.querySelector<HTMLButtonElement>(".matrix-button")!;
-const pulseButton = document.querySelector<HTMLButtonElement>("#pulse")!;
-const vortexButton = document.querySelector<HTMLButtonElement>("#vortex")!;
+function getButton(selector: string): HTMLButtonElement {
+  const button = document.querySelector<HTMLButtonElement>(selector);
+  if (!button) throw new Error(`Button not found: ${selector}`);
+  return button;
+}
 
-initializeConvergeEffect(convergeButton);
-initializeFusionEffect(fusionButton);
-initializeTrailEffect(trailButton);
-initializeRippleEffect(rippleButton);
-initializeRadiateEffect(radiateButton);
-initializePixelsEffect(pixelsButton);
-initializeInterlaceEffect(interlaceButton);
-initializeWeldEffect(weldButton);
-initializeStreamEffect(streamButton);
-initializeShatterEffect(shatterButton);
-initializeCascadeEffect(cascadeButton);
-initializeWaterEffect(waterButton);
-initializeStaticEffect(staticButton);
-initializeRainbowEffect(rainbowButton);
-initializeMatrixEffect(matrixButton);
-initializePulseEffect(pulseButton);
-initializeVortexEffect(vortexButton);
+initializeConvergeEffect(getButton(".converge-button"));
+initializeFusionEffect(getButton(".fusion-button"));
+initializeTrailEffect(getButton(".trail-button"));
+initializeRippleEffect(getButton(".ripple-button"));
+initializeRadiateEffect(getButton(".radiate-button"));
+initializePixelsEffect(getButton(".pixels-button"));
+initializeInterlaceEffect(getButton(".interlace-button"));
+initializeWeldEffect(getButton(".weld-button"));
+initializeStreamEffect(getButton(".stream-button"));
+initializeShatterEffect(getButton(".shatter-button"));
+initializeCascadeEffect(getButton(".cascade-button"));
+initializeWaterEffect(getButton(".water-button"));
+initializeStaticEffect(getButton(".static-button"));
+initializeRainbowEffect(getButton(".rainbow-button"));
+initializeMatrixEffect(getButton(".matrix-button"));
+initializePulseEffect(getButton(".pulse-button"));
+initializeVortexEffect(getButton(".vortex-button"));
