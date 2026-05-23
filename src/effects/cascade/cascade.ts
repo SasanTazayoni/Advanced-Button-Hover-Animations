@@ -6,7 +6,6 @@ export function initializeCascadeEffect(button: HTMLButtonElement): void {
   let tileCount = 0;
   let revealedTiles = new Uint8Array(0);
   let tiles: HTMLDivElement[] = [];
-  let isHovering = false;
   let waveFrontier: number[] = [];
   let waveInterval: ReturnType<typeof setInterval> | null = null;
   let resizeTimer: ReturnType<typeof setTimeout> | null = null;
@@ -98,19 +97,16 @@ export function initializeCascadeEffect(button: HTMLButtonElement): void {
   }
 
   button.addEventListener("mouseenter", (e) => {
-    isHovering = true;
     const [row, col] = getCursorCell(e);
     startWave(row, col);
   });
 
   button.addEventListener("mousemove", (e) => {
-    if (!isHovering) return;
     const [row, col] = getCursorCell(e);
     startWave(row, col);
   });
 
   button.addEventListener("mouseleave", () => {
-    isHovering = false;
     if (waveInterval !== null) {
       clearInterval(waveInterval);
       waveInterval = null;
